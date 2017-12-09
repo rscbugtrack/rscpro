@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load compress humanize staticfiles hc_extras %}
+
+{% block title %}Add PagerDuty - {% site_name %}{% endblock %}
+
+
+{% block content %}
+<div class="row">
+<div class="col-sm-12">
+    <h1>PagerDuty</h1>
+
+    <div class="jumbotron">
+        {% if request.user.is_authenticated %}
+        <p>If your team uses <a href="https://www.pagerduty.com">PagerDuty</a>,
+        you can set up {% site_name %} to create a PagerDuty incident when
+        a check goes down, and resolve it when a check goes back up.</p>
+
+        <div class="text-center">
+            <div class="text-center">
+                <a href="{{ connect_url|safe }}">
+                    <img
+                        alt="Alert with PagerDuty"
+                        height="55" width="299"
+                        src="{% static 'img/integrations/pd_connect_button.png' %}" />
+                </a>
+            </div>
+        </div>
+
+        {% else %}
+        <p>
+        {% site_name %} is a <strong>free</strong> and
+        <a href="https://github.com/healthchecks/healthchecks">open source</a>
+        service for monitoring your cron jobs, background processes and
+        scheduled tasks. Before adding PagerDuty integration, please log into
+        {% site_name %}:</p>
+
+        <div class="text-center">
+        <form class="form-inline" action="{% url 'hc-login' %}" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-addon">@</div>
+                    <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        autocomplete="email"
+                        placeholder="Email">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-lg btn-primary pull-right">
+                    Log In
+                </button>
+            </div>
+        </form>
+        </div>
+        {% endif %}
+    </div>
+
+    <h2>Setup Guide</h2>
+
+    <div class="row ai-step">
+        <div class="col-sm-6">
+            <span class="step-no">1</span>
+            <p>
+                After {% if request.user.is_authenticated %}{% else %}logging in and{% endif %}
+                clicking on "Alert with PagerDuty", you will be
+                asked to log into your PagerDuty account.
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <img
+                class="ai-guide-screenshot"
+                alt="Screenshot"
+                src="{% static 'img/integrations/setup_pd_1.png' %}">
+        </div>
+    </div>
+
+    <div class="row ai-step">
+        <div class="col-sm-6">
+            <span class="step-no">2</span>
+            <p>
+                Next, PagerDuty will let set the name and escalation policy
+                for this integration.
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <img
+                class="ai-guide-screenshot"
+                alt="Screenshot"
+                src="{% static 'img/integrations/setup_pd_2.png' %}">
+        </div>
+    </div>
+
+    <div class="row ai-step">
+        <div class="col-sm-6">
+            <span class="step-no">3</span>
+            <p>
+                And that is all! You will then be redirected back to
+                "Integrations" page on {% site_name %} and see
+                the new integration!
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <img
+                class="ai-guide-screenshot"
+                alt="Screenshot"
+                src="{% static 'img/integrations/setup_pd_3.png' %}">
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

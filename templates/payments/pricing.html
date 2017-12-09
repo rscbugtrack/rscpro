@@ -1,0 +1,456 @@
+{% extends "base.html" %}
+{% load staticfiles compress hc_extras %}
+
+{% block title %}Pricing - It's Free! - healthchecks.io{% endblock %}
+
+{% block content %}
+
+<!-- Plans -->
+<section id="plans" {% if request.user.is_authenticated %} data- {% endif %}>
+    <div class="container">
+        {% if messages %}
+        <div class="alert alert-danger">
+            <p>
+                <strong>We're sorry!</strong> There was a problem setting
+                up the subscription. Response from payment gateway:</p>
+
+            {% for message in messages %}
+            <p class="error-message">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if sub.plan_id %}
+        <div class="row">
+            <div class="col-md-12">
+                <div id="subscription-status" class="jumbotron">
+                    <p>
+                        {% if first_charge %}
+                        Success! You just paid ${{ sub.price }}.
+                        {% else %}
+                            You are currently paying ${{ sub.price }}/{{ sub.period }}
+
+                            {% if sub.pm_is_credit_card %}
+                            using {{ sub.card_type }} card
+                            ending with {{ sub.last_4 }}.
+                            {% endif %}
+
+                            {% if sub.pm_is_paypal %}
+                            using PayPal account
+                            {{ sub.paypal_email }}.
+                            {% endif %}
+
+                        {% endif %}
+                    </p>
+                    <p>Thank you for supporting healthchecks.io!</p>
+
+                    <p>
+                        <a class="btn btn-default" href="{% url 'hc-billing' %}">See Billing History</a>
+                        {% if not first_charge %}
+                        <button
+                            class="btn btn-default btn-update-payment-method"
+                            data-action="{% url 'hc-update-payment-method' %}">
+                            Change Payment Method
+                        </button>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>{% site_name %} Pricing Plans</h1>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-sm-12" id="period-controls">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default {% if period == "monthly" %} active {% endif %}">
+                        <input
+                            type="radio"
+                            name="period"
+                            value="monthly"
+                            {% if period == "monthly" %} checked {% endif %}
+                            autocomplete="off"> Monthly
+                    </label>
+                    <label class="btn btn-default {% if period == "annual" %} active {% endif %}">
+                        <input
+                            type="radio"
+                            name="period"
+                            value="annual"
+                            {% if period == "annual" %} checked {% endif %}
+                            autocomplete="off"> Annual
+                    </label>
+                </div>
+                <p id="annual-note">(20% off on annual plan)</p>
+            </div>
+        </div>
+
+
+        <div id="monthly" class="row {% if period != "monthly" %} hide {% endif %}">
+            <!-- Free -->
+            <div class="col-sm-4 text-center">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center free">
+                        <h1>Free</h1>
+                        <h2>$0<span class="mo">/mo</span></h2>
+                    </div>
+                    <ul class="list-group text-center">
+                        <li class="list-group-item"><i class="fa fa-check"></i> 20 Checks</li>
+                        <li class="list-group-item">3 Team Members</li>
+                        <li class="list-group-item">100 log entries per check</li>
+                        <li class="list-group-item">&nbsp;</li>
+                        <li class="list-group-item">&nbsp;</li>
+                    </ul>
+                    <div class="panel-footer">
+                        {% if request.user.is_authenticated %}
+                            {% if sub.subscription_id %}
+                                <form method="post" action="{% url 'hc-cancel-plan' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-lg btn-default">
+                                        Switch To Free
+                                    </button>
+                                </form>
+                            {% else %}
+                                <a class="btn btn-lg btn-success disabled" href="#">Selected</a>
+                            {% endif %}
+                        {% else %}
+                        <a class="btn btn-lg btn-success" href="{% url 'hc-login' %}">Get Started</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- /item -->
+
+            <!-- P5 -->
+            <div class="col-sm-4 text-center">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <h1>Standard</h1>
+                        <h2>$5<span class="mo">/mo</span></h2>
+                    </div>
+
+                    <ul class="list-group text-center">
+                        <li class="list-group-item">Unlimited Checks</li>
+                        <li class="list-group-item">10 Team Members</li>
+                        <li class="list-group-item">1000 log entries per check</li>
+                        <li class="list-group-item">50 SMS alerts per month</li>
+                        <li class="list-group-item">Email Support</li>
+                    </ul>
+                    <div class="panel-footer">
+                        {% if request.user.is_authenticated %}
+                            {% if sub.plan_id == "P5" %}
+                            <button  class="btn btn-lg btn-success disabled">
+                                Selected
+                            </button>
+                            {% else %}
+                            <button
+                                data-plan-id="P5"
+                                data-plan-pay="5"
+                                data-action="{% url 'hc-create-plan' %}"
+                                class="btn btn-lg btn-default btn-create-payment-method">
+                                {% if not sub.subscription_id %}
+                                Upgrade your Account
+                                {% else %}
+                                Switch to $5/mo
+                                {% endif %}
+                            </button>
+                            {% endif %}
+                        {% else %}
+                            <a class="btn btn-lg btn-primary" href="{% url 'hc-login' %}">
+                                Get Started
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- /item -->
+
+            <!-- P50 -->
+            <div class="col-sm-4 text-center">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <h1>Plus</h1>
+                        <h2>$50<span class="mo">/mo</span></h2>
+                    </div>
+
+                    <ul class="list-group text-center">
+                        <li class="list-group-item">Unlimited Checks</li>
+                        <li class="list-group-item">Unlimited Team Members</li>
+                        <li class="list-group-item">1000 log entries per check</li>
+                        <li class="list-group-item">500 SMS alerts per month</li>
+                        <li class="list-group-item">Priority Email Support</li>
+                    </ul>
+                    <div class="panel-footer">
+                        {% if request.user.is_authenticated %}
+                            {% if sub.plan_id == "P50" %}
+                            <button  class="btn btn-lg btn-success disabled">
+                                Selected
+                            </button>
+                            {% else %}
+                            <button
+                                data-plan-id="P50"
+                                data-plan-pay="50"
+                                data-action="{% url 'hc-create-plan' %}"
+                                class="btn btn-lg btn-default btn-create-payment-method">
+                                {% if not sub.subscription_id %}
+                                Upgrade your Account
+                                {% else %}
+                                Switch to $50/mo
+                                {% endif %}
+                            </button>
+                            {% endif %}
+                        {% else %}
+                            <a class="btn btn-lg btn-primary" href="{% url 'hc-login' %}">
+                                Get Started
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- /item -->
+        </div>
+
+        <div id="annual" class="row {% if period != "annual" %} hide {% endif %}">
+            <!-- Free -->
+            <div class="col-sm-4 text-center">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center free">
+                        <h1>Free</h1>
+                        <h2>$0<span class="mo">/mo</span></h2>
+                    </div>
+                    <ul class="list-group text-center">
+                        <li class="list-group-item"><i class="fa fa-check"></i> 20 Checks</li>
+                        <li class="list-group-item">3 Team Members</li>
+                        <li class="list-group-item">100 log entries per check</li>
+                        <li class="list-group-item">&nbsp;</li>
+                        <li class="list-group-item">&nbsp;</li>
+                    </ul>
+                    <div class="panel-footer">
+                        {% if request.user.is_authenticated %}
+                            {% if sub.subscription_id %}
+                                <form method="post" action="{% url 'hc-cancel-plan' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-lg btn-default">
+                                        Switch To Free
+                                    </button>
+                                </form>
+                            {% else %}
+                                <a class="btn btn-lg btn-success disabled" href="#">Selected</a>
+                            {% endif %}
+                        {% else %}
+                        <a class="btn btn-lg btn-success" href="{% url 'hc-login' %}">Get Started</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- /item -->
+
+            <!-- Y48 -->
+            <div class="col-sm-4 text-center">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <h1>Standard</h1>
+                        <h2>$4<span class="mo">/mo</span></h2>
+                    </div>
+
+                    <ul class="list-group text-center">
+                        <li class="list-group-item">Unlimited Checks</li>
+                        <li class="list-group-item">10 Team Members</li>
+                        <li class="list-group-item">1000 log entries per check</li>
+                        <li class="list-group-item">50 SMS alerts per month</li>
+                        <li class="list-group-item">Email Support</li>
+                    </ul>
+                    <div class="panel-footer">
+                        {% if request.user.is_authenticated %}
+                            {% if sub.plan_id == "Y48" %}
+                            <button  class="btn btn-lg btn-success disabled">
+                                Selected
+                            </button>
+                            {% else %}
+                            <button
+                                data-plan-id="Y48"
+                                data-plan-pay="48"
+                                data-action="{% url 'hc-create-plan' %}"
+                                class="btn btn-lg btn-default btn-create-payment-method">
+                                {% if not sub.subscription_id %}
+                                Upgrade your Account
+                                {% else %}
+                                Switch to $4/mo
+                                {% endif %}
+                            </button>
+                            {% endif %}
+                        {% else %}
+                            <a class="btn btn-lg btn-primary" href="{% url 'hc-login' %}">
+                                Get Started
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- /item -->
+
+            <!-- Y480 -->
+            <div class="col-sm-4 text-center">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <h1>Plus</h1>
+                        <h2>$40<span class="mo">/mo</span></h2>
+                    </div>
+
+                    <ul class="list-group text-center">
+                        <li class="list-group-item">Unlimited Checks</li>
+                        <li class="list-group-item">Unlimited Team Members</li>
+                        <li class="list-group-item">1000 log entries per check</li>
+                        <li class="list-group-item">500 SMS alerts per month</li>
+                        <li class="list-group-item">Priority Email Support</li>
+                    </ul>
+                    <div class="panel-footer">
+                        {% if request.user.is_authenticated %}
+                            {% if sub.plan_id == "Y480" %}
+                            <button  class="btn btn-lg btn-success disabled">
+                                Selected
+                            </button>
+                            {% else %}
+                            <button
+                                data-plan-id="Y480"
+                                data-plan-pay="480"
+                                data-action="{% url 'hc-create-plan' %}"
+                                class="btn btn-lg btn-default btn-create-payment-method">
+                                {% if not sub.subscription_id %}
+                                Upgrade your Account
+                                {% else %}
+                                Switch to $40/mo
+                                {% endif %}
+                            </button>
+                            {% endif %}
+                        {% else %}
+                            <a class="btn btn-lg btn-primary" href="{% url 'hc-login' %}">
+                                Get Started
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- /item -->
+        </div>
+
+    </div>
+</section>
+<!-- /Plans -->
+
+<section id="faq">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Billing Questions</h1>
+                <h2>What payment methods do you accept?</h2>
+                <p>
+                    We accept Visa, Master Card and PayPal.
+                </p>
+
+                <h2>Will my credit card data be safe?</h2>
+                <p>
+                    We process payments using
+                    <a href="https://braintreepayments.com">Braintree</a>,
+                    a division of PayPal. Your credit card or PayPal
+                    credentials are never directly handled by or
+                    stored on healthchecks.io servers.
+                </p>
+                <p>
+                    Braintree is a validated Level 1 PCI DSS Compliant
+                    Service Provider, it is on Visa's Global Compliant
+                    Provider List and MasterCard's SDP List.
+                    <a href="https://www.braintreepayments.com/products-and-features/data-security">Read more…</a>
+                </p>
+
+                <h2>If I cancel my paid plan, do I get a refund?</h2>
+                <p>
+                    You can easily cancel your subscription at any time, but
+                    no refunds are provided for prorated periods.
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h1>Premium Features</h1>
+                <h2>What's "3 / 10 / Unlimited Team Members"?</h2>
+                <p>
+                    Invite your colleagues
+                    to your account so they can access your checks,
+                    logs, and configured integrations. Inviting team members
+                    is <strong>more convenient and more secure</strong>
+                    than sharing a single login and password.
+                </p>
+                <p>
+                    Each plan has a specific team size limit. When you reach
+                    the limit, you cannot invite more team members.
+                </p>
+
+                <h2>What is the "log entries per check" number?</h2>
+                <p>
+                    For each of your checks, healthchecks.io keeps a
+                    historic log of the received pings. The log can be useful
+                    for auditing past activity of your cron jobs.
+                </p>
+                <p>
+                    There is a per-check limit of how many log entries are
+                    kept. When this limit is reached, the oldest log entries
+                    are culled. You can increase the limit by upgrading to
+                    paid plans.
+                </p>
+
+                <h2>When is 100 log entries per check sufficient?</h2>
+                <p>
+                    It depends on how frequently your cron job runs and
+                    for what time period you want to keep a log of received
+                    pings. For example, if your cron job runs once a week,
+                    then the 100 log entries will cover 2 years. On the other
+                    hand, if the cron job runs every 5 minutes, then the 100
+                    log entries will only cover 8 hours.
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="payment-method-modal" class="modal pm-modal">
+    <div class="modal-dialog">
+        <form id="payment-form" method="post" action="{% url 'hc-create-plan' %}">
+            {% csrf_token %}
+            <input id="plan_id" type="hidden" name="plan_id" value="" />
+            <input id="pmm-nonce" type="hidden" name="payment_method_nonce" />
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Subscription for {{ request.user.profile }}</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="dropin"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button id="payment-form-submit" type="button" class="btn btn-primary" disabled>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://js.braintreegateway.com/web/dropin/1.8.0/js/dropin.min.js"></script>
+{% compress js %}
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/pricing.js' %}"></script>
+{% endcompress %}
+{% endblock %}

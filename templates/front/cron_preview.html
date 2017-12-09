@@ -1,0 +1,22 @@
+{% load humanize tz %}
+
+{% if bad_schedule %}
+<p id="invalid-arguments">
+    Invalid cron expression. <br />
+    Please check the <a href="{% url 'hc-docs-cron' %}">supported cron syntax features</a>.
+
+</p>
+{% elif bad_tz %}
+<p id="invalid-arguments">Invalid timezone</p>
+{% else %}
+<table id="cron-preview-table" class="table">
+    <tr><th id="cron-preview-title" colspan="3">Expected Ping Dates</th></tr>
+    {% for naive, aware in dates %}
+    <tr>
+        <td>{{ naive|date:"M j, H:i" }}</td>
+        <td>{{ aware|naturaltime }}</td>
+        <td class="hidden-xs">{{ aware|date:"c" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}

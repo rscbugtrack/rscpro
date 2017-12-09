@@ -1,0 +1,48 @@
+.settings-title {
+    padding-bottom: 24px;
+}
+
+.settings-block {
+    padding: 24px;
+}
+
+.settings-block h2 {
+    margin: 0;
+    padding-bottom: 24px;
+}
+
+#badges-description, #b-format {
+    margin-bottom: 24px;
+}
+
+.page-profile .icon-ok {
+    color: #5cb85c;
+}
+
+#close-account {
+    margin-left: 24px;
+    border-color: #d43f3a;
+    color: #d43f3a;
+}
+
+#close-account:hover {
+    background-color: #ffebea;
+}
+
+.table td.overall-status {
+    border-top: 0;
+}
+
+.table td.have-tags {
+    padding-top: 32px;
+}
+
+#badges-json {
+    display: none;
+}
+
+.json-response code {
+    display: inline-block;
+    background: #eee;
+    padding: 3px;
+}

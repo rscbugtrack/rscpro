@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load compress humanize staticfiles hc_extras %}
+
+{% block title %}My Checks - {% site_name %}{% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'hc-checks' %}">Checks</a></li>
+            <li>{{ check.name_then_code }}</li>
+            <li class="active">Log</li>
+
+            <li id="format-switcher-container" class="pull-right">
+                <div id="format-switcher" class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default btn-xs" data-format="utc">
+                        <input type="radio" name="date-format" checked>
+                        UTC
+                    </label>
+
+                    <label class="btn btn-default btn-xs active" data-format="local">
+                        <input type="radio" name="date-format">
+                        Local Time
+                    </label>
+                </div>
+            </li>
+        </ol>
+
+    {% if events %}
+    <div class="table-responsive">
+    <table class="table" id="log">
+        <tr>
+            <th></th>
+            <th class="datetime">
+                <span class="date">Date</span>
+                <span class="time">Time</span>
+            </th>
+            <th class="ip">IP</th>
+            <th class="protocol">Protocol</th>
+            <th class="ua">User Agent</th>
+        </tr>
+        {% for event in events %}
+        {% if event.n %}
+        <tr class="ok {% if record.early %} early {% endif %}">
+            <td class="n-cell">
+                <span class="hash">#</span>{{ event.n }}
+            </td>
+            <td class="datetime" data-raw="{{ event.created.isoformat }}">
+                <div>
+                    <span class="date"></span>
+                    <span class="time"></span>
+                    {% if 0 %}
+                        <span class="label label-tag">early</span>
+                    {% endif %}
+                </div>
+            </td>
+            <td class="ip">
+                {{ event.remote_addr|default:"" }}
+            </td>
+            <td class="protocol">
+                {{ event.scheme }}
+            </td>
+
+            <td class="ua">
+                {{ event.ua }}
+            </td>
+        </tr>
+        {% endif %}
+        {% if event.check_status %}
+        <tr class="missing">
+            <td class="n-cell">
+                <span class="icon-missing"></span>
+            </td>
+            <td class="datetime" data-raw="{{ event.created.isoformat }}">
+                <div>
+                    <span class="date"></span>
+                    <span class="time"></span>
+                </div>
+            </td>
+            <td colspan="3" class="alert-info">
+                {% if event.channel.kind == "email" %}
+                    Sent email alert to {{ event.channel.value }}
+                {% elif event.channel.kind == "slack" %}
+                    Sent Slack alert
+                    {% if event.channel.slack_channel %}
+                        to {{ event.channel.slack_channel }}
+                    {% endif %}
+                {% elif event.channel.kind == "pd" %}
+                    Sent alert to PagerDuty
+                {% elif event.channel.kind == "opsgenie" %}
+                    Sent alert to OpsGenie
+                {% elif event.channel.kind == "hipchat" %}
+                    Sent alert to HipChat
+                {% elif event.channel.kind == "po" %}
+                    Sent a Pushover notification
+                {% elif event.channel.kind == "webhook" %}
+                    Called webhook {{ event.channel.url_down }}
+                {% else %}
+                    Sent alert to {{ event.channel.kind|capfirst }}
+                {% endif %}
+                {% if event.error %}
+                    <br />
+                    <strong>Error: {{ event.error }}</strong>
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+    {% if show_limit_notice and limit < 10000 %}
+    <p class="alert alert-info">
+        <strong>Showing last {{ limit }} pings.</strong>
+        Want to see more?
+        <a href="{% url 'hc-pricing' %}">
+            Upgrade your account!
+        </a>
+    </p>
+    {% endif %}
+
+    </div>
+    {% else %}
+        <div class="alert alert-info">Log is empty. This check has not received any pings yet.</div>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% compress js %}
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/moment.min.js' %}"></script>
+<script src="{% static 'js/log.js' %}"></script>
+{% endcompress %}
+{% endblock %}

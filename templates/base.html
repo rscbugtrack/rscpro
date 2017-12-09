@@ -1,0 +1,179 @@
+{% load hc_extras %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% site_name %} - ***{% endblock %}</title>
+    <meta name="description" content="RSC projects.1">
+    <meta name="keywords" content="RSC projects.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-title" content="{% site_name %}">
+    <meta name="application-name" content="{% site_name %}">
+
+    {% load compress staticfiles %}
+    <!--<link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">-->
+    <!--<link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-180.png' %}">-->
+
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nouislider.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/nouislider.pips.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/selectize.bootstrap3.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/snippet-copy.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/docs.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/docs_cron.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/my_checks.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/my_checks_mobile.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/my_checks_desktop.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/pricing.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/syntax.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/channels.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/channel_checks.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/log.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/add_pushover.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/last_ping.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/checkbox.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/radio.css' %}" type="text/css">
+    {% endcompress %}
+</head>
+<body class="page-{{ page }}">
+    <nav class="navbar navbar-default">
+        <div class="container">
+        <div class="navbar-header">
+            <button
+                type="button"
+                class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#navbar"
+                aria-expanded="false"
+                aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"
+                href="{% url 'hc-index' %}"
+                title="{{ site_name }}">
+                {% if request.user.is_authenticated %}
+                <img
+                    id="logo"
+                    height="50"
+                    width="59"
+                    src="{% static 'img/logo-full.png' %}"
+                    srcset="{% static 'img/logo-full.png' %} 1x, {% static 'img/logo-full.png' %} 2x"
+                    alt="RSC">
+                {% else %}
+                <img
+                    id="logo"
+                    height="50"
+                    width="200"
+                    src="{% static 'img/logo-full.png'%}"
+                    srcset="{% static 'img/logo-full.png' %} 1x, {% static 'img/logo-full@2x.png' %} 2x"
+                    alt="RSC">
+                {% endif %}
+            </a>
+
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul id="nav-main-sections" class="nav navbar-nav">
+                {% if request.user.is_authenticated %}
+                    <li {% if page == 'checks' %} class="active" {% endif %}>
+                        <a href="{% url 'hc-checks' %}">Checks</a>
+                    </li>
+
+                    <li {% if page == 'channels' %} class="active" {% endif %}>
+                        <a href="{% url 'hc-channels' %}">Integrations</a>
+                    </li>
+
+                {% endif %}
+
+
+                {% if show_pricing %}
+                <li {% if page == 'pricing' %} class="active" {% endif %}>
+                    <a href="{% url 'hc-pricing' %}">Pricing</a>
+                </li>
+                {% endif %}
+
+                <li {% if page == 'docs' %} class="active" {% endif %}>
+                    <a href="{% url 'hc-docs' %}">Docs</a>
+                </li>
+
+                <li {% if page == 'about' %} class="active" {% endif %}>
+                    <a href="{% url 'hc-about' %}">About</a>
+                </li>
+            </ul>
+
+
+            {% if request.user.is_authenticated %}
+            {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'hc-login' %}">Log In</a></li>
+            </ul>
+            {% endif %}
+
+            {% if request.user.is_authenticated %}
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a id="nav-email" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        {{ request.team }} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% if request.teams %}
+                        <li class="dropdown-header">{{ request.user.profile }}</li>
+                        <li>
+                            <a href="{% url 'hc-switch-team' request.user.username %}" class="active">Checks</a>
+                        </li>
+                        {% endif %}
+
+                        <li><a href="{% url 'hc-profile' %}">Account Settings</a></li>
+                        <li role="separator" class="divider"></li>
+
+                        {% for team in request.teams %}
+                        <li class="dropdown-header">{{ team }}</li>
+                        <li>
+                            <a href="{% url 'hc-switch-team' team.user.username %}">Checks</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        {% endfor %}
+
+                        <li><a href="{% url 'hc-logout' %}">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+
+        </div>
+    </nav>
+
+    {% block containers %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    {% endblock %}
+
+    <footer class="footer">
+        <div class="container">
+            <ul>
+                <li class="hidden-xs">&copy; 2017-2018 RSC</li>
+
+                <li><a href="{% url 'hc-about' %}">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+
+    {% block scripts %}
+    {% compress js %}
+    <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% endcompress %}
+    {% endblock %}
+</body>
+</html>

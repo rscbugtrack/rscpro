@@ -1,0 +1,70 @@
+.panel-pricing .list-group-item {
+  color: #777777;
+}
+.panel-pricing .list-group-item:last-child {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.panel-pricing .list-group-item:first-child {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+.panel-pricing .panel-body {
+    font-size: 40px;
+    color: #777777;
+    padding: 20px;
+    margin: 0px;
+    background-color: #f0f0f0;
+}
+
+#subscription-status form {
+    display: inline-block;
+}
+
+#payment-method-modal .modal-header {
+    border-bottom: 0;
+}
+
+#payment-method-modal .modal-footer {
+    border-top: 0;
+}
+
+.error-message {
+    font-family: monospace;
+}
+
+#faq {
+    margin: 40px 0;
+}
+
+#faq h2 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mo {
+    font-size: 18px;
+    color: #888;
+}
+
+#period-controls {
+    text-align: center;
+    padding: 24px;
+}
+
+#period-controls .btn {
+    width: 100px;
+}
+
+#plans .panel-footer {
+    background: transparent;
+}
+
+#annual-note {
+    margin: 10px 0;
+    color: #AAA;
+}
+
+#payment-method-modal .modal-header {
+    text-align: center;
+}

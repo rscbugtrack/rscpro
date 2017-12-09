@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load compress humanize staticfiles hc_extras %}
+
+{% block title %}Add OpsGenie - {% site_name %}{% endblock %}
+
+
+{% block content %}
+<div class="row">
+<div class="col-sm-12">
+    <h1>OpsGenie</h1>
+
+    <p><a href="https://www.opsgenie.com/">OpsGenie</a> provides
+    alerting, on-call scheduling, escalation policies and incident tracking.
+    You can can integrate it with your {% site_name %} account in few
+    simple steps.</p>
+
+    <h2>Setup Guide</h2>
+    <div class="row ai-step">
+        <div class="col-sm-6">
+            <span class="step-no">1</span>
+            <p>
+                Log into your OpsGenie account,
+                go to <strong>Integrations &gt; Add New Integrations</strong>,
+                and add the "API" integration.
+            </p>
+            <p>
+                Give it a descriptive name, then
+                save the integration.
+            </p>
+
+        </div>
+        <div class="col-sm-6">
+            <img
+                class="ai-guide-screenshot"
+                alt="Screenshot"
+                src="{% static 'img/integrations/setup_opsgenie_1.png' %}">
+        </div>
+    </div>
+    <div class="row ai-step">
+        <div class="col-sm-6">
+            <span class="step-no">2</span>
+            After adding the new integration, take note of its
+            <strong>API key</strong>, a long string
+            of letters and digits.
+
+        </div>
+        <div class="col-sm-6">
+            <img
+                class="ai-guide-screenshot"
+                alt="Screenshot"
+                src="{% static 'img/integrations/setup_opsgenie_2.png' %}">
+        </div>
+    </div>
+
+    <div class="row ai-step">
+        <div class="col-sm-6">
+            <span class="step-no">3</span>
+            <p>Paste the API key down below. Save the integration, and
+            you are done!</p>
+        </div>
+    </div>
+
+    <h2>Integration Settings</h2>
+
+    <form method="post" class="form-horizontal" action="{% url 'hc-add-opsgenie' %}">
+        {% csrf_token %}
+        <div class="form-group {{ form.value.css_classes }}">
+            <label for="api-key" class="col-sm-2 control-label">API Key</label>
+            <div class="col-sm-4">
+                <input
+                    id="api-key"
+                    type="text"
+                    class="form-control"
+                    name="value"
+                    placeholder=""
+                    value="{{ form.value.value|default:"" }}">
+
+                {% if form.value.errors %}
+                <div class="help-block">
+                    {{ form.value.errors|join:"" }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Save Integration</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}

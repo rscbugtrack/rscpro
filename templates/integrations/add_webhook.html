@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load compress humanize staticfiles hc_extras %}
+
+{% block title %}Add Webhook - {% site_name %}{% endblock %}
+
+
+{% block content %}
+<div class="row">
+<div class="col-sm-12">
+    <h1>Webhook</h1>
+
+    <p>Runs a HTTP GET or HTTP POST to your specified URL when a check
+    goes up or down. Uses GET by default, and uses POST if you specify
+    any POST data.</p>
+
+    <p>You can use the following variables in webhook URLs:</p>
+    <table class="table webhook-variables">
+        <tr>
+            <th class="variable-column">Variable</th>
+            <td>Will be replaced with…</td>
+        </tr>
+        <tr>
+            <th><code>$CODE</code></th>
+            <td>The UUID code of the check</td>
+        </tr>
+        <tr>
+            <th><code>$NAME</code></th>
+            <td>Name of the check</td>
+        </tr>
+        <tr>
+            <th><code>$NOW</code></th>
+            <td>
+                Current UTC time in ISO8601 format.
+                Example: "{{ now }}"
+            </td>
+        </tr>
+        <tr>
+            <th><code>$STATUS</code></th>
+            <td>Check's current status ("up" or "down")</td>
+        </tr>
+        <tr>
+            <th><code>$TAG1, $TAG2, …</code></th>
+            <td>Value of the first tag, the second tag, …</td>
+        </tr>
+    </table>
+
+    <p>For example, a callback URL using variables might look like so:
+    <pre>http://requestb.in/1hhct291?message=<strong>$NAME</strong>:<strong>$STATUS</strong></pre>
+
+    <p>
+        After encoding and replacing the variables, {% site_name %} would then call:
+    </p>
+    <pre>http://requestb.in/1hhct291?message=<strong>My%20Check</strong>:<strong>down</strong></pre>
+
+    <h2>Integration Settings</h2>
+
+    <form method="post" class="form-horizontal">
+        {% csrf_token %}
+        <input type="hidden" name="kind" value="webhook" />
+        <div class="form-group {{ form.url_down.css_classes }}">
+            <label class="col-sm-2 control-label">URL for "down" events</label>
+            <div class="col-sm-10">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="url_down"
+                    placeholder="http://..."
+                    value="{{ form.url_down.value|default:"" }}">
+                {% if form.url_down.errors %}
+                <div class="help-block">
+                    {{ form.url_down.errors|join:"" }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group {{ form.url_up.css_classes }}">
+            <label class="col-sm-2 control-label">URL for "up" events</label>
+            <div class="col-sm-10">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="url_up"
+                    placeholder="http://..."
+                    value="{{ form.url_up.value|default:"" }}">
+                {% if form.url_up.errors %}
+                <div class="help-block">
+                    {{ form.url_up.errors|join:"" }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group {{ form.post_data.css_classes }}">
+            <label class="col-sm-2 control-label">POST data</label>
+            <div class="col-sm-10">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="post_data"
+                    placeholder='{"status": "$STATUS"}'
+                    value="{{ form.post_data.value|default:"" }}">
+                {% if form.post_data.errors %}
+                <div class="help-block">
+                    {{ form.post_data.errors|join:"" }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group {{ form.headers.css_classes }}">
+            <label class="col-sm-2 control-label">Request Headers</label>
+            <div id="webhook-headers" class="col-xs-12 col-sm-10">
+                {% for k, v in form.headers.items %}
+                <div class="form-inline webhook-header">
+                    <input
+                        type="text"
+                        class="form-control key"
+                        name="header_key[]"
+                        placeholder="Content-Type"
+                        value="{{ k }}" />
+                    <input
+                        type="text"
+                        class="form-control value"
+                        name="header_value[]"
+                        placeholder="application/json"
+                        value="{{ v }}" />
+                        <button class="btn btn-default" type="button">
+                            <span class="icon-delete"></span>
+                        </button>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Save Integration</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
+<div id="header-template" class="hide">
+    <div class="form-inline webhook-header">
+        <input
+            type="text"
+            class="form-control key"
+            name="header_key[]"
+            placeholder="Content-Type" />
+        <input
+            type="text"
+            class="form-control value"
+            name="header_value[]"
+            placeholder="application/json" />
+            <button class="btn btn-default" type="button">
+                <span class="icon-delete"></span>
+            </button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% compress js %}
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/webhook.js' %}"></script>
+{% endcompress %}
+{% endblock %}

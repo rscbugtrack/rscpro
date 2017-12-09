@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load compress staticfiles hc_extras %}
+
+{% block title %}Account Settings - {% site_name %}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="settings-title">Settings</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="{% url 'hc-profile' %}">Account</a></li>
+            <li><a href="{% url 'hc-notifications' %}">Email Reports</a></li>
+            <li class="active"><a href="{% url 'hc-badges' %}">Badges</a></li>
+        </ul>
+    </div>
+
+    <div class="col-sm-10">
+        <div class="panel panel-default">
+            <div class="panel-body settings-block">
+                <h2 class="settings-title">Status Badges</h2>
+                <p id="badges-description">
+                    healthchecks.io provides status badges for each of the tags
+                    you have used. The badges have public, but hard-to-guess
+                    URLs. If you wish, you can add them to your READMEs,
+                    dashboards or status pages.
+                </p>
+
+                <div id="b-format" class="btn-group" data-toggle="buttons">
+                    <label id="show-svg" class="btn btn-default active">
+                        <input type="radio" autocomplete="off" checked> SVG
+                    </label>
+                    <label id="show-json" class="btn btn-default">
+                        <input type="radio" autocomplete="off"> JSON
+                    </label>
+                </div>
+
+                <table id="badges-svg" class="badges table">
+                    {% for urldict in urls %}
+                    <tr>
+                        <td>
+                            <img src="{{ urldict.svg }}" alt="" />
+                        </td>
+                        <td class="svg-url">
+                            <code>{{ urldict.svg }}</code>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td class="overall-status {% if urls %}have-tags{% endif %}" colspan="2">Overall status:</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="{{ master.svg }}" alt="" />
+                        </td>
+                        <td class="svg-url">
+                            <code>{{ master.svg }}</code>
+                        </td>
+                    </tr>
+                </table>
+                <table id="badges-json" class="badges table">
+                    {% for urldict in urls %}
+                    <tr>
+                        <td class="json-response" data-url="{{ urldict.json }}">
+                        </td>
+                        <td class="json-url">
+                            <code>{{ urldict.json }}</code>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td class="overall-status {% if urls %}have-tags{% endif %}"" colspan="2">Overall status:</td>
+                    </tr>
+                    <tr>
+                        <td class="json-response" data-url="{{ master.json }}">
+                        <td class="json-url">
+                            <code>{{ master.json }}</code>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% compress js %}
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/badges.js' %}"></script>
+{% endcompress %}
+{% endblock %}

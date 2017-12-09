@@ -1,0 +1,27 @@
+{% extends "emails/base.html" %}
+{% load hc_extras %}
+{% block content %}
+
+Hello,<br />
+
+This is a notification sent by <a href="{% site_root %}">{% site_name %}</a>.
+<br />
+The check <strong>{{ check.name_then_code }}</strong>
+has gone <strong>{{ check.status|upper }}</strong>.
+<br /><br />
+
+Here is a summary of your checks:
+<br />
+
+{% include "emails/summary-html.html" %}
+
+Thanks,<br>
+The {% escaped_site_name %} Team
+{% endblock %}
+
+{% block unsub %}
+<br>
+<a href="{{ unsub_link }}" target="_blank" style="color: #666666; text-decoration: underline;">
+    Unsubscribe
+</a>
+{% endblock %}

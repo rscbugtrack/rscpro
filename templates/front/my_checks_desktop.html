@@ -1,0 +1,142 @@
+{% load hc_extras humanize %}
+<table id="checks-table" class="table hidden-xs">
+    <tr>
+        <th></th>
+        <th class="th-name">
+            {% if sort == "name" %}
+            <a href="?sort=-name">Name<span class="icon-asc"></span></a>
+            {% elif sort == "-name" %}
+            <a href="?sort=created">Name<span class="icon-desc"></span></a>
+            {% else %}
+            <a href="?sort=name" class="default">Name</span></a>
+            {% endif %}
+        </th>
+        <th>Ping URL</th>
+        <th class="th-period">
+            Period <br />
+            <span class="checks-subline">Grace</span>
+        </th>
+        <th class="th-last-ping">
+            {% if sort == "last_ping" %}
+            <a href="?sort=created">Last Ping<span class="icon-desc"></span></a>
+            {% elif sort == "-last_ping" %}
+            <a href="?sort=last_ping">Last Ping<span class="icon-asc"></span></a>
+            {% else %}
+            <a href="?sort=-last_ping" class="default">Last Ping</span></a>
+            {% endif %}
+        </th>
+        <th></th>
+    </tr>
+    {% for check in checks|sortchecks:sort %}
+    <tr class="checks-row">
+        <td class="indicator-cell">
+            {% if check.get_status == "new" %}
+                <span class="status icon-up new"
+                    data-toggle="tooltip" title="New. Has never received a ping."></span>
+            {% elif check.get_status == "paused" %}
+                <span class="status icon-paused"
+                    data-toggle="tooltip" title="Monitoring paused. Ping to resume."></span>
+            {% elif check.in_grace_period %}
+                <span class="status icon-grace"></span>
+            {% elif check.get_status == "up" %}
+                <span class="status icon-up"></span>
+            {% elif check.get_status == "down" %}
+                <span class="status icon-down"></span>
+            {% endif %}
+        </td>
+        <td class="name-cell">
+            <div data-name="{{ check.name }}"
+                    data-tags="{{ check.tags }}"
+                    data-url="{% url 'hc-update-name' check.code %}"
+                    class="my-checks-name {% if not check.name %}unnamed{% endif %}">
+                <div>{{ check.name|default:"unnamed" }}</div>
+                {% for tag in check.tags_list %}
+                <span class="label label-tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </td>
+        <td class="url-cell">
+            <span class="my-checks-url">
+                <span class="base">{{ ping_endpoint }}</span>{{ check.code }}
+            </span>
+            <button
+                class="copy-link hidden-sm"
+                data-clipboard-text="{{ check.url }}">
+                copy
+            </button>
+        </td>
+        <td class="timeout-cell">
+            <span
+                data-url="{% url 'hc-update-timeout' check.code %}"
+                data-kind="{{ check.kind }}"
+                data-timeout="{{ check.timeout.total_seconds }}"
+                data-grace="{{ check.grace.total_seconds }}"
+                data-schedule="{{ check.schedule }}"
+                data-tz="{{ check.tz }}"
+                class="timeout-grace">
+                {% if check.kind == "simple" %}
+                    {{ check.timeout|hc_duration }}
+                {% elif check.kind == "cron" %}
+                    <span class="cron-expression">{{ check.schedule }}</span>
+                {% endif %}
+                <br />
+                <span class="checks-subline">
+                {{ check.grace|hc_duration }}
+                </span>
+            </span>
+        </td>
+        <td>
+        {% if check.last_ping %}
+            <div class="last-ping" data-url="{% url 'hc-last-ping' check.code %}">
+                {{ check.last_ping|naturaltime }}
+                {% if check.has_confirmation_link %}
+                <br /><span class="label label-confirmation">confirmation link</span>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="last-ping-never">Never</div>
+        {% endif %}
+        </td>
+        <td>
+            <div class="check-menu dropdown">
+                <button class="btn btn-sm btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="icon-settings" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li {% if check.status == "new" or check.status == "paused" %}class="disabled"{% endif %}>
+                        <a class="pause-check"
+                           href="#"
+                           data-url="{% url 'hc-pause' check.code %}">
+                           Pause Monitoring
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="{% url 'hc-log' check.code %}">
+                            Log
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            class="usage-examples"
+                            data-url="{{ check.url }}"
+                            data-email="{{ check.email }}">
+                            Usage Examples
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="#" class="check-menu-remove"
+                            data-name="{{ check.name_then_code }}"
+                            data-url="{% url 'hc-remove-check' check.code %}">
+                            Remove
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load compress humanize staticfiles hc_extras %}
+
+{% block title %}Notification Channels - {% site_name %}{% endblock %}
+
+
+{% block content %}
+<div class="row">
+<div class="col-sm-12">
+    <h1>Email</h1>
+
+    <p>Get an email message when check goes up or down.</p>
+
+    <p>
+        <strong>Tip:</strong>
+        Add multiple email addresses, to notify multiple team members.
+    </p>
+
+    <p>
+        <strong>Confirmation needed.</strong>
+        After entering an email address, {% site_name %} will send out a confirmation link.
+        Only confirmed addresses will receive notifications.
+    </p>
+
+    <h2>Integration Settings</h2>
+
+    <form method="post" class="form-horizontal" action="{% url 'hc-add-email' %}">
+        {% csrf_token %}
+        <div class="form-group {{ form.value.css_classes }}">
+            <label for="id_email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-3">
+                <input
+                    id="id_email"
+                    type="email"
+                    class="form-control"
+                    name="value"
+                    placeholder="you@example.org"
+                    value="{{ form.value.value|default:"" }}">
+
+                {% if form.value.errors %}
+                <div class="help-block">
+                    {{ form.value.errors|join:"" }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Save Integration</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}
