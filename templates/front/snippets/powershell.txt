@@ -1,2 +1,0 @@
-# inside a PowerShell script:
-Invoke-RestMethod PING_URL

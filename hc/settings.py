@@ -33,11 +33,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
-
-    'hc.accounts',
-    'hc.api',
-    'hc.front',
-    'hc.payments'
+    'bugtrackapp',
 )
 
 MIDDLEWARE = (
@@ -48,12 +44,11 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'hc.accounts.middleware.TeamAccessMiddleware',
+    # 'hc.accounts.middleware.TeamAccessMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
-    'hc.accounts.backends.EmailBackend',
-    'hc.accounts.backends.ProfileBackend'
+
 )
 
 ROOT_URLCONF = 'hc.urls'
