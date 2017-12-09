@@ -4,3 +4,5 @@ __pycache__/
 hc.sqlite
 hc/local_settings.py
 static-collected
+*.idea/
+*.idea
