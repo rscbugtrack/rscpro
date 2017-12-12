@@ -5,5 +5,6 @@ from bugtrackapp import views
 
 urlpatterns =[
     url(r'^$', views.rschome, name="rschome"),
+    url(r'^rscbugtrack/$', views.rscbugtrack, name="rscbugtrack"),
 
  ]

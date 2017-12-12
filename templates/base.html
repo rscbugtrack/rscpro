@@ -1,14 +1,13 @@
-{% load hc_extras %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}{% site_name %} - ***{% endblock %}</title>
+    <title>{% block title %}- ***{% endblock %}</title>
     <meta name="description" content="RSC projects.1">
     <meta name="keywords" content="RSC projects.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="apple-mobile-web-app-title" content="{% site_name %}">
-    <meta name="application-name" content="{% site_name %}">
+
 
     {% load compress staticfiles %}
     <!--<link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">-->
@@ -58,17 +57,9 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand"
-                href="{% url 'hc-index' %}"
-                title="{{ site_name }}">
-                {% if request.user.is_authenticated %}
-                <img
-                    id="logo"
-                    height="50"
-                    width="59"
-                    src="{% static 'img/logo-full.png' %}"
-                    srcset="{% static 'img/logo-full.png' %} 1x, {% static 'img/logo-full.png' %} 2x"
-                    alt="RSC">
-                {% else %}
+                href=""
+                title="">
+
                 <img
                     id="logo"
                     height="50"
@@ -76,78 +67,15 @@
                     src="{% static 'img/logo-full.png'%}"
                     srcset="{% static 'img/logo-full.png' %} 1x, {% static 'img/logo-full@2x.png' %} 2x"
                     alt="RSC">
-                {% endif %}
             </a>
+            <a class="navbar-brand" href="" title="">About</a>
+            <a class="navbar-brand" href="{% url 'rscbugtrack' %}" title="">RSC BugTrack</a>
+            <a class="navbar-brand" href="" title="">Certified Test</a>
+            <a class="navbar-brand" href="" title="">Django DataScience</a>
+            <a class="navbar-brand" href="" title="">Next...</a>
 
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul id="nav-main-sections" class="nav navbar-nav">
-                {% if request.user.is_authenticated %}
-                    <li {% if page == 'checks' %} class="active" {% endif %}>
-                        <a href="{% url 'hc-checks' %}">Checks</a>
-                    </li>
 
-                    <li {% if page == 'channels' %} class="active" {% endif %}>
-                        <a href="{% url 'hc-channels' %}">Integrations</a>
-                    </li>
-
-                {% endif %}
-
-
-                {% if show_pricing %}
-                <li {% if page == 'pricing' %} class="active" {% endif %}>
-                    <a href="{% url 'hc-pricing' %}">Pricing</a>
-                </li>
-                {% endif %}
-
-                <li {% if page == 'docs' %} class="active" {% endif %}>
-                    <a href="{% url 'hc-docs' %}">Docs</a>
-                </li>
-
-                <li {% if page == 'about' %} class="active" {% endif %}>
-                    <a href="{% url 'hc-about' %}">About</a>
-                </li>
-            </ul>
-
-
-            {% if request.user.is_authenticated %}
-            {% else %}
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'hc-login' %}">Log In</a></li>
-            </ul>
-            {% endif %}
-
-            {% if request.user.is_authenticated %}
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a id="nav-email" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                        {{ request.team }} <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        {% if request.teams %}
-                        <li class="dropdown-header">{{ request.user.profile }}</li>
-                        <li>
-                            <a href="{% url 'hc-switch-team' request.user.username %}" class="active">Checks</a>
-                        </li>
-                        {% endif %}
-
-                        <li><a href="{% url 'hc-profile' %}">Account Settings</a></li>
-                        <li role="separator" class="divider"></li>
-
-                        {% for team in request.teams %}
-                        <li class="dropdown-header">{{ team }}</li>
-                        <li>
-                            <a href="{% url 'hc-switch-team' team.user.username %}">Checks</a>
-                        </li>
-                        <li role="separator" class="divider"></li>
-                        {% endfor %}
-
-                        <li><a href="{% url 'hc-logout' %}">Log Out</a></li>
-                    </ul>
-                </li>
-            </ul>
-            {% endif %}
-        </div>
 
         </div>
     </nav>
@@ -163,7 +91,7 @@
             <ul>
                 <li class="hidden-xs">&copy; 2017-2018 RSC</li>
 
-                <li><a href="{% url 'hc-about' %}">Contact</a></li>
+                <li><a href="">Contact</a></li>
             </ul>
         </div>
     </footer>

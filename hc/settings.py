@@ -64,7 +64,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'hc.payments.context_processors.payments'
             ],
         },
     },
@@ -164,3 +163,5 @@ PD_VENDOR_KEY = None
 #     from hc.local_settings import *
 # else:
 #     warnings.warn("local_settings.py not found, using defaults")
+
+site_name = 'RSC site'
