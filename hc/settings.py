@@ -47,9 +47,9 @@ MIDDLEWARE = (
     # 'hc.accounts.middleware.TeamAccessMiddleware',
 )
 
-AUTHENTICATION_BACKENDS = (
+# AUTHENTICATION_BACKENDS = (
 
-)
+# )
 
 ROOT_URLCONF = 'hc.urls'
 
@@ -126,6 +126,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_HASHING_METHOD = "content"
 
