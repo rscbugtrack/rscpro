@@ -78,7 +78,7 @@ TEST_RUNNER = 'hc.api.tests.CustomRunner'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': './hc.sqlite',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
