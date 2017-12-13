@@ -1,18 +1,57 @@
 {% extends "base.html" %}
 
 {% block containers %}
-<div class="container">
 
-<table class="table">
+{% load static %}
+<div class='container'>
 
-    {% for val in rscbugs %}
-    <tr>{{ val.value }}</tr>
 
-    {% endfor %}
 
-</table>
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="background-color:white; color: #540606;">
+            <span> RSC  <img src="{% static 'img/bugimage.jpeg' %}" width="30" height="30" >'S  </span>
+        </div>
+      <div class="panel-body">
 
+        <table class="table table-condensed">
+            <tr>
+                <th>Developer name</th>
+                <th>Tittle</th>
+                <th>Created on </th>
+                <th>Current status</th>
+                <th>Priority</th>
+                <th>Action</th>
+                <th>Points</th>
+
+            </tr>
+            {% for r in rscbugs %}
+
+            <tr style="background-color:  {% if r.current_status == 'N' %} #b40d0d  {% elif r.current_status == 'O' %} #f2926d {% elif r.current_status == 'C' %} #519943 {% endif %};">
+
+                <td>{{ r.assigned_to }}</td>
+                <td>{{ r.title }}</td>
+                <td>{{ r.created_on }}</td>
+                <td>{{ r.get_current_status_display }}</td>
+                <td>{{ r.get_priority_display }}</td>
+                <td><a href="/admin">
+                          <button type="button" class="btn btn-info">Action</button>
+                     </a>
+                </td>
+                <td>{{ r.points }}</td>
+
+
+            </tr>
+            {% endfor %}
+
+
+        </table>
+
+
+      </div>
+    </div>
 
 </div>
+
+
 
 {% endblock %}
