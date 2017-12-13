@@ -26,7 +26,7 @@
             </tr>
             {% for r in rscbugs %}
 
-            <tr style="background-color:  {% if r.current_status == 'N' %} #b40d0d  {% elif r.current_status == 'O' %} #f2926d {% elif r.current_status == 'C' %} #519943 {% endif %};">
+            <tr style="background-color:  {% if r.current_status == 'N' %} #e6a2a2  {% elif r.current_status == 'O' %} #f2926d {% elif r.current_status == 'C' %} #519943 {% endif %};">
 
                 <td>{{ r.assigned_to }}</td>
                 <td>{{ r.title }}</td>
