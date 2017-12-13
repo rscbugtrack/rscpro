@@ -5,7 +5,10 @@
 
 <table class="table">
 
-    {{ rscbugs.as_table }}
+    {% for val in rscbugs %}
+    <tr>{{ val.value }}</tr>
+
+    {% endfor %}
 
 </table>
 
