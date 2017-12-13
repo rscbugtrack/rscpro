@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block containers %}
-<div class="index-bleed">
 <div class="container">
-    <div class="row">
-    <div class="col-sm-12">
-        <h1 id="pitch">RSC Bugtrack list</h1>
-    </div>
-    </div>
+
+<table class="table">
+
+    {{ rscbugs.as_table }}
+
+</table>
+
+
 </div>
 
 {% endblock %}

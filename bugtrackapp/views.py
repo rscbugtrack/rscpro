@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
+
+from .models import Bugtrack
 # Create your views here.
 
 def rschome(request):
@@ -8,5 +10,8 @@ def rschome(request):
     return render(request,'rschome.html',context)
 
 def rscbugtrack(request):
-    context = {}
+
+    rscbugs = Bugtrack.objects.all()
+
+    context = { 'rscbugs' : rscbugs}
     return render(request,'rscbugtrack.html',context)

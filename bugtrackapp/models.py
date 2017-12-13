@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 priority_choices = (('L','LOW'),('M','MEDIUM'),('H','HIGH'),)
 current_status_choice= (('N','NotCompleted'),('O','Onprocess'),('C','Completed'),)
 
+
 class Bugtrack(models.Model):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=300)
