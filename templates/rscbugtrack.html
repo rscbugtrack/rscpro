@@ -14,9 +14,10 @@
       <div class="panel-body">
 
         <table class="table table-condensed">
-            <tr>
+            <tr><th>Issue ID</th>
                 <th>Developer name</th>
-                <th>Tittle</th>
+                <th>Title</th>
+                <th>Description</th>
                 <th>Created on </th>
                 <th>Current status</th>
                 <th>Priority</th>
@@ -26,10 +27,10 @@
             </tr>
             {% for r in rscbugs %}
 
-            <tr style="background-color:  {% if r.current_status == 'N' %} #b40d0d  {% elif r.current_status == 'O' %} #f2926d {% elif r.current_status == 'C' %} #519943 {% endif %};">
-
+            <tr>
+                <td>{{r.id}}</td>
                 <td>{{ r.assigned_to }}</td>
-                <td>{{ r.title }}</td>
+                <td>{{ r.title }}</td><td>{{r.description}}</td>
                 <td>{{ r.created_on }}</td>
                 <td>{{ r.get_current_status_display }}</td>
                 <td>{{ r.get_priority_display }}</td>
