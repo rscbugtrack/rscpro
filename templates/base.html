@@ -2,16 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load compress staticfiles %}
+
     <meta charset="utf-8">
-    <title>{% block title %}- ***{% endblock %}</title>
+    <title>RedSunCube</title>
+    <link rel="shortcut icon" href="{%  static 'img/favicon.ico' %}">
     <meta name="description" content="RSC projects.1">
     <meta name="keywords" content="RSC projects.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    {% load compress staticfiles %}
-    <!--<link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">-->
-    <!--<link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-180.png' %}">-->
 
     {% compress css %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css">
@@ -68,11 +68,13 @@
                     srcset="{% static 'img/logo-full.png' %} 1x, {% static 'img/logo-full@2x.png' %} 2x"
                     alt="RSC">
             </a>
-            <a class="navbar-brand" href="" title="">About</a>
-            <a class="navbar-brand" href="{% url 'rscbugtrack' %}" title="">RSC BugTrack</a>
-            <a class="navbar-brand" href="" title="">Certified Test</a>
-            <a class="navbar-brand" href="" title="">Django DataScience</a>
-            <a class="navbar-brand" href="https://github.com/rscbugtrack/rscpro.git" title="Clone from github">Github</a>
+
+             <a class="navbar-brand" href="" title="">Home</a>
+            <a class="navbar-brand" href="" title="">About Us</a>
+            <a class="navbar-brand" href="{% url 'rscbugtrack' %}" title="">BugTrack</a>
+            <a class="navbar-brand" href="" title="">Certification</a>
+            <a class="navbar-brand" href="" title="">Tools</a>
+            <a class="navbar-brand" href="" title="">Contact Us</a>
 
         </div>
 
@@ -87,13 +89,8 @@
     {% endblock %}
 
     <footer class="footer">
-        <div class="container">
-            <ul>
-                <li class="hidden-xs">&copy; 2017-2018 RSC</li>
-
-                <li><a href="">Contact</a></li>
-            </ul>
-        </div>
+           <center>
+              RedSunCube Technologies Pvt Ltd. &copy; 2017-2018 </center>
     </footer>
 
 
@@ -103,5 +100,7 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     {% endcompress %}
     {% endblock %}
+
+
 </body>
 </html>
