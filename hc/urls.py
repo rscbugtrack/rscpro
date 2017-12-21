@@ -7,5 +7,6 @@ from django.contrib import admin
 urlpatterns = [
     # url(r'^admin/login/', hc_login, {"show_password": True}),
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('bugtrackapp.urls'))
+    url(r'^', include('bugtrackapp.urls')),
+    url(r'^', include('certifiedapp.urls'))
 ]
