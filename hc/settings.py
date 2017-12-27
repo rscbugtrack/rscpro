@@ -166,3 +166,7 @@ PD_VENDOR_KEY = None
 #     warnings.warn("local_settings.py not found, using defaults")
 
 site_name = 'RSC site'
+
+# login settings
+
+LOGIN_REDIRECT_URL= '/userdashbord/'
