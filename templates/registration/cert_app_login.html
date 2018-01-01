@@ -11,9 +11,17 @@
   <form method="post" action="." class="form-signin">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button type="submit"><a href="" class="btn-sm">Login  </a> </button>
   </form>
-    <button type="button"><a href="{% url 'signup' %}">SignUp </a> </button>
+
+  <div>
+
+      <a href="{% url 'signup' %}" class="btn">
+        <button>SignUp</button>
+      </a>
+  </div>
+
+
 
 
 
