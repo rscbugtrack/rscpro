@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'compressor',
     'bugtrackapp',
     'certifiedapp',
+    'subjectsapp',
 )
 
 MIDDLEWARE = (
@@ -169,4 +170,5 @@ site_name = 'RSC site'
 
 # login settings
 
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL= '/userdashbord/'

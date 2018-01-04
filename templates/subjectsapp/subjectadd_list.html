@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block containers %}
+
+<div class="container">
+    <h4>Add Subjects ...</h4>
+    <form method="POST" action="{% url 'subjectapp:add_subject' %}" class="form">
+         {% csrf_token %}
+        {{ subform.as_p }}
+        <input type="submit" value="Submit">
+
+    </form>
+
+</div>
+
+{% endblock %}

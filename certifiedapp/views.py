@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
-
+from django.contrib.auth.decorators import login_required
 
 def certifiedapphome(request):
     return HttpResponse('cerifiedapphome')
@@ -27,5 +27,10 @@ def signup(request):
     return render(request, 'registration/certapp_signup.html', {'form': form})
 
 
+@login_required
 def userdashbord(request):
+
+    if request.user.is_superuser:
+        return render(request, 'certifiedapp/admindashbord.html')
+
     return render(request,'certifiedapp/userdashbord.html')

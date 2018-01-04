@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+
+<h3>Username: <b>{{ request.user }}</b></h3>
+    <p>
+        Admin dashbord
+    </p>
+   <a href="{% url 'subjectapp:subjectlist' %}">View all subjects </a>
+</div>
+
+{% endblock %}

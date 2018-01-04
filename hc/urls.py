@@ -11,4 +11,5 @@ urlpatterns = [
 
     url(r'^', include('bugtrackapp.urls')),
     url(r'^', include('certifiedapp.urls')),
+    url(r'^', include('subjectsapp.urls',namespace="subjectapp")),
 ]
