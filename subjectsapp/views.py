@@ -1,5 +1,7 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django import forms
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 from subjectsapp.models import TechType
@@ -8,7 +10,7 @@ class Subjectform(forms.ModelForm):
         model = TechType
         fields = ['subject_name','status']
 
-
+@login_required
 def subjectlist(request):
     subjects_list = TechType.objects.all()
     context ={'subjects':subjects_list}
@@ -36,3 +38,20 @@ def add_subject(request):
     template = 'subjectsapp/subjectadd_list.html'
     context = {'subform':subform}
     return render(request,template,context)
+
+@login_required
+def edit_subject(request, pk=2):
+
+    subject = TechType.objects.get(pk=pk)
+    template = 'subjectsapp/subjectedit.html'
+    form = Subjectform(request.POST or None, instance=subject)
+    context= { 'form':form }
+    if request.method == 'POST':
+        form.save()
+        return redirect('subjectapp:subjectlist')
+    return render(request,template,context)
+
+
+
+
+

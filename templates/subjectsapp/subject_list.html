@@ -16,9 +16,11 @@
         </tr>
         {% for sub in subjects %}
         <tr>
+
             <td>{{ forloop.counter }}</td>
-            <td>{{ sub.subject_name }}</td>
+            <td>  <a href="{% url 'subjectapp:editsubject' sub.id %}"> {{ sub.subject_name }} </a></td>
             <td>{{ sub.status }}</td>
+
         </tr>
         {% endfor %}
     </table>
