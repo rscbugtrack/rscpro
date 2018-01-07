@@ -9,8 +9,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', auth_views.login, {'template_name': 'registration/cert_app_login.html'} ,name='login'),
 
-    url(r'^', include('bugtrackapp.urls')),
-    url(r'^', include('certifiedapp.urls')),
+    url(r'^', include('bugtrackapp.urls', namespace="bugtrackapp")),
+    url(r'^', include('certifiedapp.urls',namespace="certifiedapp")),
     url(r'^', include('subjectsapp.urls',namespace="subjectapp")),
     url(r'^', include('toolsapp.urls',namespace="toolsapp")),
 ]
