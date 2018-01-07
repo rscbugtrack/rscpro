@@ -39,6 +39,12 @@
     <link rel="stylesheet" href="{% static 'css/checkbox.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/radio.css' %}" type="text/css">
     {% endcompress %}
+
+    <style type="text/css">
+     .container{
+        width:100%;
+        }
+    </style>
 </head>
 <body class="page-{{ page }}">
     <nav class="navbar navbar-default">
@@ -73,7 +79,7 @@
             <a class="navbar-brand" href="" title="">About Us</a>
             <a class="navbar-brand" href="{% url 'rscbugtrack' %}" title="">BugTrack</a>
             <a class="navbar-brand" href="/login/" title="">Certification</a>
-            <a class="navbar-brand" href="" title="">Tools</a>
+            <a class="navbar-brand" href="{% url 'toolsapp:toolshome' %}" title="">Tools</a>
             <a class="navbar-brand" href="" title="">Contact Us</a>
             <a class="navbar-brand" href="https://github.com/rscbugtrack/rscpro.git" title="RSCGithub">Github</a>
 
