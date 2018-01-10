@@ -62,3 +62,16 @@ def change_password(request):
     })
 
 
+from django.contrib.auth import *
+
+def Test_List(request):
+
+	return render(request,'certifiedapp/Test_List.html')
+
+def Take_Test(request):
+
+	return render(request,'certifiedapp/Take_Test.html')
+
+def Test_Results(request):
+
+	return render(request,'certifiedapp/Test_Results.html')
