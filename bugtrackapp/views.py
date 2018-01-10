@@ -10,6 +10,10 @@ def rschome(request):
     context = {}
     return render(request,'rschome.html',context)
 
+def contactus(request):
+    context = {}
+    return render(request,'contact_us.html',context)
+
 
 def rscbugtrack(request):
 

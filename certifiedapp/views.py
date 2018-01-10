@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import render, redirect, render_to_response
 
 # Create your views here.
 from django.http import HttpResponse
@@ -13,6 +14,11 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import PasswordChangeForm
+
+
+def forgot_password(request):
+    return render_to_response('forgot_password.html')
+
 
 def signup(request):
     if request.method == 'POST':
