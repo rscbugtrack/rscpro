@@ -11,13 +11,14 @@ def certifiedapphome(request):
 
 
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.forms import
+from certifiedapp.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import PasswordChangeForm
 
 
 def forgot_password(request):
-    return render_to_response('forgot_password.html')
+    return render(request,'forgot_password.html',context={})
 
 
 def signup(request):
