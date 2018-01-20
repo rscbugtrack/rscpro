@@ -39,11 +39,65 @@
 
 
 <div class="w3-container">
+<br>
+
+<table border=2 width=50%>
+<tr>
+<th>Id</th>
+<th> Test Name </th>
+ 
+</tr>
+{%for i in users%}
+<tr>
+<td>{{i.id}}</td>
+<td> <a href="" class="w3-bar-item w3-button"> {{i.tst_name}} </a> </td>
+</tr>
+{%endfor%}
+</table>
+
+
+{% if users.has_other_pages %}
+  <div class="pagination">
+    {% if users.has_previous %}
+      <a href="?page={{ users.previous_page_number }}">&laquo;</a>
+    {% else %}
+      <span class="disabled">&laquo;</span>
+    {% endif %}
+
+
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <span class="active">{{ i }} <span class="sr-only">(current)</span></span>
+      {% else %}
+        <a href="?page={{ i }}">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <span><a href="?page={{ users.next_page_number }}">&raquo;</a></span>
+    {% else %}
+      <span class="disabled">&raquo;</span>
+    {% endif %}
+  </div>
+{% endif %}
+
 </div>
 
 </div>
 
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
 /* W3.CSS 4.08 January 2018 by Jan Egil and Borge Refsnes */

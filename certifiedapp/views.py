@@ -70,15 +70,31 @@ def change_password(request):
 
 
 from django.contrib.auth import *
+from certifiedapp.models import Testlist
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def Test_List(request):
 
-	return render(request,'certifiedapp/Test_List.html')
+def test_list(request):
+        t_list = Testlist.objects.all()
+        page = request.GET.get('page', 1)
 
-def Take_Test(request):
+        paginator = Paginator(t_list, 5)
+        try:
+          users = paginator.page(page)
+        except PageNotAnInteger:
+           users = paginator.page(1)
+        except EmptyPage:
+           users = paginator.page(paginator.num_pages)
+
+        context = { 't_list' : t_list,'users':users}
+
+	return render(request,'certifiedapp/Test_List.html',context)
+
+
+def take_test(request):
 
 	return render(request,'certifiedapp/Take_Test.html')
 
-def Test_Results(request):
+def test_results(request):
 
 	return render(request,'certifiedapp/Test_Results.html')

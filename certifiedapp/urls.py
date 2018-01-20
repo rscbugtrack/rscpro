@@ -9,9 +9,9 @@ urlpatterns =[
     url(r'^signup/$', core_views.signup, name='signup'),
     url(r'^change_password/$', core_views.change_password, name="change_password"),
     url(r'^userdashbord/$', core_views.userdashbord, name='userdashbord'),
-    url(r'^Test_List/$',core_views.Test_List,name='Test_List'),
-    url(r'^Take_Test/$',core_views.Take_Test,name='Take_Test'),
-    url(r'^Test_Results/$',core_views.Test_Results,name='Test_Results'),
+    url(r'^Test_List/$',core_views.test_list,name='Testlist'),
+    #url(r'^Take_Test/$',core_views.taketest,name='Taketest'),
+    #url(r'^Test_Results/$',core_views.testresults,name='Testresults'),
     url(r'^forgot_password/$', core_views.forgot_password, name="forgot_password"),
 
 ]
