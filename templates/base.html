@@ -45,6 +45,25 @@
         width:100%;
         }
     </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.Popup').click(function() {
+        var newwindow = window.open($(this).prop('href'), '', 'height=800,width=800');
+        if (window.focus) {
+            newwindow.focus();
+        }
+        return false;
+    });
+
+    $('#NewTab').click(function() {
+        $(this).target = "_blank";
+        window.open($(this).prop('href'));
+        return false;
+    });
+});
+</script>
+
 </head>
 <body class="page-{{ page }}">
     <nav class="navbar navbar-default">
@@ -74,16 +93,9 @@
                     srcset="{% static 'img/logo-full.png' %} 1x, {% static 'img/logo-full@2x.png' %} 2x"
                     alt="RSC">
             </a>
-
-           <!-- <a class="navbar-brand" href="{% url 'bugtrackapp:rschome' %}" title="">Home</a>
-            <a class="navbar-brand" href="" title="">About Us</a>-->
-           <a target="_blank" class="navbar-brand" href="{% url 'bugtrackapp:rscbugtrack' %}" title="">BugTrack</a>
-          <!--  <a class="navbar-brand" href="/login/" title="">Certification</a>
-           --> <a target="_blank" class="navbar-brand" href="{% url 'toolsapp:toolshome' %}" title="">Tools</a>
-           <!-- <a class="navbar-brand" href="{% url 'bugtrackapp:contactus' %}" title="">Contact Us</a>
--->
-            <a target="_blank" class="navbar-brand" href="https://github.com/rscbugtrack/rscpro.git" title="RSCGithub">Github</a>
-
+           <a class="Popup navbar-brand" href="{% url 'bugtrackapp:rscbugtrack' %}" title="">BugTrack</a>
+           <a class="Popup navbar-brand" href="{% url 'toolsapp:toolshome' %}" title="">Tools</a>
+           <a class="Popup navbar-brand" href="https://github.com/rscbugtrack/rscpro.git" title="RSCGithub">Github</a>
         </div>
 
 
