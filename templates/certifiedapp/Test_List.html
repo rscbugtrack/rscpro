@@ -47,7 +47,7 @@
 <th> Test Name </th>
  
 </tr>
-{%for i in users%}
+{%for i in t_list%}
 <tr>
 <td>{{i.id}}</td>
 <td> <a href="" class="w3-bar-item w3-button"> {{i.tst_name}} </a> </td>
@@ -56,24 +56,24 @@
 </table>
 
 
-{% if users.has_other_pages %}
+{% if t_list.has_other_pages %}
   <div class="pagination">
-    {% if users.has_previous %}
-      <a href="?page={{ users.previous_page_number }}">&laquo;</a>
+    {% if t_list.has_previous %}
+      <a href="?page={{ t_list.previous_page_number }}">&laquo;</a>
     {% else %}
       <span class="disabled">&laquo;</span>
     {% endif %}
 
 
-    {% for i in users.paginator.page_range %}
-      {% if users.number == i %}
+    {% for i in t_list.paginator.page_range %}
+      {% if t_list.number == i %}
         <span class="active">{{ i }} <span class="sr-only">(current)</span></span>
       {% else %}
         <a href="?page={{ i }}">{{ i }}</a>
       {% endif %}
     {% endfor %}
-    {% if users.has_next %}
-      <span><a href="?page={{ users.next_page_number }}">&raquo;</a></span>
+    {% if t_list.has_next %}
+      <span><a href="?page={{ t_list.next_page_number }}">&raquo;</a></span>
     {% else %}
       <span class="disabled">&raquo;</span>
     {% endif %}

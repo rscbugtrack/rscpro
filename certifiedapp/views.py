@@ -80,13 +80,13 @@ def test_list(request):
 
         paginator = Paginator(t_list, 5)
         try:
-          users = paginator.page(page)
+          t_list = paginator.page(page)
         except PageNotAnInteger:
-           users = paginator.page(1)
+           t_list = paginator.page(1)
         except EmptyPage:
-           users = paginator.page(paginator.num_pages)
+           t_list = paginator.page(paginator.num_pages)
 
-        context = { 't_list' : t_list,'users':users}
+        context = { 't_list' : t_list,'t_list':t_list}
 
 	return render(request,'certifiedapp/Test_List.html',context)
 
