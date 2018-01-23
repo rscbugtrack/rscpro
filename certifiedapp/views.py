@@ -75,20 +75,17 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def test_list(request):
-        t_list = Testlist.objects.all()
-        page = request.GET.get('page', 1)
-
-        paginator = Paginator(t_list, 5)
-        try:
-          t_list = paginator.page(page)
-        except PageNotAnInteger:
-           t_list = paginator.page(1)
-        except EmptyPage:
-           t_list = paginator.page(paginator.num_pages)
-
-        context = { 't_list' : t_list,'t_list':t_list}
-
-	return render(request,'certifiedapp/Test_List.html',context)
+    t_list = Testlist.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(t_list, 5)
+    try:
+        t_list = paginator.page(page)
+    except PageNotAnInteger:
+        t_list = paginator.page(1)
+    except EmptyPage:
+        t_list = paginator.page(paginator.num_pages)
+    context = { 't_list' : t_list,'t_list':t_list}
+    return render(request,'certifiedapp/Test_List.html',context)
 
 
 def take_test(request):
