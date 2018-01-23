@@ -72,6 +72,34 @@ def change_password(request):
 from django.contrib.auth import *
 from certifiedapp.models import Testlist
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+def simple(request):
+    import random
+    import django
+    import datetime
+
+    from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+    from matplotlib.figure import Figure
+    from matplotlib.dates import DateFormatter
+
+    fig=Figure()
+    ax=fig.add_subplot(111)
+    x=[]
+    y=[]
+    now=datetime.datetime.now()
+    delta=datetime.timedelta(days=1)
+    for i in range(10):
+        x.append(now)
+        now+=delta
+        y.append(random.randint(0, 800))
+    ax.plot_date(x, y, '-')
+    ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
+    fig.autofmt_xdate()
+    canvas=FigureCanvas(fig)
+    response=django.http.HttpResponse(content_type='image/png')
+    canvas.print_png(response)
+    return response
+
+
 
 
 def test_list(request):
@@ -88,9 +116,11 @@ def test_list(request):
     return render(request,'certifiedapp/Test_List.html',context)
 
 
-def take_test(request):
-
-	return render(request,'certifiedapp/Take_Test.html')
+def takepredict(request):
+    import numpy as np
+    A = np.array([[1, 2, 3], [4, 5, 6]]) #iprint A # [[1 2 3] # [4 5 6]] 
+    context = {'example1':A}
+    return render(request,'certifiedapp/Take_Test.html', context)
 
 def test_results(request):
 
