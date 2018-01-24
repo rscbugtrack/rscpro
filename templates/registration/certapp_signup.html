@@ -5,7 +5,10 @@
 
   <form method="post" action="{% url 'certifiedapp:signup' %}">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for i in form %}
+      <b>{{i.label}}:</b><br>
+       {{i}}<br>
+    {%endfor%}
     <button type="submit">Sign up</button>
   </form>
 {% endblock %}
