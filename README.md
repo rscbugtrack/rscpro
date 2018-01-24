@@ -13,6 +13,8 @@ in development environment.
 
 * prepare virtual environment
   (with virtualenv you get pip, we'll use it soon to install requirements):
+
+
         $ sudo apt-get install python3-dev
 
         $ virtualenv --python=python3 rsc-venv
