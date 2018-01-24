@@ -40,7 +40,6 @@ in development environment.
 
         $ cd ~/rscpro
         $ ./manage.py migrate
-        $ ./manage.py createsuperuser
 
 * run development server:
 
