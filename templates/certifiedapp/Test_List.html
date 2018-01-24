@@ -25,16 +25,15 @@
 <!-- Sidebar -->
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:22%">
   <h3 class="w3-bar-item">Menu</h3>
-  <a href="/Test_List" class="w3-bar-item w3-button">Test List</a>
-  <a href="/Take_Test" class="w3-bar-item w3-button">Take Test</a>
-  <a href="/Test_Results" class="w3-bar-item w3-button">Test Results</a>
+  <a href="#" class="w3-bar-item w3-button">Let's take test</a>
+  <a href="/Take_Predict" class="w3-bar-item w3-button">Let's predict dataset</a>
 </div>
 
 <!-- Page Content -->
 <div style="margin-left:25%">
 
 <div class="w3-container w3-teal">
-  <h1>Test_List</h1>
+  <h1>Certified Test List</h1>
 </div>
 
 
@@ -47,6 +46,11 @@
 <th> Test Name </th>
  
 </tr>
+<tr>
+<td>0</td>
+<td> <a href="" class="w3-bar-item w3-button">Python</a> </td>
+</tr>
+
 {%for i in t_list%}
 <tr>
 <td>{{i.id}}</td>
