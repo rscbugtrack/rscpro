@@ -1,8 +1,8 @@
 attrs==17.3.0
 backports-abc==0.5
-bleach==2.1.2attrs==17.3.0
-backports-abc==0.5
 bleach==2.1.2
+attrs==17.3.0
+backports-abc==0.5
 croniter==0.3.20
 Django==1.11.6
 cycler==0.10.0
