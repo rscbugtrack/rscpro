@@ -23,7 +23,7 @@ in development environment.
 
 * check out project code:
 
-        $ https://github.com/rscbugtrack/rscpro.git
+        $ git clone https://github.com/rscbugtrack/rscpro.git
 
 * install requirements (Django, ...) into virtualenv:
 
