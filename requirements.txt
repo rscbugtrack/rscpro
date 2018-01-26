@@ -10,7 +10,6 @@ decorator==4.1.2
 django-appconf==1.0.2
 olefile==0.44
 Pillow==4.3.0
-pkg-resources==0.0.0
 psycopg2==2.7.3.1
 python-dateutil==2.6.1
 rcssmin==1.0.6
