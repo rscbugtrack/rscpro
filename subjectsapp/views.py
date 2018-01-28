@@ -1,14 +1,17 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django import forms
 from django.contrib.auth.decorators import login_required
-
+from subjectsapp.forms import PaperstypeForm
 # Create your views here.
 
-from subjectsapp.models import TechType
+from subjectsapp.models import TechType,Paperstype
+
+
 class Subjectform(forms.ModelForm):
     class Meta:
         model = TechType
         fields = ['subject_name','status']
+
 
 @login_required
 def subjectlist(request):
@@ -16,6 +19,7 @@ def subjectlist(request):
     context ={'subjects':subjects_list}
     template = 'subjectsapp/subject_list.html'
     return render(request,template,context)
+
 
 def add_subject(request):
     subform = Subjectform(request.POST)
@@ -39,8 +43,9 @@ def add_subject(request):
     context = {'subform':subform}
     return render(request,template,context)
 
+
 @login_required
-def edit_subject(request, pk=2):
+def edit_subject(request, pk):
 
     subject = TechType.objects.get(pk=pk)
     template = 'subjectsapp/subjectedit.html'
@@ -52,6 +57,38 @@ def edit_subject(request, pk=2):
     return render(request,template,context)
 
 
+# papertype CRUD
+
+@login_required
+def paperslist(request):
+    allpapers = Paperstype.objects.all()
+    context = {'paperslist':allpapers}
+    template = 'subjectsapp/papers_list.html'
+    return render(request, template,context)
 
 
+@login_required
+def add_papers(request):
+    paperform = PaperstypeForm(request.POST)
 
+    if paperform.is_valid():
+        paperform.save()
+
+        return redirect('subjectapp:paperslist')
+
+    paperform = PaperstypeForm()
+
+    template = 'subjectsapp/papersadd_list.html'
+    context = {'paperform':paperform}
+    return render(request,template,context)
+
+@login_required
+def edit_papertype(request, pk):
+    paper = Paperstype.objects.get(pk=pk)
+    template = 'subjectsapp/papersedit.html'
+    form = PaperstypeForm(request.POST or None, instance=paper)
+    context = {'form':form}
+    if request.method == 'POST':
+        form.save()
+        return redirect('subjectapp:paperslist')
+    return render(request,template,context)

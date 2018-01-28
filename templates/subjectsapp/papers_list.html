@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block containers %}
+
+<div class="container">
+
+    <a href="{% url 'subjectapp:add_papers' %}">ADD Papers</a>
+    <p> list of Papers </p>
+    <table class="table">
+        <tr>
+            <th>Sl no </th>
+            <th>Subject name </th>
+            <th>Paper type   </th>
+            <th>Paper number  </th>
+            <th>status  </th>
+        </tr>
+        {% for paper in paperslist %}
+        <tr>
+
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'subjectapp:edit_papertype' paper.id %}"> {{ paper.subject_name }} </a></td>
+            <td>{{ paper.get_mode_display }}</td>
+            <td>{{ paper.papernumber }}</td>
+            <td>{{ paper.status }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</div>
+
+{% endblock %}
