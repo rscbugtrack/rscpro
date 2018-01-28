@@ -100,7 +100,16 @@ $(document).ready(function() {
 
 
         </div>
+
     </nav>
+        <div class="container">
+
+        {% if user.is_superuser %}
+            <div class="alert alert-success"><a href="{% url 'certifiedapp:userdashbord' %}">AdminHome</a></div>
+        {% endif %}
+
+        </div>
+
 
     {% block containers %}
     <div class="container">
