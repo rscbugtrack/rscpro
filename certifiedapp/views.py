@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import render, redirect, render_to_response
+import random
+import django
+import datetime
 
 # Create your views here.
 from django.http import HttpResponse
@@ -99,8 +102,49 @@ def simple(request):
     canvas.print_png(response)
     return response
 
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+def upload_csv(request):
+    data = {}
+    if "GET" == request.method:
+        return render(request, "certifiedapp/Take_Test.html", data)
+    # if not GET, then proceed
+    try:
+        csv_file = request.FILES["csv_file"]
+        if not csv_file.name.endswith('.csv'):
+            messages.error(request,'File is not CSV type')
+            return HttpResponseRedirect(reverse("certifiedapp:upload_csv"))
+        #if file is too large, return
+        if csv_file.multiple_chunks():
+            messages.error(request,"Uploaded file is too big (%.2f MB)." % (csv_file.size/(1000*1000),))
+            return HttpResponseRedirect(reverse("certifiedapp:upload_csv"))
+
+        file_data = csv_file.read().decode("utf-8")
+
+        x=[]
+        y=[]
+        fig=Figure()
+        ax=fig.add_subplot(111)
+        import csv
+        import io
+        io_string = io.StringIO(file_data)
+        plots = csv.reader(io_string, delimiter=',')
+        for row in plots:
+            x.append(int(row[0]))
+            y.append(int(row[1]))
+        ax.plot(x, y, 'go', label='$x^3$')
+        ax.set_xlabel('X axis')
+        ax.set_ylabel('Y axis')
+        ax.set_title('Sample Data Graph')
+        canvas = FigureCanvas(fig)
+        response = HttpResponse( content_type = 'image/png')
+        canvas.print_png(response)
+        return response
 
 
+    except Exception as e:
+
+       pass   
 
 def test_list(request):
     t_list = Testlist.objects.all()

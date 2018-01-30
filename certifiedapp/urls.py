@@ -13,6 +13,7 @@ urlpatterns =[
     url(r'^Take_Predict/$',core_views.takepredict,name='Takepredict'),
     url(r'^charts/simple.png$', core_views.simple),
     url(r'^forgot_password/$', core_views.forgot_password, name="forgot_password"),
+    url(r'^upload/csv/$', core_views.upload_csv, name='upload_csv'),
 
 ]
 
