@@ -38,10 +38,10 @@ def signup(request):
 
 @login_required
 def userdashbord(request):
-
+    # only for superuser..
     if request.user.is_superuser:
         return render(request, 'certifiedapp/admindashbord.html')
-
+    # only for nonsuper users / general users...
     return render(request,'certifiedapp/userdashbord.html')
 
 
