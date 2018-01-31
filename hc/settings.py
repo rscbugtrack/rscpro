@@ -173,3 +173,6 @@ site_name = 'RSC site'
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL= '/userdashbord/'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 1 * 60

@@ -145,7 +145,7 @@ def upload_csv(request):
     except Exception as e:
 
        pass   
-
+@login_required
 def test_list(request):
     t_list = Testlist.objects.all()
     page = request.GET.get('page', 1)
@@ -159,7 +159,7 @@ def test_list(request):
     context = { 't_list' : t_list,'t_list':t_list}
     return render(request,'certifiedapp/Test_List.html',context)
 
-
+@login_required
 def takepredict(request):
     import numpy as np
     A = np.array([[1, 2, 3], [4, 5, 6]]) #iprint A # [[1 2 3] # [4 5 6]] 
