@@ -14,10 +14,20 @@ def contactus(request):
     context = {}
     return render(request,'contact_us.html',context)
 
-
 def rscbugtrack(request):
 
     rscbugs = Bugtrack.objects.all()
 
     context = { 'rscbugs' : rscbugs}
     return render(request,'rscbugtrack.html',context)
+def aboutus(request):
+
+
+    context = {}
+    return render(request,'aboutus.html',context)
+
+def ourteam(request):
+
+
+    context = {}
+    return render(request,'ourteam.html',context)
