@@ -1,4 +1,4 @@
-from django.forms import EmailField
+from django.forms import * 
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,6 +8,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserCreationForm(UserCreationForm):
     email = EmailField(label=_("Email address"), required=True,
+        help_text=_("Required."))
+    password = CharField(required=True,
         help_text=_("Required."))
 
     class Meta:

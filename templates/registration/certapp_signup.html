@@ -26,6 +26,10 @@
   width:20%;/*The width is 20%, by default*/
 }
 
+.helptext {
+    font-size: 12px !important;
+    color: #999;
+}
 /*Use a media query to add a break point at 800px:*/
 @media (max-width:800px) {
   .left, .main, .right {
@@ -51,10 +55,9 @@
   <h2>Sign up</h2>
   <form method="post" action="{% url 'certifiedapp:signup' %}">
     {% csrf_token %}
-    {% for i in form %}
-      <b>{{i.label}}:</b>
-       {{i}}
-    {%endfor%}
+     <table>
+     {{form.as_table}}
+    </table>
 <br>
 <br>
 
