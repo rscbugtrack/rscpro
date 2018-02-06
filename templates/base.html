@@ -63,36 +63,38 @@ $(document).ready(function() {
     });
 });
 </script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+    body{
+    	padding-top: 70px;
+    }
+</style>
 </head>
 <body class="page-{{ page }}">
-    <nav class="navbar navbar-default">
-        <div class="container">
-        <div class="navbar-header">
-            <button
-                type="button"
-                class="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#navbar"
-                aria-expanded="false"
-                aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand"
-                href=""
-                title="">
+<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
-                <img
+			<a class="navbar-brand" href="#"><img
                     id="logo"
                     height="50"
                     width="200"
                     src="{% static 'img/logo-full.png'%}"
                     srcset="{% static 'img/logo-full.png' %} 1x, {% static 'img/logo-full@2x.png' %} 2x"
                     alt="RSC">
-            </a>
+</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="navbarCollapse">
            <a class="Popup navbar-brand" href="{% url 'bugtrackapp:aboutus' %}" title="">About Us || </a>
            <a class="Popup navbar-brand" href="{% url 'bugtrackapp:rscbugtrack' %}" title="">BugTrack || </a>
            <a class="Popup navbar-brand" href="{% url 'toolsapp:toolshome' %}" title="">Data Science Docs || </a>
