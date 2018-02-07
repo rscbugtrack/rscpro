@@ -8,7 +8,10 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserCreationForm(UserCreationForm):
     email = EmailField(label=_("Email address"), required=True,
-        help_text=_("Required."))
+                               widget=TextInput(attrs={'class':'form-control','placeholder':'Email'}))
+    username = CharField(widget=TextInput(attrs={'class':'form-control','placeholder':'Username'}))
+    password1 = CharField(label="Password", widget=PasswordInput(attrs={'class':'form-control','placeholder':'Password'}))
+    password2 = CharField(label="Confirm Password", widget=PasswordInput(attrs={'class':'form-control','placeholder':'Password'}))
 
     class Meta:
         model = User
