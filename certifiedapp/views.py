@@ -75,13 +75,12 @@ def change_password(request):
 from django.contrib.auth import *
 from certifiedapp.models import Testlist
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 def simple(request):
     import random
     import django
     import datetime
-
-    from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-    from matplotlib.figure import Figure
     from matplotlib.dates import DateFormatter
 
     fig=Figure()
@@ -109,7 +108,7 @@ def upload_csv(request):
     if "GET" == request.method:
         return render(request, "certifiedapp/Take_Test.html", data)
     # if not GET, then proceed
-    try:
+    else:
         csv_file = request.FILES["csv_file"]
         if not csv_file.name.endswith('.csv'):
             messages.error(request,'File is not CSV type')
@@ -132,7 +131,7 @@ def upload_csv(request):
         for row in plots:
             x.append(int(row[0]))
             y.append(int(row[1]))
-        ax.plot(x, y, 'go', label='$x^3$')
+        ax.plot(x, y, label='$x^3$')
         ax.set_xlabel('X axis')
         ax.set_ylabel('Y axis')
         ax.set_title('Sample Data Graph')
@@ -141,10 +140,6 @@ def upload_csv(request):
         canvas.print_png(response)
         return response
 
-
-    except Exception as e:
-
-       pass   
 @login_required
 def test_list(request):
     t_list = Testlist.objects.all()
