@@ -2,45 +2,7 @@
 
 
 {% block content %}
-{% if request.user %}
-<div align="right">
-Time left = <span id="timer"></span>
-</div>
-{%endif%}
-
-<script>
-document.getElementById('timer').innerHTML =
-  01 + ":" + 00;
-startTimer();
-
-function startTimer() {
-  var presentTime = document.getElementById('timer').innerHTML;
-  var timeArray = presentTime.split(/[:]+/);
-  var m = timeArray[0];
-  var s = checkSecond((timeArray[1] - 1));
-  if(s==59){m=m-1}
-  //if(m<0){alert('timer completed')}
-
-  document.getElementById('timer').innerHTML =
-    m + ":" + s;
-  setTimeout(startTimer, 1000);
-}
-
-function checkSecond(sec) {
-  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
-  if (sec < 0) {sec = "59"};
-  return sec;
-}
-</script>
-<div align="right">||
-<font color=red>Username: <font color= blue>{{ request.user }} </font></font>||
-<a href="/change_password"><button>Change_Password</button></a>
-
-<a href="/logout"><button>Logout</button></a>
-</div>
-
-<hr>
-
+{% include 'submenu.html'%}
 <div align="right" class="container">
 
    <a href="/userdashbord"><button>Home</button></a>
@@ -50,14 +12,8 @@ function checkSecond(sec) {
 
 <h3>Hi, <b>{{ request.user }}</b>. Welcome to Test_List.</h3>
     </div>
+{%include 'leftmenu.html'%}
 
-
-<!-- Sidebar -->
-<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:22%">
-  <h3 class="w3-bar-item">Menu</h3>
-  <a href="#" class="w3-bar-item w3-button">Let's take test</a>
-<br>  <a href="/Take_Predict" class="w3-bar-item w3-button">Let's predict dataset</a>
-</div>
 
 <!-- Page Content -->
 <div style="margin-left:25%">
