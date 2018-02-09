@@ -7,6 +7,7 @@
     <style class="cp-pen-styles">@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&subset=latin-ext");
 </style></head>
 
+
 <body class="sidebar-is-reduced">
   <header class="l-header">
     <div class="l-header__inner clearfix">
@@ -25,7 +26,7 @@
       <div class="header-icons-group">
         <div class="c-header-icon reset"> <a href="/userdashbord"><i class="fa fa-Home"></i></a></div>
 
-        <div class="c-header-icon reset"> <a href="#"><i class="fa fa-user"></i> {{ request.user }}</a></div>
+        <div class="c-header-icon reset"> <a href="#" title="Hi, {{ request.user }}"><i class="fa fa-user"></i></a></div>
         <div class="c-header-icon reset"> <a title="change password" href="/change_password"><i class="fa fa-lock"></i></a></div>
         <div class="c-header-icon logout"><a title="logout" href="/logout"><i class="fa fa-power-off"></i></a></div>
       </div>
@@ -33,7 +34,7 @@
   </header>
   <div class="l-sidebar">
     <div class="logo">
-      <div class="logo__txt">RSC</div>
+      <div class="logo__txt" title="Redsuncube">RSC</div>
     </div>
     <div class="l-sidebar__content">
       <nav class="c-menu js-menu">
