@@ -1,0 +1,71 @@
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Redsuncube:Dashboard</title>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+    <style class="cp-pen-styles">@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&subset=latin-ext");
+</style></head>
+
+<body class="sidebar-is-reduced">
+  <header class="l-header">
+    <div class="l-header__inner clearfix">
+      <div class="c-header-icon js-hamburger">
+        <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
+      </div>
+      <div class="c-header-icon has-dropdown"><span class="c-badge c-badge--header-icon animated shake">12</span><i class="fa fa-bell"></i>
+        <div class="c-dropdown c-dropdown--notifications">
+          <div class="c-dropdown__header"></div>
+          <div class="c-dropdown__content"></div>
+        </div>
+      </div>
+      <div class="c-search">
+        <input class="c-search__input u-input" placeholder="Search..." type="text"/>
+      </div>
+      <div class="header-icons-group">
+        <div class="c-header-icon reset"> <a href="/userdashbord"><i class="fa fa-Home"></i></a></div>
+
+        <div class="c-header-icon reset"> <a href="#"><i class="fa fa-user"></i> {{ request.user }}</a></div>
+        <div class="c-header-icon reset"> <a title="change password" href="/change_password"><i class="fa fa-lock"></i></a></div>
+        <div class="c-header-icon logout"><a title="logout" href="/logout"><i class="fa fa-power-off"></i></a></div>
+      </div>
+    </div>
+  </header>
+  <div class="l-sidebar">
+    <div class="logo">
+      <div class="logo__txt">RSC</div>
+    </div>
+    <div class="l-sidebar__content">
+      <nav class="c-menu js-menu">
+        <ul class="u-list">
+          <li class="c-menu__item is-active" data-toggle="tooltip" title="Predict Dataset">
+            <div class="c-menu__item__inner"><i class="fa fa-file-text-PD"><a href="/Take_Predict">PD</a></i>
+              <div class="c-menu-item__title"><span><a href='/Take_Predict'>Predict Dataset</span></div>
+            </div>
+          </li>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="History">
+            <div class="c-menu__item__inner"><i class="fa fa-history"></i>
+              <div class="c-menu-item__title"><span>History</span></div>
+            </div>
+          </li>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Accounts">
+            <div class="c-menu__item__inner"><i class="fa fa-address-book-o"></i>
+              <div class="c-menu-item__title"><span>Accounts</span></div>
+            </div>
+          </li>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+            <div class="c-menu__item__inner"><i class="fa fa-cogs"></i>
+              <div class="c-menu-item__title"><span>Settings</span></div>
+            </div>
+          </li>
+        </ul>
+
+		
+		      </nav>
+    </div>
+  </div>
+</body>
+<main class="l-main">
+  <div class="content-wrapper content-wrapper--with-bg">
+
+  

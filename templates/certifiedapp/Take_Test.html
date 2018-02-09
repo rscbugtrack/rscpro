@@ -1,21 +1,12 @@
-{% extends 'base.html' %}
-
-
 {% block content %}
+{%include 'header.html'%}
 
-{%include 'submenu.html'%}
-<div class="container">
 
 <h3>Hi, <b>{{ request.user }}</b>. Welcome to Take Test.</h3>
-    </div>
+   
 
-{%include 'leftmenu.html'%}
 <!-- Page Content -->
-<div style="margin-left:25%">
 
-<div class="w3-container w3-teal">
-  <h1>Let Predict</h1>
-</div>
 
 
 {% for message in messages %}
@@ -42,28 +33,12 @@
 
 
 
-<div class="w3-container">
 
-<hr>
-Working Examples:
-<hr>
-
-
-1)Numpy example :
-<br>{{example1}}
-
-<br>
-
-<br>
-2) Matplotlib example:
-<br>
-
-<a href="/charts/simple.png" class="w3-bar-item w3-button">Simple chart</a></div>
-
-</div>
 
 	
 
+{%include 'footer.html'%}
+{%include 'script_style.html'%}
 
 
 {% endblock %}
