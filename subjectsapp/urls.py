@@ -10,5 +10,8 @@ urlpatterns =[
     url(r'^allpapers/$', views.paperslist, name="paperslist"),
     url(r'^addpapers/$', views.add_papers, name="add_papers"),
     url(r'^editpapertype/(?P<pk>\d+)$', views.edit_papertype, name="edit_papertype"),
+    url(r'^allquestions/$', views.questionlist, name="questionlist"),
+    url(r'^addquestions/$', views.add_questions, name="add_questions"),
+    url(r'^editquestiontype/(?P<pk>\d+)$', views.edit_questions, name="edit_questions"),
 
 ]

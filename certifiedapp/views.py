@@ -8,6 +8,8 @@ import datetime
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages import *
+from django.contrib.auth.models import User
+from subjectsapp.models import Questions,Paperstype
 
 def certifiedapphome(request):
     return HttpResponse('cerifiedapphome')
@@ -163,4 +165,15 @@ def takepredict(request):
 
 def test_results(request):
 
-	return render(request,'certifiedapp/Test_Results.html')
+    return render(request,'certifiedapp/Test_Results.html')
+
+
+# student free test.
+@login_required
+def student_freetest(request):
+    stu_user = User.objects.get(username=request.user)
+    paper = Paperstype.objects.get(pk=2)
+    questions = Questions.objects.filter(papertype=paper)
+
+    print(stu_user)
+    return HttpResponse(questions)

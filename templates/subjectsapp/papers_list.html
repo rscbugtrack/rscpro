@@ -20,7 +20,7 @@
         <tr>
 
             <td>{{ forloop.counter }}</td>
-            <td><a href="{% url 'subjectapp:edit_papertype' paper.id %}"> {{ paper.subject_name }} </a></td>
+            <td><a href="{% url 'subjectapp:edit_papertype' paper.id %}">{{ paper.id }} {{ paper.subject_name }} </a></td>
             <td>{{ paper.get_mode_display }}</td>
             <td>{{ paper.papernumber }}</td>
             <td>{{ paper.status }}</td>

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block containers %}
+
+<div class="container">
+
+    <a href="{% url 'subjectapp:add_questions' %}">ADD Questions</a>
+    <p> list of subjects </p>
+    <table class="table">
+        <tr>
+            <th>Sl no </th>
+            <th>Paper type</th>
+            <th>question name </th>
+            <th>Status  </th>
+        </tr>
+        {% for que in questions %}
+        <tr>
+
+            <td>{{ forloop.counter }}</td>
+            <td>{{ que.papertype }}</td>
+            <td>  <a href="{% url 'subjectapp:edit_questions' que.id %}">
+                <div class="well">
+                    Question: <b>{{ que.question_name }}</b><br>
+                    A:{{ que.option1 }}<br>
+                    B:{{ que.option2 }}<br>
+                    C:{{ que.option3 }}<br>
+                    D:{{ que.option4 }}<br>
+                    ANS:{{ que.answer }}<br>
+
+                </div>
+                 </a>
+            </td>
+            <td>{{ que.status }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</div>
+
+{% endblock %}

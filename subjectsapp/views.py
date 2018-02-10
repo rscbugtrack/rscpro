@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django import forms
 from django.contrib.auth.decorators import login_required
-from subjectsapp.forms import PaperstypeForm
+from subjectsapp.forms import PaperstypeForm,QuestionsForm
+from django.shortcuts import HttpResponse
 # Create your views here.
 
-from subjectsapp.models import TechType,Paperstype
+from subjectsapp.models import TechType,Paperstype,Questions
 
 
 class Subjectform(forms.ModelForm):
@@ -91,4 +92,43 @@ def edit_papertype(request, pk):
     if request.method == 'POST':
         form.save()
         return redirect('subjectapp:paperslist')
+    return render(request,template,context)
+
+
+# questions CRUD
+@login_required
+def questionlist(request):
+    allquestions = Questions.objects.all()
+    context = {'questions':allquestions}
+    template = 'subjectsapp/questions_list.html'
+    return render(request, template,context)
+
+
+@login_required
+def add_questions(request):
+    question_form = QuestionsForm(request.POST)
+
+    if question_form.is_valid():
+        question_form.save()
+
+        return redirect('subjectapp:questionlist')
+
+    question_form = QuestionsForm()
+
+    template = 'subjectsapp/questionadd_list.html'
+    context = {'question_form':question_form}
+    return render(request,template,context)
+
+
+
+@login_required
+def edit_questions(request, pk):
+    que = Questions.objects.get(pk=pk)
+    template = 'subjectsapp/questionedit.html'
+    form = QuestionsForm(request.POST or None, instance=que)
+    context = {'form':form}
+    if request.method == 'POST':
+        form.save()
+        return redirect('subjectapp:questionlist')
+    # return HttpResponse('OK')
     return render(request,template,context)

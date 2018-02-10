@@ -26,10 +26,29 @@ class Paperstype(models.Model):
     status = models.BooleanField(help_text='Activation status')
 
     def __str__(self):
-        return '{0}-{1}-{3}'.format(self.subject_name,self.mode,self.papernumber)
+        return '{0}-{1}-{2}'.format(self.subject_name,self.mode,self.papernumber)
     @property
     def displaymode(self):
         return '{0}'.format(self.mode)
 
     def get_absolute_url(self):
-        return reverse('subjectapp:editpapertype', kwargs={'pk': self.pk})
+        return reverse('subjectapp:edit_papertype', kwargs={'pk': self.pk})
+
+
+from datetime import datetime
+class Questions(models.Model):
+    papertype = models.ForeignKey(Paperstype,null=True)
+    question_name = models.CharField(max_length=500, help_text='Full Question name')
+    option1 = models.CharField(max_length=50, help_text='A')
+    option2 = models.CharField(max_length=50, help_text='B')
+    option3 = models.CharField(max_length=50, help_text='C')
+    option4 = models.CharField(max_length=50, help_text='D')
+    answer = models.CharField(max_length=50, help_text='Answer')
+    status = models.BooleanField(default=True)
+    date_added = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return 'Question: {0}'.format(self.question_name)
+
+    def get_absolute_url(self):
+        return reverse('subjectapp:edit_questions', kwargs={'pk': self.pk})

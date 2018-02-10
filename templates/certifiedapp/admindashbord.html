@@ -9,8 +9,20 @@
         Admin dashbord
     </p>
     <ul>
-        <li>   <a href="{% url 'subjectapp:subjectlist' %}">View all subjects </a></li>
-        <li>   <a href="{% url 'subjectapp:paperslist' %}">View all paper types </a></li>
+        <li>
+            <div class="well">
+                <a href="{% url 'subjectapp:subjectlist' %}">View all subjects </a>
+            </div>
+        </li>
+        <li>
+            <div class="well">
+                <a href="{% url 'subjectapp:paperslist' %}">View all paper types </a>
+            </div>
+        </li>
+        <li>
+            <div class="well">
+                <a href="{% url 'subjectapp:questionlist' %}">View all Questions & Answers</div>
+        </li>
 
     </ul>
 </div>
