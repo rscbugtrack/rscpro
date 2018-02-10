@@ -36,6 +36,7 @@ class Paperstype(models.Model):
 
 
 from datetime import datetime
+
 class Questions(models.Model):
     papertype = models.ForeignKey(Paperstype,null=True)
     question_name = models.CharField(max_length=500, help_text='Full Question name')
@@ -52,3 +53,8 @@ class Questions(models.Model):
 
     def get_absolute_url(self):
         return reverse('subjectapp:edit_questions', kwargs={'pk': self.pk})
+
+
+# todo test time in papers type
+# todo student answer model create
+# answer value == choice field ..

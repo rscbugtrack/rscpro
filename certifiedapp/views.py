@@ -174,6 +174,9 @@ def student_freetest(request):
     stu_user = User.objects.get(username=request.user)
     paper = Paperstype.objects.get(pk=2)
     questions = Questions.objects.filter(papertype=paper)
+    que_count = questions.count()
+    context = {'stu_questions':questions, 'que_count':que_count}
 
     print(stu_user)
-    return HttpResponse(questions)
+    return render(request, 'certifiedapp/free_test.html', context)
+    # return HttpResponse(questions)

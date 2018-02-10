@@ -2,7 +2,6 @@
 {%include 'header.html'%}
    <h2>Hi, Welcome {{request.user}}</h2> 
         <div class="list-group">
-        <a href="#" class="list-group-item">
             <div class="media col-md-3">
                 <figure class="pull-left">
                     <img class="media-object img-rounded img-responsive" height="42" width="122"  src="/static/img/python.png" alt="placehold.it/140x100" >
@@ -21,18 +20,29 @@
                         </div>
                     </div>
                     <div class = "row">
-                        <div class="col-md-12 pull-left"><i class="fa fa-check-square"></i>Sample Test..</div>
+                        <div class="col-md-12 pull-left">
+                            <i class="fa fa-check-square"></i>
+                            <a href="#" >Sample</a>
+                        </div>
                     </div>
                     <div class = "row">
-                        <div class="col-md-12 pull-left"><i class="fa fa-square"></i>Certificate Test </div>
+                        <div class="col-md-12 pull-left">
+                            <i class="fa fa-check-square"></i>
+                            <a href="#" >Certification</a>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div class="col-md-1 text-center">
                 <p> 2 <small> approvals </small></p>
                 <button type="button" class="btn btn-primary btn-sm btn-block">Open</button>
             </div>
-        </a>
+
+
+
+
+
     </div>
 {%include 'footer.html'%}   
 {%include 'script_style.html'%}
