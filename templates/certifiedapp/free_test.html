@@ -7,13 +7,11 @@
 
     <form action="{% url 'certifiedapp:student_test_submit' %}" method="POST" >
 
-  <h2>STuden Free TEST</h2>
+  <h2>Student Free TEST</h2>
      <input type="text" value="0" id="finalmarks" name="totalmarks" hidden>
      <button class="btn btn-danger" type="submit" onclick="submitTest()" value="Submit Test" style="font-weight: bolder">Submit Test</button>
   <div class="panel panel-default">
-    <div class="panel-heading">Free Test</div>
     <div class="panel-body">
-        <div class="well well-sm">Free Test</div>
         <div class="table">
             <table class="table">
                 {% csrf_token %}
