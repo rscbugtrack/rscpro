@@ -5,17 +5,18 @@
 
 <div class="container">
 
-    <form action="" method="POST" >
+    <form action="{% url 'certifiedapp:student_test_submit' %}" method="POST" >
 
   <h2>STuden Free TEST</h2>
-     <input type="text" value="0" id="finalmarks" name="totalmarks" >
-     <button class="btn btn-danger" type="button" onclick="submitTest()" value="Submit Test" style="font-weight: bolder">Submit Test</button>
+     <input type="text" value="0" id="finalmarks" name="totalmarks" hidden>
+     <button class="btn btn-danger" type="submit" onclick="submitTest()" value="Submit Test" style="font-weight: bolder">Submit Test</button>
   <div class="panel panel-default">
     <div class="panel-heading">Free Test</div>
     <div class="panel-body">
         <div class="well well-sm">Free Test</div>
         <div class="table">
             <table class="table">
+                {% csrf_token %}
                 {% for que in stu_questions %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
@@ -26,7 +27,7 @@
                         <div class="well well-sm"><input type="radio" value="3" name="option{{forloop.counter}}" id="{{forloop.counter}}C">{{ que.option3 }}</div>
                         <div class="well well-sm"><input type="radio" value="4" name="option{{forloop.counter}}" id="{{forloop.counter}}D">{{ que.option4 }}</div>
                         <div class="well">
-                             <input type="radio" value="{{ que.answer }}" id="{{forloop.counter}}ANSWER" > {{ que.answer }}
+                             <input type="radio" value="{{ que.answer }}" id="{{forloop.counter}}ANSWER" hidden> {{ que.answer }}
                         </div>
                     </td>
 

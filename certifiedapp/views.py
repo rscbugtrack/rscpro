@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.messages import *
 from django.contrib.auth.models import User
 from subjectsapp.models import Questions,Paperstype
+from certifiedapp.models import StudentResults
 
 def certifiedapphome(request):
     return HttpResponse('cerifiedapphome')
@@ -173,10 +174,35 @@ def test_results(request):
 def student_freetest(request):
     stu_user = User.objects.get(username=request.user)
     paper = Paperstype.objects.get(pk=2)
+    request.session['papertype'] = paper.id
+    print(request.session['papertype'])
+
     questions = Questions.objects.filter(papertype=paper)
     que_count = questions.count()
+    request.session['total_que'] = que_count
     context = {'stu_questions':questions, 'que_count':que_count}
 
     print(stu_user)
     return render(request, 'certifiedapp/free_test.html', context)
     # return HttpResponse(questions)
+
+
+
+@login_required
+def student_test_submit(request):
+    try:
+        print(request.session['papertype'])
+    except:
+        raise ValueError('Your test done....')
+    print(request.session['total_que'])
+    total_que = int(request.session['total_que'])
+    paper_type = Paperstype.objects.get(pk=int(request.session['papertype']))
+    print('Total marks-->:',request.POST.get('totalmarks'))
+    total_marks = int(request.POST.get('totalmarks'))
+
+    stu_results = StudentResults(stu_user=request.user, total_marks = total_marks, total_question = total_que,paper_type = paper_type)
+    stu_results.save()
+    del request.session['papertype']
+    # print(request.POST)
+    return render(request, 'certifiedapp/student_results.html', context={'sturesults':StudentResults.objects.get(pk=stu_results.id)})
+    # return HttpResponse(stu_results)

@@ -1,0 +1,14 @@
+{% block content %}
+{%include 'header.html'%}
+   <h2>Hi, Welcome {{request.user}}</h2>
+
+<div class="container">
+    <div class="well">
+        YOUR SCORE : {{ sturesults.total_marks }} / {{ sturesults.total_question }}
+    </div>
+</div>
+
+
+{%include 'footer.html'%}
+{%include 'script_style.html'%}
+{% endblock %}

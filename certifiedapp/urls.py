@@ -15,6 +15,7 @@ urlpatterns =[
     url(r'^forgot_password/$', core_views.forgot_password, name="forgot_password"),
     url(r'^upload/csv/$', core_views.upload_csv, name='upload_csv'),
     url(r'^student_freetest/$', core_views.student_freetest, name='student_freetest'),
+    url(r'^student_test_submit/$', core_views.student_test_submit, name='student_test_submit'),
 
 ]
 
