@@ -114,7 +114,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 SITE_ROOT = "http://localhost:8000"
 SITE_NAME = MASTER_BADGE_LABEL = "RSC"

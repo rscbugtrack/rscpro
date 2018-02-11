@@ -203,6 +203,15 @@ def student_test_submit(request):
     stu_results = StudentResults(stu_user=request.user, total_marks = total_marks, total_question = total_que,paper_type = paper_type)
     stu_results.save()
     del request.session['papertype']
+    request.session['student_resultid'] = stu_results.id
     # print(request.POST)
-    return render(request, 'certifiedapp/student_results.html', context={'sturesults':StudentResults.objects.get(pk=stu_results.id)})
+    return redirect('certifiedapp:student_testresult')
     # return HttpResponse(stu_results)
+
+@login_required
+def student_testresult(request):
+    student_resultid = int(request.session['student_resultid'])
+
+    return render(request, 'certifiedapp/student_results.html', context={'sturesults':StudentResults.objects.get(pk=student_resultid)})
+
+
