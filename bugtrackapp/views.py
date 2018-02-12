@@ -8,7 +8,7 @@ from .models import Bugtrack
 
 def rschome(request):
     context = {}
-    return render(request,'rschome.html',context)
+    return render(request,'home.html',context)
 
 def contactus(request):
     context = {}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block containers %}
+
+<div align="right">
+<a href="/login"><button>Login<span class="glyphicon glyphicon-log-in"></span></button></a>
+</div><br>
+    <!-- Carousel Slider -->
+    <div id="carouselLogo" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselLogo" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselLogo" data-slide-to="1"></li>
+            <li data-target="#carouselLogo" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img class="d-block img-fluid" src="http://www.facenet.org/wp-content/themes/executive/assets/images/header.jpg" alt="First slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselLogo" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselLogo" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- Carousel Slider -->
+
+    <!-- Card -->
+    <div class="container container mt-4 mb-5">
+        <h3 class="display-4 text-center"> Certification Courses</h3>
+        <hr class="bg-dark mb-4 w-25">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-block p-3">
+                        <h4 class="card-title">Python</h4>
+                        <p class="card-text">When an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-block p-3">
+                        <h4 class="card-title">Django</h4>
+                        <p class="card-text">When an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-block p-3">
+                        <h4 class="card-title">Git</h4>
+                        <p class="card-text">When an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Card -->
+<br>
+<br>
+<br>
+
+<style>
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css');
+.bg-dark {
+    background-color: #343a40!important;
+}
+</style>
+<br>
+<br>
+<br>
+{% endblock %}
