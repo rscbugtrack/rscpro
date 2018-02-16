@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'certifiedapp',
     'subjectsapp',
     'toolsapp',
+    'predict',
 )
 
 MIDDLEWARE = (

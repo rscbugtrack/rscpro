@@ -12,3 +12,5 @@ reportlab==3.4.0
 requests==2.9.1
 rjsmin==1.0.12
 six==1.11.0
+numpy
+matplotlib
