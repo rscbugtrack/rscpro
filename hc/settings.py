@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'subjectsapp',
     'toolsapp',
     'predict',
+    'blog',
 )
 
 MIDDLEWARE = (

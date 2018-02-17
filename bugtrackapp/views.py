@@ -5,9 +5,11 @@ from django.http import HttpResponse
 from .models import Bugtrack
 # Create your views here.
 
+from blog.models import Blog
 
 def rschome(request):
-    context = {}
+    blog_obj = Blog.objects.all().order_by('-id')[:3]
+    context = {'blog_obj':blog_obj}
     return render(request,'home.html',context)
 
 def contactus(request):
