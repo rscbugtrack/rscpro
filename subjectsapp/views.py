@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django import forms
 from django.contrib.auth.decorators import login_required
 from subjectsapp.forms import PaperstypeForm,QuestionsForm
-from django.shortcuts import HttpResponse
 # Create your views here.
 
 from subjectsapp.models import TechType,Paperstype,Questions
@@ -130,5 +129,5 @@ def edit_questions(request, pk):
     if request.method == 'POST':
         form.save()
         return redirect('subjectapp:questionlist')
-    # return HttpResponse('OK')
+
     return render(request,template,context)
