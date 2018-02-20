@@ -4,8 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-
-
+from django import forms
+from .models import StudentProfile
 class UserCreationForm(UserCreationForm):
     email = EmailField(label=_("Email address"), required=True,
                                widget=TextInput(attrs={'class':'form-control','placeholder':'Email'}))
@@ -23,3 +23,11 @@ class UserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return
+
+
+class StudentProfileform(forms.ModelForm):
+    class Meta:
+        model = StudentProfile
+        fields = ('stu_photo',)
+
+

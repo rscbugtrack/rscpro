@@ -21,8 +21,8 @@ from django.contrib.auth import login, authenticate
 from certifiedapp.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import PasswordChangeForm
-
-
+from .forms import StudentProfileform
+from .models import StudentProfile
 def forgot_password(request):
     return render(request,'forgot_password.html',context={})
 
@@ -45,10 +45,27 @@ def signup(request):
 @login_required
 def userdashbord(request):
     # only for superuser..
+
+    if request.method == 'POST':
+        form = StudentProfileform(request.POST, request.FILES)
+        if form.is_valid():
+            picform = form.save(commit=False)
+            picform.stu_user = request.user
+            picform.save()
+
     if request.user.is_superuser:
         return render(request, 'certifiedapp/admindashbord.html')
     # only for nonsuper users / general users...
-    return render(request,'certifiedapp/userdashbord.html')
+    else:
+        form = StudentProfileform()
+        # stu = StudentProfile.objects.get(stu_user=request.user)
+        try:
+
+            stupic = StudentProfile.objects.get(stu_user=request.user)
+        except:
+            stupic = 'None'
+
+        return render(request,'certifiedapp/userdashbord.html',{'profilepic_form':form,'stupic':stupic})
 
 
 
@@ -181,6 +198,8 @@ def student_freetest(request):
     que_count = questions.count()
     request.session['total_que'] = que_count
     context = {'stu_questions':questions, 'que_count':que_count}
+
+
 
     print(stu_user)
     return render(request, 'certifiedapp/free_test.html', context)

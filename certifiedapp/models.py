@@ -29,3 +29,12 @@ class StudentResults(models.Model):
     def __str__(self):
         return '{}'.format(self.stu_user, self.total_marks,self.paper_type)
 
+
+class StudentProfile(models.Model):
+    stu_user = models.OneToOneField(User)
+    stu_photo = models.FileField(upload_to='stu_profiles/')
+    stu_status = models.FileField(upload_to='stu_status/')
+
+    def __str__(self):
+        return '{0}'.format(self.stu_user)
+

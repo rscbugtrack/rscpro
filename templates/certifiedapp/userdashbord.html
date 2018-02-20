@@ -40,10 +40,20 @@
             </div>
 
 
+            <div class="well">Profile form</div>
 
 
 
     </div>
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ profilepic_form.as_p }}
+        <button type="submit">Upload</button>
+</form>
+
+
 {%include 'footer.html'%}   
-{%include 'script_style.html'%}
+{%include 'script_style.html'%}ss
 {% endblock %}

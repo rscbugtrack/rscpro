@@ -4,6 +4,10 @@ from django.contrib.auth import views as auth_views
 # from hc.accounts.views import login as hc_login
 # import bugtrackapp
 from bugtrackapp.views import rschome as home
+
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     # url(r'^admin/login/', hc_login, {"show_password": True}),
     url(r'^admin/', admin.site.urls),
@@ -15,3 +19,5 @@ urlpatterns = [
     url(r'^', include('subjectsapp.urls',namespace="subjectapp")),
     url(r'^', include('toolsapp.urls',namespace="toolsapp")),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
