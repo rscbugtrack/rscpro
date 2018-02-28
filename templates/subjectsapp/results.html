@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>results</title>
-</head>
-<body>
-    <h2>over      gdvghvjfvgbjhbsf</h2>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block containers %}
+
+<div class="container">
+
+    <a href="{% url 'subjectapp:results' %}">RESULTS</a>
+    <p> list of Results </p>
+    <table class="table">
+        <tr>
+            <th>Sl no </th>
+            <th>Subject name </th>
+            <th>Paper type   </th>
+            <th>Paper number  </th>
+            <th>status  </th>
+        </tr>
+        {% for paper in paperslist %}
+        <tr>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</div>
+
+{% endblock %}
