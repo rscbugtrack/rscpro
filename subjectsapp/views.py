@@ -23,7 +23,7 @@ def subjectlist(request):
 def result(request):
 
     template = 'subjectsapp/result.html'
-    return render(request,template,context)
+    return render(request,template)
 
 
 
