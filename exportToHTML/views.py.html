@@ -1,0 +1,259 @@
+<html>
+<head>
+<title>views.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(128,128,128); }
+.s3 { color: rgb(106,135,89); }
+.s4 { color: rgb(104,151,187); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+views.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">from </span><span class="s1">django.shortcuts </span><span class="s0">import </span><span class="s1">render 
+</span><span class="s0">from </span><span class="s1">django.shortcuts </span><span class="s0">import </span><span class="s1">render</span><span class="s0">, </span><span class="s1">redirect</span><span class="s0">, </span><span class="s1">render_to_response 
+</span><span class="s0">import </span><span class="s1">random 
+</span><span class="s0">import </span><span class="s1">django 
+</span><span class="s0">import </span><span class="s1">datetime 
+ 
+</span><span class="s2"># Create your views here.</span><span class="s1"> 
+</span><span class="s0">from </span><span class="s1">django.http </span><span class="s0">import </span><span class="s1">HttpResponse 
+</span><span class="s0">from </span><span class="s1">django.contrib.auth.decorators </span><span class="s0">import </span><span class="s1">login_required 
+</span><span class="s0">from </span><span class="s1">django.contrib.messages </span><span class="s0">import </span><span class="s1">* 
+</span><span class="s0">from </span><span class="s1">django.contrib.auth.models </span><span class="s0">import </span><span class="s1">User 
+</span><span class="s0">from </span><span class="s1">subjectsapp.models </span><span class="s0">import </span><span class="s1">Questions</span><span class="s0">,</span><span class="s1">Paperstype 
+</span><span class="s0">from </span><span class="s1">certifiedapp.models </span><span class="s0">import </span><span class="s1">StudentResults 
+ 
+</span><span class="s0">def </span><span class="s1">certifiedapphome(request): 
+    </span><span class="s0">return </span><span class="s1">HttpResponse(</span><span class="s3">'cerifiedapphome'</span><span class="s1">) 
+ 
+ 
+</span><span class="s0">from </span><span class="s1">django.contrib.auth </span><span class="s0">import </span><span class="s1">login</span><span class="s0">, </span><span class="s1">authenticate 
+</span><span class="s2"># from django.contrib.auth.forms import</span><span class="s1"> 
+</span><span class="s0">from </span><span class="s1">certifiedapp.forms </span><span class="s0">import </span><span class="s1">UserCreationForm 
+</span><span class="s0">from </span><span class="s1">django.shortcuts </span><span class="s0">import </span><span class="s1">render</span><span class="s0">, </span><span class="s1">redirect 
+</span><span class="s0">from </span><span class="s1">django.contrib.auth.forms </span><span class="s0">import </span><span class="s1">PasswordChangeForm 
+</span><span class="s0">from </span><span class="s1">.forms </span><span class="s0">import </span><span class="s1">StudentProfileform 
+</span><span class="s0">from </span><span class="s1">.models </span><span class="s0">import </span><span class="s1">StudentProfile 
+</span><span class="s0">def </span><span class="s1">forgot_password(request): 
+    </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">,</span><span class="s3">'forgot_password.html'</span><span class="s0">,</span><span class="s1">context={}) 
+ 
+ 
+</span><span class="s0">def </span><span class="s1">signup(request): 
+    </span><span class="s0">if </span><span class="s1">request.method == </span><span class="s3">'POST'</span><span class="s1">: 
+        form = UserCreationForm(request.POST) 
+        </span><span class="s0">if </span><span class="s1">form.is_valid(): 
+            form.save() 
+            username = form.cleaned_data.get(</span><span class="s3">'username'</span><span class="s1">) 
+            raw_password = form.cleaned_data.get(</span><span class="s3">'password1'</span><span class="s1">) 
+            user = authenticate(username=username</span><span class="s0">, </span><span class="s1">password=raw_password) 
+            login(request</span><span class="s0">, </span><span class="s1">user) 
+            </span><span class="s0">return </span><span class="s1">redirect(</span><span class="s3">'login'</span><span class="s1">) 
+    </span><span class="s0">else</span><span class="s1">: 
+        form = UserCreationForm() 
+    </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">, </span><span class="s3">'registration/certapp_signup.html'</span><span class="s0">, </span><span class="s1">{</span><span class="s3">'form'</span><span class="s1">: form}) 
+ 
+ 
+@login_required 
+</span><span class="s0">def </span><span class="s1">userdashbord(request): 
+    </span><span class="s2"># only for superuser..</span><span class="s1"> 
+ 
+    </span><span class="s0">if </span><span class="s1">request.method == </span><span class="s3">'POST'</span><span class="s1">: 
+        form = StudentProfileform(request.POST</span><span class="s0">, </span><span class="s1">request.FILES) 
+        </span><span class="s0">if </span><span class="s1">form.is_valid(): 
+            picform = form.save(commit=</span><span class="s0">False</span><span class="s1">) 
+            picform.stu_user = request.user 
+            picform.save() 
+ 
+    </span><span class="s0">if </span><span class="s1">request.user.is_superuser: 
+        </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">, </span><span class="s3">'certifiedapp/admindashbord.html'</span><span class="s1">) 
+    </span><span class="s2"># only for nonsuper users / general users...</span><span class="s1"> 
+    </span><span class="s0">else</span><span class="s1">: 
+        form = StudentProfileform() 
+        </span><span class="s2"># stu = StudentProfile.objects.get(stu_user=request.user)</span><span class="s1"> 
+        </span><span class="s0">try</span><span class="s1">: 
+ 
+            stupic = StudentProfile.objects.get(stu_user=request.user) 
+        </span><span class="s0">except</span><span class="s1">: 
+            stupic = </span><span class="s3">'None'</span><span class="s1"> 
+ 
+        </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">,</span><span class="s3">'certifiedapp/userdashbord.html'</span><span class="s0">,</span><span class="s1">{</span><span class="s3">'profilepic_form'</span><span class="s1">:form</span><span class="s0">,</span><span class="s3">'stupic'</span><span class="s1">:stupic}) 
+ 
+ 
+ 
+</span><span class="s0">from </span><span class="s1">django.contrib </span><span class="s0">import </span><span class="s1">messages 
+</span><span class="s0">from </span><span class="s1">django.contrib.auth </span><span class="s0">import </span><span class="s1">update_session_auth_hash 
+</span><span class="s0">from </span><span class="s1">django.contrib.auth.forms </span><span class="s0">import </span><span class="s1">PasswordChangeForm 
+</span><span class="s0">from </span><span class="s1">django.shortcuts </span><span class="s0">import </span><span class="s1">render</span><span class="s0">, </span><span class="s1">redirect 
+@login_required 
+</span><span class="s0">def </span><span class="s1">change_password(request): 
+    </span><span class="s0">if </span><span class="s1">request.method == </span><span class="s3">'POST'</span><span class="s1">: 
+        form = PasswordChangeForm(request.user</span><span class="s0">, </span><span class="s1">request.POST) 
+        </span><span class="s0">if </span><span class="s1">form.is_valid(): 
+            user = form.save() 
+            update_session_auth_hash(request</span><span class="s0">, </span><span class="s1">user)  </span><span class="s2"># Important!</span><span class="s1"> 
+            messages.success(request</span><span class="s0">, </span><span class="s3">'Your password was successfully updated!'</span><span class="s1">) 
+             
+            </span><span class="s0">return </span><span class="s1">redirect(</span><span class="s3">'login'</span><span class="s1">) 
+        </span><span class="s0">else</span><span class="s1">: 
+            messages.error(request</span><span class="s0">, </span><span class="s3">'Please correct the error below.'</span><span class="s1">) 
+    </span><span class="s0">else</span><span class="s1">: 
+        form = PasswordChangeForm(request.user) 
+    </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">, </span><span class="s3">'accounts/Change_password.html'</span><span class="s0">, </span><span class="s1">{ 
+        </span><span class="s3">'form'</span><span class="s1">: form 
+    }) 
+ 
+ 
+</span><span class="s0">from </span><span class="s1">django.contrib.auth </span><span class="s0">import </span><span class="s1">* 
+</span><span class="s0">from </span><span class="s1">certifiedapp.models </span><span class="s0">import </span><span class="s1">Testlist 
+</span><span class="s0">from </span><span class="s1">django.core.paginator </span><span class="s0">import </span><span class="s1">Paginator</span><span class="s0">, </span><span class="s1">EmptyPage</span><span class="s0">, </span><span class="s1">PageNotAnInteger 
+</span><span class="s0">from </span><span class="s1">matplotlib.figure </span><span class="s0">import </span><span class="s1">Figure 
+</span><span class="s0">from </span><span class="s1">matplotlib.backends.backend_agg </span><span class="s0">import </span><span class="s1">FigureCanvasAgg </span><span class="s0">as </span><span class="s1">FigureCanvas 
+</span><span class="s0">def </span><span class="s1">simple(request): 
+    </span><span class="s0">import </span><span class="s1">random 
+    </span><span class="s0">import </span><span class="s1">django 
+    </span><span class="s0">import </span><span class="s1">datetime 
+    </span><span class="s0">from </span><span class="s1">matplotlib.dates </span><span class="s0">import </span><span class="s1">DateFormatter 
+ 
+    fig=Figure() 
+    ax=fig.add_subplot(</span><span class="s4">111</span><span class="s1">) 
+    x=[] 
+    y=[] 
+    now=datetime.datetime.now() 
+    delta=datetime.timedelta(days=</span><span class="s4">1</span><span class="s1">) 
+    </span><span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range(</span><span class="s4">10</span><span class="s1">): 
+        x.append(now) 
+        now+=delta 
+        y.append(random.randint(</span><span class="s4">0</span><span class="s0">, </span><span class="s4">800</span><span class="s1">)) 
+    ax.plot_date(x</span><span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s3">'-'</span><span class="s1">) 
+    ax.xaxis.set_major_formatter(DateFormatter(</span><span class="s3">'%Y-%m-%d'</span><span class="s1">)) 
+    fig.autofmt_xdate() 
+    canvas=FigureCanvas(fig) 
+    response=django.http.HttpResponse(content_type=</span><span class="s3">'image/png'</span><span class="s1">) 
+    canvas.print_png(response) 
+    </span><span class="s0">return </span><span class="s1">response 
+ 
+</span><span class="s0">from </span><span class="s1">django.http </span><span class="s0">import </span><span class="s1">HttpResponseRedirect 
+</span><span class="s0">from </span><span class="s1">django.core.urlresolvers </span><span class="s0">import </span><span class="s1">reverse 
+</span><span class="s0">def </span><span class="s1">upload_csv(request): 
+    data = {} 
+    </span><span class="s0">if </span><span class="s3">&quot;GET&quot; </span><span class="s1">== request.method: 
+        </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">, </span><span class="s3">&quot;certifiedapp/Take_Test.html&quot;</span><span class="s0">, </span><span class="s1">data) 
+    </span><span class="s2"># if not GET, then proceed</span><span class="s1"> 
+    </span><span class="s0">else</span><span class="s1">: 
+        csv_file = request.FILES[</span><span class="s3">&quot;csv_file&quot;</span><span class="s1">] 
+        </span><span class="s0">if not </span><span class="s1">csv_file.name.endswith(</span><span class="s3">'.csv'</span><span class="s1">): 
+            messages.error(request</span><span class="s0">,</span><span class="s3">'File is not CSV type'</span><span class="s1">) 
+            </span><span class="s0">return </span><span class="s1">HttpResponseRedirect(reverse(</span><span class="s3">&quot;certifiedapp:upload_csv&quot;</span><span class="s1">)) 
+        </span><span class="s2">#if file is too large, return</span><span class="s1"> 
+        </span><span class="s0">if </span><span class="s1">csv_file.multiple_chunks(): 
+            messages.error(request</span><span class="s0">,</span><span class="s3">&quot;Uploaded file is too big (%.2f MB).&quot; </span><span class="s1">% (csv_file.size/(</span><span class="s4">1000</span><span class="s1">*</span><span class="s4">1000</span><span class="s1">)</span><span class="s0">,</span><span class="s1">)) 
+            </span><span class="s0">return </span><span class="s1">HttpResponseRedirect(reverse(</span><span class="s3">&quot;certifiedapp:upload_csv&quot;</span><span class="s1">)) 
+ 
+        file_data = csv_file.read().decode(</span><span class="s3">&quot;utf-8&quot;</span><span class="s1">) 
+ 
+        x=[] 
+        y=[] 
+        fig=Figure() 
+        ax=fig.add_subplot(</span><span class="s4">111</span><span class="s1">) 
+        </span><span class="s0">import </span><span class="s1">csv 
+        </span><span class="s0">import </span><span class="s1">io 
+        io_string = io.StringIO(file_data) 
+        plots = csv.reader(io_string</span><span class="s0">, </span><span class="s1">delimiter=</span><span class="s3">','</span><span class="s1">) 
+        </span><span class="s0">for </span><span class="s1">row </span><span class="s0">in </span><span class="s1">plots: 
+            x.append(int(row[</span><span class="s4">0</span><span class="s1">])) 
+            y.append(int(row[</span><span class="s4">1</span><span class="s1">])) 
+        ax.plot(x</span><span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s1">label=</span><span class="s3">'$x^3$'</span><span class="s1">) 
+        ax.set_xlabel(</span><span class="s3">'X axis'</span><span class="s1">) 
+        ax.set_ylabel(</span><span class="s3">'Y axis'</span><span class="s1">) 
+        ax.set_title(</span><span class="s3">'Sample Data Graph'</span><span class="s1">) 
+        canvas = FigureCanvas(fig) 
+        response = HttpResponse( content_type = </span><span class="s3">'image/png'</span><span class="s1">) 
+        canvas.print_png(response) 
+        </span><span class="s0">return </span><span class="s1">response 
+ 
+@login_required 
+</span><span class="s0">def </span><span class="s1">test_list(request): 
+    t_list = Testlist.objects.all() 
+    page = request.GET.get(</span><span class="s3">'page'</span><span class="s0">, </span><span class="s4">1</span><span class="s1">) 
+    paginator = Paginator(t_list</span><span class="s0">, </span><span class="s4">5</span><span class="s1">) 
+    </span><span class="s0">try</span><span class="s1">: 
+        t_list = paginator.page(page) 
+    </span><span class="s0">except </span><span class="s1">PageNotAnInteger: 
+        t_list = paginator.page(</span><span class="s4">1</span><span class="s1">) 
+    </span><span class="s0">except </span><span class="s1">EmptyPage: 
+        t_list = paginator.page(paginator.num_pages) 
+    context = { </span><span class="s3">'t_list' </span><span class="s1">: t_list</span><span class="s0">,</span><span class="s3">'t_list'</span><span class="s1">:t_list} 
+    </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">,</span><span class="s3">'certifiedapp/Test_List.html'</span><span class="s0">,</span><span class="s1">context) 
+ 
+@login_required 
+</span><span class="s0">def </span><span class="s1">takepredict(request): 
+    </span><span class="s0">import </span><span class="s1">numpy </span><span class="s0">as </span><span class="s1">np 
+    A = np.array([[</span><span class="s4">1</span><span class="s0">, </span><span class="s4">2</span><span class="s0">, </span><span class="s4">3</span><span class="s1">]</span><span class="s0">, </span><span class="s1">[</span><span class="s4">4</span><span class="s0">, </span><span class="s4">5</span><span class="s0">, </span><span class="s4">6</span><span class="s1">]]) </span><span class="s2">#iprint A # [[1 2 3] # [4 5 6]] </span><span class="s1"> 
+    context = {</span><span class="s3">'example1'</span><span class="s1">:A} 
+    </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">,</span><span class="s3">'certifiedapp/Take_Test.html'</span><span class="s0">, </span><span class="s1">context) 
+ 
+</span><span class="s0">def </span><span class="s1">test_results(request): 
+ 
+    </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">,</span><span class="s3">'certifiedapp/Test_Results.html'</span><span class="s1">) 
+ 
+ 
+</span><span class="s2"># student free test.</span><span class="s1"> 
+@login_required 
+</span><span class="s0">def </span><span class="s1">student_freetest(request): 
+    stu_user = User.objects.get(username=request.user) 
+    paper = Paperstype.objects.get(pk=</span><span class="s4">2</span><span class="s1">) 
+    request.session[</span><span class="s3">'papertype'</span><span class="s1">] = paper.id 
+    print(request.session[</span><span class="s3">'papertype'</span><span class="s1">]) 
+ 
+    questions = Questions.objects.filter(papertype=paper) 
+    que_count = questions.count() 
+    request.session[</span><span class="s3">'total_que'</span><span class="s1">] = que_count 
+    context = {</span><span class="s3">'stu_questions'</span><span class="s1">:questions</span><span class="s0">, </span><span class="s3">'que_count'</span><span class="s1">:que_count} 
+ 
+ 
+ 
+    print(stu_user) 
+    </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">, </span><span class="s3">'certifiedapp/free_test.html'</span><span class="s0">, </span><span class="s1">context) 
+    </span><span class="s2"># return HttpResponse(questions)</span><span class="s1"> 
+ 
+ 
+ 
+@login_required 
+</span><span class="s0">def </span><span class="s1">student_test_submit(request): 
+    </span><span class="s0">try</span><span class="s1">: 
+        print(request.session[</span><span class="s3">'papertype'</span><span class="s1">]) 
+    </span><span class="s0">except</span><span class="s1">: 
+        </span><span class="s0">raise </span><span class="s1">ValueError(</span><span class="s3">'Your test done....'</span><span class="s1">) 
+    print(request.session[</span><span class="s3">'total_que'</span><span class="s1">]) 
+    total_que = int(request.session[</span><span class="s3">'total_que'</span><span class="s1">]) 
+    paper_type = Paperstype.objects.get(pk=int(request.session[</span><span class="s3">'papertype'</span><span class="s1">])) 
+    print(</span><span class="s3">'Total marks--&gt;:'</span><span class="s0">,</span><span class="s1">request.POST.get(</span><span class="s3">'totalmarks'</span><span class="s1">)) 
+    total_marks = int(request.POST.get(</span><span class="s3">'totalmarks'</span><span class="s1">)) 
+ 
+    stu_results = StudentResults(stu_user=request.user</span><span class="s0">, </span><span class="s1">total_marks = total_marks</span><span class="s0">, </span><span class="s1">total_question = total_que</span><span class="s0">,</span><span class="s1">paper_type = paper_type) 
+    stu_results.save() 
+    </span><span class="s0">del </span><span class="s1">request.session[</span><span class="s3">'papertype'</span><span class="s1">] 
+    request.session[</span><span class="s3">'student_resultid'</span><span class="s1">] = stu_results.id 
+    </span><span class="s2"># print(request.POST)</span><span class="s1"> 
+    </span><span class="s0">return </span><span class="s1">redirect(</span><span class="s3">'certifiedapp:student_testresult'</span><span class="s1">) 
+    </span><span class="s2"># return HttpResponse(stu_results)</span><span class="s1"> 
+ 
+@login_required 
+</span><span class="s0">def </span><span class="s1">student_testresult(request): 
+    student_resultid = int(request.session[</span><span class="s3">'student_resultid'</span><span class="s1">]) 
+ 
+    </span><span class="s0">return </span><span class="s1">render(request</span><span class="s0">, </span><span class="s3">'certifiedapp/student_results.html'</span><span class="s0">, </span><span class="s1">context={</span><span class="s3">'sturesults'</span><span class="s1">:StudentResults.objects.get(pk=student_resultid)}) 
+ 
+ 
+</span></pre>
+</body>
+</html>
