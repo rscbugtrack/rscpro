@@ -13,6 +13,6 @@ urlpatterns =[
     url(r'^allquestions/$', views.questionlist, name="questionlist"),
     url(r'^addquestions/$', views.add_questions, name="add_questions"),
     url(r'^editquestiontype/(?P<pk>\d+)$', views.edit_questions, name="edit_questions"),
-    url(r'^results/$', views.result, name="result"),
+    url(r'^results/$', views.results, name="results"),
 
 ]
