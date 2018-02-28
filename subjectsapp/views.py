@@ -20,15 +20,7 @@ def subjectlist(request):
     template = 'subjectsapp/subject_list.html'
     return render(request,template,context)
 
-<<<<<<< HEAD
-def results(request):
 
-    template = 'subjectsapp/results.html'
-    return render(request,template)
-=======
-def allresults(request):
-    return render(request)
->>>>>>> parent of 033f156... result page added
 
 
 
@@ -142,3 +134,8 @@ def edit_questions(request, pk):
         return redirect('subjectapp:questionlist')
 
     return render(request,template,context)
+
+def results(request):
+
+    template = 'subjectsapp/results.html'
+    return render(request,template)

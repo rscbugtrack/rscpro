@@ -7,7 +7,6 @@
 <div class="container">
 
     <a href="{% url 'subjectapp:results' %}">RESULTS</a>
-    <p> list of Results </p>
     <table class="table">
         <tr>
             <th>Sl no </th>
@@ -16,7 +15,7 @@
             <th>Scored  </th>
             <th>Percentage  </th>
             <th>Result Status</th>
-            <th>Date of Time</th>
+            <th>Date of exam</th>
         </tr>
         {% for paper in paperslist %}
         <tr>
@@ -29,7 +28,7 @@
 
         </tr>
         {% endfor %}
-    </table>
+    </table><hr>
 
 
 </div>
