@@ -21,7 +21,7 @@ def subjectlist(request):
     return render(request,template,context)
 
 def allresults(request):
-    return render("request")
+    return render(request)
 
 
 
