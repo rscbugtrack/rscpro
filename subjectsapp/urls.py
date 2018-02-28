@@ -13,6 +13,11 @@ urlpatterns =[
     url(r'^allquestions/$', views.questionlist, name="questionlist"),
     url(r'^addquestions/$', views.add_questions, name="add_questions"),
     url(r'^editquestiontype/(?P<pk>\d+)$', views.edit_questions, name="edit_questions"),
+<<<<<<< HEAD
     url(r'^results/$', views.results, name="results"),
+=======
+    url(r'^allresults/$', views.allresults, name="allresults"),
+    
+>>>>>>> parent of 033f156... result page added
 
 ]
