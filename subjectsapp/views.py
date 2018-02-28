@@ -21,7 +21,9 @@ def subjectlist(request):
     return render(request,template,context)
 
 def allresults(request):
-    template = 'subjectapp/subject_result.html'
+    return render("request")
+
+
 
 def add_subject(request):
     subform = Subjectform(request.POST)
