@@ -15,4 +15,5 @@ urlpatterns =[
     url(r'^editquestiontype/(?P<pk>\d+)$', views.edit_questions, name="edit_questions"),
     url(r'^results/$', views.results, name="results"),
 
+
 ]
