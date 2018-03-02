@@ -20,8 +20,8 @@ def subjectlist(request):
     template = 'subjectsapp/subject_list.html'
     return render(request,template,context)
 
-def resultslist(request):
-    template = 'subjectsapp/resultslist.html'
+def results(request):
+    template = 'subjectsapp/results.html'
     return render(request,template)
 
 def add_subject(request):
