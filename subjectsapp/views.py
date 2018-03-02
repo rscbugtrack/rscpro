@@ -20,6 +20,9 @@ def subjectlist(request):
     template = 'subjectsapp/subject_list.html'
     return render(request,template,context)
 
+def resultslist(request):
+    template = 'subjectsapp/resultslist.html'
+    return render(request,template)
 
 def add_subject(request):
     subform = Subjectform(request.POST)

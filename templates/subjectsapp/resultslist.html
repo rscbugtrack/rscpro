@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block containers %}
+
+<div class="container">
+
+    <a href="{% url 'subjectapp:resultslist %}">view results</a>
+    <p> list of subjects </p>
+    <table class="table">
+        <tr>
+            <th>Sl no </th>
+            <th>Subject name </th>
+            <th>Status  </th>
+        </tr>
+        {% for sub in subjects %}
+        <tr>
+
+            <td></td>
+            <td>  </td>
+            <td></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</div>
+
+{% endblock %}
