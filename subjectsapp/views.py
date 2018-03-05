@@ -21,6 +21,9 @@ def subjectlist(request):
     return render(request,template,context)
 
 
+
+
+
 def add_subject(request):
     subform = Subjectform(request.POST)
 
@@ -131,3 +134,8 @@ def edit_questions(request, pk):
         return redirect('subjectapp:questionlist')
 
     return render(request,template,context)
+
+def results(request):
+
+    template = 'subjectsapp/results.html'
+    return render(request,template)

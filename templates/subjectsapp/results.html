@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block containers %}
+
+<div class="container">
+
+    <a href="{% url 'subjectapp:results' %}">RESULTS</a>
+    <table class="table">
+        <tr>
+            <th>Sl no </th>
+            <th>Student name </th>
+            <th>Paper type   </th>
+            <th>Scored  </th>
+            <th>Percentage  </th>
+            <th>Result Status</th>
+            <th>Date of exam</th>
+        </tr>
+        {% for paper in paperslist %}
+        <tr>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+        </tr>
+        {% endfor %}
+    </table><hr>
+
+
+</div>
+
+{% endblock %}
