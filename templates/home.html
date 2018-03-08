@@ -7,65 +7,293 @@
 </div><br>
 
 
- <!-- Carousel Slider -->
-    <div id="carouselLogo" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselLogo" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselLogo" data-slide-to="1"></li>
-            <li data-target="#carouselLogo" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <img class="d-block img-fluid" src="http://www.facenet.org/wp-content/themes/executive/assets/images/header.jpg" alt="First slide">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+
+<div class="container">
+
+    <div id="tabs-home" class="row slider" style="background:url(http://legalprom.cl/wp-content/uploads/2014/05/main-bg.jpg) no-repeat center fixed;">
+        <div class="col-sm-3">
+            <nav class="nav-sidebar">
+                <ul class="nav tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab"><p>Django</p><span>Framework</span></a></li>
+                    <li class=""><a href="#tab2" data-toggle="tab"><p>Machine learning</p><span>Artificial Intelligence</span></a></li>
+                    <li class=""><a href="#tab3" data-toggle="tab"><p>Big data</p><span>Data Processing Application</span></a></li>   
+                    <li class=""><a href="#tab4" data-toggle="tab"><p>web services</p><span>REST</span></a></li>  
+                </ul>
+            </nav>
+        </div>
+        <!-- tab content -->
+        <div id="wea" class="col-sm-9 tab-content">
+        
+            <div class="tab-pane active text-style fade in active" id="tab1">
+                <h2>Django is a free and open-source web framework</h2>
+                <p>Libérese de malos ratos con nuestra garantía de aprobación bancaria de sus estatutos</p>
+                <p><strong>Desde $74.990 y 24 hrs.</strong></p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Seleccione Sociedad para comenzar:</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/forms/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ve6XAejZc30dRt9YPpgeHfj7z95M0d8dI9dVZtndr9IhXOt4/mF1WjyPwlScpgyCh4bkLKNzfyt5naNaG837Rw==">
+                            <div class="row form-group">
+                                <div class="col-md-2">
+                                    <img src="http://legalprom.cl/wp-content/uploads/2014/05/eirl70.jpg"data-toggle="tooltip" data-original-title="Sociedad EIRL">
+                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_eirl">
+                                    </div>
+                                <div class="col-md-2">
+                                    <img src="http://legalprom.cl/wp-content/uploads/2014/05/sa70.jpg"data-toggle="tooltip" data-original-title="Sociedad SA">
+                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_sa">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="http://legalprom.cl/wp-content/uploads/2014/05/srl70.jpg"data-toggle="tooltip" data-original-title="Sociedad SRL">
+                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_srl">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="http://legalprom.cl/wp-content/uploads/2014/05/spa70.jpg"data-toggle="tooltip" data-original-title="Sociedad SpA">
+                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_spa">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Apellido">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email">
+                            </div>
+                            <input type="submit" name="commit" value="Crear mi empresa" class="btn btn-info btn-block">
+                
+                        </form>                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane text-style fade" id="tab2">
+                <h2>Machine learning gives ability to "learn" with data</h2>
+                <p>Evite que otros aprovechen su esfuerzo y buen nombre registrando su marca con LegalProm</p>
+                <p><strong>Desde $129.990</strong></p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Seleccione Sociedad para comenzar:</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/forms/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ve6XAejZc30dRt9YPpgeHfj7z95M0d8dI9dVZtndr9IhXOt4/mF1WjyPwlScpgyCh4bkLKNzfyt5naNaG837Rw==">
+                            <div class="row form-group">
+                                <div class="col-md-2">
+                                    <img src="http://legalprom.cl/wp-content/uploads/2014/02/establecimiento-comercial.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Establecimiento Comercial">
+                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_mec">
+                                    </div>
+                                <div class="col-md-2">
+                                    <img src="http://legalprom.cl/wp-content/uploads/2014/02/servicio.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Servicio">
+                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_ms">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="http://legalprom.cl/wp-content/uploads/2014/02/producto.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Producto">
+                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_mp">
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="http://legalprom.cl/wp-content/uploads/2014/02/establecimiento-industrial.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Establecimiento Industrial">
+                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_mei">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Apellido">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email">
+                            </div>
+                            <input type="submit" name="commit" value="Crear mi empresa" class="btn btn-info btn-block">
+                
+                        </form>                
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane text-style fade" id="tab3">
+                <h2>Modificación y Disolución Sociedades</h2>
+                <p>Concrete oportunidades adaptando sus negocios con velocidad y seguridad LegalProm</p>
+                <p><strong>Desde $44.990 y 24 hrs.</strong></p>
+                <a href="#">Detalle Precio y Plazos</a>
+            </div> 
+            
+            <div class="tab-pane text-style fade" id="tab4">
+                <h2>¿Busca un Abogado en Quien Confiar?</h2>
+                <p>Miles de clientes han confiado en LegalProm. Muchos huyendo de malos servicios, perdidas de tiempo y dinero.</p>
+            </div> 
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="row press-quotes">
+        <div class="col-md-4">
+            <center><img class="press-logos" alt="Logo CNN Chile" src="http://legalprom.cl/wp-content/uploads/2013/12/logo-cnnchile.png"/></center>
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="alignleft size-full wp-image-361" src="http://legalprom.cl/wp-content/uploads/2014/01/comillas.png" alt="comillas" width="24" height="20">
+                </div>
+                <div class="col-md-10">
+                    <p>Un gran avance en el proceso de crear nuevas empresas</p>
+                </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselLogo" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselLogo" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-    <!-- Carousel Slider -->
- 
-    <!-- Card -->
-    <div class="container container mt-4 mb-5">
-        <h3 class="display-4 text-center"> Certification Courses</h3>
-        <hr class="bg-dark mb-4 w-25">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-block p-3">
-                        <h4 class="card-title">Python</h4>
-                        <p class="card-text">When an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    </div>
+        <div class="col-md-4">
+            <center><img class="press-logos" style="margin-bottom:35px;" alt="Logo Las Últimas Noticias" src="http://legalprom.cl/wp-content/uploads/2014/01/logo-lun2.png"/></center>
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="alignleft size-full wp-image-361" src="http://legalprom.cl/wp-content/uploads/2014/01/comillas.png" alt="comillas" width="24" height="20">
+                </div>
+                <div class="col-md-10">
+                    <p>Chao a los trámites para armar una sociedad</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-block p-3">
-                        <h4 class="card-title">Django</h4>
-                        <p class="card-text">When an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    </div>
+        </div>
+        <div class="col-md-4">
+            <center><img class="press-logos" alt="Logo Innovacion.cl" src="http://legalprom.cl/wp-content/uploads/2013/12/logo-innovacion1.png"/></center>
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="alignleft size-full wp-image-361" src="http://legalprom.cl/wp-content/uploads/2014/01/comillas.png" alt="comillas" width="24" height="20">
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-block p-3">
-                        <h4 class="card-title">Git</h4>
-                        <p class="card-text">When an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    </div>
+                <div class="col-md-10">
+                    <p>El sueño del emprendimiento fácil, rápido y a bajo costo</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Card -->
-<br>
-<br>
-<br>
- 
+    
+    <div class="line">
+        <hr/>
+    </div>
+    
+    <div class="row steps">
+        <h3>3 Sencillos Pasos</h3>
+        <div class="col-md-4">
+            <center><img alt="Paso 1 - formulario online" src="http://legalprom.cl/wp-content/uploads/2013/12/paso1-formulario.jpg"/></center>
+            <h4>Responda un sencillo cuestionario en línea. No mas de 10 min.</h4>
+        </div>
+        <div class="col-md-4">
+            <center><img alt="Paso 2 - generación y revisión de documentos" src="http://legalprom.cl/wp-content/uploads/2013/12/paso2-documentos.jpg"/></center>
+            <h4>Abogados revisarán sus respuestas y crearán sus documentos</h4>
+        </div>
+        <div class="col-md-4">
+            <center><img alt="Paso 3 - Firma en notaria" src="http://legalprom.cl/wp-content/uploads/2013/12/paso3-firma.jpg"/></center>
+            <h4>Se firman y LegalProm se encarga del resto. Ud. ahorrará tiempo</h4>
+        </div>
+    </div>
+    
+    <h3 style="font-size: 36px;font-weight: 300;color: #057d9f;text-align: center;margin:50px 0 30px 0;">Lo que Opinan Nuestros Clientes</h3>
+    
+    <div class="row" id="opinion-left" style="background:url(http://legalprom.cl/wp-content/uploads/2014/05/engel-volkers.jpg) no-repeat center;">
+        <div class="col-md-6">
+            <h3>Seguro y rápido. Súper conforme</h3>
+            <p>Nelson del Villar</p>
+            <p>Co-Fundador de Antares, Concesionaria Engel & Volkers</p>
+            <p>Empresa creada con LegalProm</p>
+        </div>
+    </div>
+    
+    <h3 style="font-size: 36px;font-weight: 300;text-align: center;margin:70px 0;">El Servicio Legal que Necesita a un Precio a su Alcance</h3>
+    
+    <div class="row features-home-left">
+        <div class="col-md-7">
+            <h3>Rápido</h3>
+            <h4>Nuestro 1er. envío de documentos es en 24 hrs.</h4>
+            <p>En términos de velocidad nuestra tecnología nos permite volar. LegalProm realiza el primer envío en unas 24 horas hábiles. Con Sociedades 24 Hrs. Ud. puede incluso suscribir de inmediato con firmas electrónicas</p>
+        </div>
+        <div class="col-md-5">
+            <img alt="rapidez de legalprom" src="http://legalprom.cl/wp-content/uploads/2014/05/rapidez.jpg"/>
+        </div>
+    </div>
+    
+    <div class="row features-home-right">
+        <div class="col-md-5">
+            <img alt="legalprom es economico" src="http://legalprom.cl/wp-content/uploads/2014/05/economico.jpg"/>
+        </div>
+        <div class="col-md-7">
+            <h3>Económico</h3>
+            <h4>Un servicio del mas elevado estándar al mejor precio</h4>
+            <p>Apoyado por CORFO y Banco BCI nuestro equipo abogados, de la Pontificia Universidad Católica de Chile y Universidad de Concepción, utilizan las soluciones y cláusulas mas eficientes, afinadas durante sus mas de 10 años de experiencia</p>
+        </div>
+    </div>
+    
+    <div class="row features-home-left">
+        <div class="col-md-7">
+            <h3>Fácil y Claro</h3>
+            <h4>LegalProm es simple</h4>
+            <p>Queremos dejar atrás el tiempo en que los temas legales eran un asunto opaco en que el cliente quedaba indefenso ante una cortina de tecnicismos. Nuestros clientes agradecen que les hablemos en un idioma claro y sin ambigüedades</p>
+        </div>
+        <div class="col-md-5">
+            <img alt="claridad y facilidad de legalprom" src="http://legalprom.cl/wp-content/uploads/2014/05/claridad.jpg"/>
+        </div>
+    </div>
+    
+    <div class="row features-home-right">
+        <div class="col-md-5">
+            <img alt="rapidez de legalprom" src="http://legalprom.cl/wp-content/uploads/2014/05/rapidez.jpg"/>
+        </div>
+        <div class="col-md-7">
+            <h3>Seguro</h3>
+            <h4>Productos legales seguros a su alcance</h4>
+            <p>LegalProm registra una tasa de satisfacción de prácticamente un 100%. Nuestras sociedades han superado todos los controles bancarios y de otras entidades tales como ministerios, ChileCompra, municipalidades, etc.</p>
+        </div>
+        <a href="http://legalprom.com/por-que-legalprom/" class="btn btn-primary btn-lg" style="float:right;margin-top:50px;padding:20px;">Ver más razones para elegirnos</a>
+    </div>
+    
+    <div class="line">
+        <hr/>
+    </div>
+    
+    <h3 style="font-size: 36px;font-weight: 300;text-align: center;margin:70px 0;">Miles de Clientes Satisfechos desde 2012</h3>
+    
+    <center><img alt="" src="http://legalprom.cl/wp-content/uploads/2014/05/clientes.jpg"/></center>
+    
+    <div class="line">
+        <hr/>
+    </div>    
+    
+    <div class="row">
+        <div class="col-md-12 one-column-text">
+            <h2 style="font-size:36px;">Olvídese de Trámites y Complicaciones</h2>
+            <h3 style="font-size:24px;">Déje sus asuntos en manos de nuestro equipo y ocupe su tiempo su negocio</h3>
+        </div>
+    </div>
+    
+    <div class="row buttons-who-we-are">
+        <div clas="col-md-6">
+            <a class="btn btn-primary btn-lg" style="float:left; width:30%;margin:10%; padding:30px;">Registrar su marca</a>
+        </div>
+        <div clas="col-md-6">
+            <a class="btn btn-info btn-lg" style="float:right;width:30%; margin:10%; padding:30px;">Crear su empresa</a>
+        </div>
+        
+    </div>
+
+    <center><p>Miles de clientes felices y satisfechos desde 2012.</p></center>
+    
+    <div class="row" id="opinion-right" style="background:url(http://legalprom.cl/wp-content/uploads/2014/05/ingeagro.jpg) no-repeat center;">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <h3>Sobresaliente servicio !</h3>
+            <p>Rosario Sepúlveda</p>
+            <p>Co-Fundadora de IngeAgro</p>
+            <p>Empresa creada con LegalProm</p>
+        </div>
+    </div>
+    
+</div>
+
+
 
 
 
@@ -82,56 +310,305 @@
 
 
 <style>
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css');
-.bg-dark {
-    background-color: #343a40!important;
-}
+body{
+    font-family:open sans;}
+
+
+.one-column-text{
+    padding:80px 0;}
+
+.one-column-text h2{
+    font-size:42px;
+    font-weight:300;
+    color:#057d9f;
+    line-height:48px;
+    text-align: center;}
+
+.one-column-text h3{
+    font-size:24px;
+    font-weight:300;
+    color:#057d9f;
+    text-align: center;
+    line-height:40px;}
+
+/*------------------------------------------*/
+
+.container{
+    width:100%;
+    padding:0;}
+
+.slider{
+  font-family: 'Open Sans', sans-serif;  
+  padding:50px 120px;
+  display:block;}
+
+
+
+.blogShort{ 
+    border-bottom:1px solid #ddd;}
+
+.add{
+    background: #333; 
+    padding: 10%; 
+    height: 300px;}
+
+.nav-sidebar { 
+    width: 100%; 
+    border-right: 8px solid #95adc2;}
+    
+.nav-sidebar a {
+    min-height:80px;
+    color: #333;
+    backgroud-color: #EFF0F2;
+    -webkit-transition: all 0.08s linear;
+    -moz-transition: all 0.08s linear;
+    -o-transition: all 0.08s linear;
+    transition: all 0.08s linear;}
+    
+.nav-sidebar .active a { 
+    cursor: default;
+    background-color: #95adc2; 
+    color: #fff;}
+    
+.nav-sidebar .active a:hover {
+    background-color: #ECEDEE;}
+    
+.nav-sidebar .text-overflow a,
+.nav-sidebar .text-overflow .media-body {
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;}
+
+.btn-blog {
+    color: #ffffff;
+    background-color: #E50000;
+    border-color: #E50000;
+    border-radius:0;
+    margin-bottom:10px;}
+    
+.btn-blog:hover,
+.btn-blog:focus,
+.btn-blog:active,
+.btn-blog.active,
+.open .dropdown-toggle.btn-blog {
+    color: white;
+    background-color:#0b56a8;
+    border-color: #0b56a8;}
+    
+article h2{
+    color:#333333; 
+    font-family: 'Open Sans', sans-serif;}
+
+.margin10{
+    margin-bottom:10px; 
+    margin-right:10px;}
+  
+.tabs p{
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom:0;}
+    
+.tabs li a{
+    padding:22px 25px;}
+    
+.tabs span{
+    font-size: .9em;}
+    
+.text-style h2{
+    font-size: 42px;
+    font-weight:300;
+    color: #025167;
+    line-height:48px;
+    margin-bottom:25px;
+    margin-top:0;
+    width:70%;}
+    
+.text-style p{
+    font-size:18px;
+    font-weight:300;
+    color: #025167;
+    width:40%;}
+    
+.panel-default{
+    width:350px;}
+
+
+
+
+
+
+
+.press-quotes{
+    padding:50px 150px;}
+    
+.press-quotes p{
+    font-size: 16px;
+    font-style: italic;
+    color: #057d9f;
+    line-height: 24px;}
+
+.press-logos{
+    margin-bottom:20px;}
+
+.line{
+    padding:0 150px;}
+
+.line hr{
+    margin:20px 0;
+    border:solid 1px #eee;}
+
+.steps{
+    padding:0 150px;
+    margin-bottom:30px;}
+    
+.steps h3{
+    font-size: 36px;
+    font-weight: 300;
+    color: #057d9f;
+    text-align: center;
+    margin-bottom:30px;}
+    
+.steps h4{
+    font-size: 20px;
+    font-weight: 300;
+    color: #444;
+    line-height: 24px;
+    text-align: center;}
+
+#opinion-left h3{
+    font-size: 40px;
+    font-style: italic;
+    color: #525252;
+    font-weight:300;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+    margin-bottom:20px;}
+    
+#opinion-left{
+    padding:70px 150px;}
+    
+#opinion-left p{
+    text-align:right;
+    margin:0;
+    font-size: 16px;
+    font-style: italic;
+    color: #7d7d7d;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+    font-weight:300;}
+    
+#opinion-right h3{
+    font-size: 40px;
+    font-style: italic;
+    color: #525252;
+    font-weight:300;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+    margin-bottom:20px;}
+    
+#opinion-right{
+    padding:70px 150px;
+    margin-top:100px;}
+    
+#opinion-right p{
+    text-align:right;
+    margin:0;
+    font-size: 16px;
+    font-style: italic;
+    color: #7d7d7d;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+    font-weight:300;}
+
+.features-home-left{
+    margin:40px 150px;}
+    
+.features-home-left h3{
+    font-weight:700;
+    font-size:32px;}
+    
+.features-home-left h4{
+    font-weight:300;
+    font-size:22px;
+    margin-bottom:30px;}
+    
+.features-home-left p{
+    font-weight:300;}
+
+.features-home-right{
+    margin:40px 150px;}
+
+.features-home-right h3{
+    font-weight:700;
+    font-size:32px;
+    text-align:right;}
+
+.features-home-right h4{
+    font-weight:300;
+    font-size:22px;
+    margin-bottom:30px;
+    text-align:right;}
+    
+.features-home-right p{
+    font-weight:300;
+    text-align:right;}
+
+.features-home-right img{
+    float:right;}
+
+
+.panel-heading h3{
+    font-weight:300;}
+    
+.form-group img{
+    min-width:50px;
+    max-width:50px;}
+    
+.text-style a{
+    color: #2e82bc;}
+    
+.slider{
+    height:600px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
-<br>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
-<!------ Include the above in your HEAD tag ---------->
-{% for i in blog_obj %}
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-      $("#{{i.id}}sum").hide();
-    $("#{{i.id}}").click(function(){
-        $("#{{i.id}}sum").toggle();
-    });
+ var stop = false;
+$(document).ready(function() {
+   
+ 
+   
+ 
+     var tabCarousel = setInterval(function() {
+        var tabs = $('#tabs-home .nav.tabs > li'),
+            active = tabs.filter('.active'),
+            next = active.next('li'),
+            toClick = next.length ? next.find('a') : tabs.eq(0).find('a');
+
+        toClick.trigger('click');
+    }, 5000);
+
+    
 });
 </script>
 
-<div class="container">
-	<div class="row">
-		<div class="row"> 
-                        <h3><ul><li>{{i.title}}</li></ul></h3>
-                        <p>{{i.description}}<br><button id="{{i.id}}">Read More</button></p>
-                </div>
-
-                <div id="{{i.id}}sum">
-                     
-                    <p>Summary:{{i.summary}}</p><br><br>
-                    <p><font color=Blue>Author</font>:<font color=red>{{i.author}}</font>,<br><i>Post on:{{i.post_on}}</i></p>
-                </div>
-
-                 
-       </div>
-                <hr>
-{% endfor %}
-
-     
-</div>
-
-
-
-<br>
-<br>
-<br>
 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=redsuncube.com3694807&digit=style/plain/10/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://love-message.org" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;">Visitor Count</a>
 
 {% endblock %}
