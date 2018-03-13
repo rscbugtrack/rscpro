@@ -4,7 +4,7 @@ from bugtrackapp import views
 
 
 urlpatterns =[
-    #url(r'^$', views.rschome, name="rschome"),
+    url(r'^blog/$', views.blog, name="blog"),
     url(r'^rscbugtrack/$', views.rscbugtrack, name="rscbugtrack"),
     url(r'^aboutus/$', views.aboutus, name="aboutus"),
     url(r'^ourteam/$', views.ourteam, name="ourteam"),
