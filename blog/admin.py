@@ -6,7 +6,11 @@ from django.utils.html import format_html
 from django.contrib.auth.models import User
 
 
+from blog.models import Post, Author
+from django.contrib import admin
 
+admin.site.register(Author)
+admin.site.register(Post)
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):

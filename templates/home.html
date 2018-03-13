@@ -2,427 +2,328 @@
 
 {% block containers %}
 
-<div align="right">
-<a href="/login"><button>Login<span class="glyphicon glyphicon-log-in"></span></button></a>
-</div><br>
 
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Digital Vibrant | Coming Soon </title>
 
-<div class="container">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
-    <div id="tabs-home" class="row slider" style="background:url(http://legalprom.cl/wp-content/uploads/2014/05/main-bg.jpg) no-repeat center fixed;">
-        <div class="col-sm-3">
-            <nav class="nav-sidebar">
-                <ul class="nav tabs">
-                    <li class="active"><a href="#tab1" data-toggle="tab"><p>Django</p><span>Framework</span></a></li>
-                    <li class=""><a href="#tab2" data-toggle="tab"><p>Machine learning</p><span>Artificial Intelligence</span></a></li>
-                    <li class=""><a href="#tab3" data-toggle="tab"><p>Big data</p><span>Data Processing Application</span></a></li>   
-                    <li class=""><a href="#tab4" data-toggle="tab"><p>web services</p><span>REST</span></a></li>  
-                </ul>
-            </nav>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="styles/main.css" rel="stylesheet">
+
+    <link rel="icon" href="img/fevicon.ico" type="image/ico" sizes="16x16">
+
+  </head>
+  <body id="top"><div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h3 class="masthead-brand"> Your Logo </h3>
+          <nav class="nav nav-masthead">
+            <a class="nav-link nav-social" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a class="nav-link nav-social" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a class="nav-link nav-social" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+            <a class="nav-link nav-social" href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          </nav>
         </div>
-        <!-- tab content -->
-        <div id="wea" class="col-sm-9 tab-content">
-        
-            <div class="tab-pane active text-style fade in active" id="tab1">
-                <h2>Django is a free and open-source web framework</h2>
-                <p>Libérese de malos ratos con nuestra garantía de aprobación bancaria de sus estatutos</p>
-                <p><strong>Desde $74.990 y 24 hrs.</strong></p>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Seleccione Sociedad para comenzar:</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form action="/forms/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ve6XAejZc30dRt9YPpgeHfj7z95M0d8dI9dVZtndr9IhXOt4/mF1WjyPwlScpgyCh4bkLKNzfyt5naNaG837Rw==">
-                            <div class="row form-group">
-                                <div class="col-md-2">
-                                    <img src="http://legalprom.cl/wp-content/uploads/2014/05/eirl70.jpg"data-toggle="tooltip" data-original-title="Sociedad EIRL">
-                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_eirl">
-                                    </div>
-                                <div class="col-md-2">
-                                    <img src="http://legalprom.cl/wp-content/uploads/2014/05/sa70.jpg"data-toggle="tooltip" data-original-title="Sociedad SA">
-                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_sa">
-                                </div>
-                                <div class="col-md-2">
-                                    <img src="http://legalprom.cl/wp-content/uploads/2014/05/srl70.jpg"data-toggle="tooltip" data-original-title="Sociedad SRL">
-                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_srl">
-                                </div>
-                                <div class="col-md-2">
-                                    <img src="http://legalprom.cl/wp-content/uploads/2014/05/spa70.jpg"data-toggle="tooltip" data-original-title="Sociedad SpA">
-                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="society_spa">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Nombre">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Apellido">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email">
-                            </div>
-                            <input type="submit" name="commit" value="Crear mi empresa" class="btn btn-info btn-block">
-                
-                        </form>                
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-pane text-style fade" id="tab2">
-                <h2>Machine learning gives ability to "learn" with data</h2>
-                <p>Evite que otros aprovechen su esfuerzo y buen nombre registrando su marca con LegalProm</p>
-                <p><strong>Desde $129.990</strong></p>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Seleccione Sociedad para comenzar:</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form action="/forms/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ve6XAejZc30dRt9YPpgeHfj7z95M0d8dI9dVZtndr9IhXOt4/mF1WjyPwlScpgyCh4bkLKNzfyt5naNaG837Rw==">
-                            <div class="row form-group">
-                                <div class="col-md-2">
-                                    <img src="http://legalprom.cl/wp-content/uploads/2014/02/establecimiento-comercial.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Establecimiento Comercial">
-                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_mec">
-                                    </div>
-                                <div class="col-md-2">
-                                    <img src="http://legalprom.cl/wp-content/uploads/2014/02/servicio.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Servicio">
-                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_ms">
-                                </div>
-                                <div class="col-md-2">
-                                    <img src="http://legalprom.cl/wp-content/uploads/2014/02/producto.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Producto">
-                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_mp">
-                                </div>
-                                <div class="col-md-2">
-                                    <img src="http://legalprom.cl/wp-content/uploads/2014/02/establecimiento-industrial.jpg" class="img-responsive img-radio" width="50" data-toggle="tooltip" title="" data-original-title="Marca Establecimiento Industrial">
-                                    <input type="checkbox" name="doc_type[cod][]" class="hidden" value="brand_mei">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="Nombre">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Apellido">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="email" id="email" class="form-control input-sm" placeholder="Email">
-                            </div>
-                            <input type="submit" name="commit" value="Crear mi empresa" class="btn btn-info btn-block">
-                
-                        </form>                
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-pane text-style fade" id="tab3">
-                <h2>Data processing application software are inadequate to deal with them
-                    </h2>
-                <p>Concrete oportunidades adaptando sus negocios con velocidad y seguridad LegalProm</p>
-                <p><strong>Desde $44.990 y 24 hrs.</strong></p>
-                <a href="#">Detalle Precio y Plazos</a>
-            </div> 
-            
-            <div class="tab-pane text-style fade" id="tab4">
-                <h2>¿Busca un Abogado en Quien Confiar?</h2>
-                <p>Miles de clientes han confiado en LegalProm. Muchos huyendo de malos servicios, perdidas de tiempo y dinero.</p>
-            </div> 
-        </div>
-        
-    </div>
-    
+      </div>
+      <br>
+      <div class="inner cover">
+        <h1 class="cover-heading">CERTIFICATION</h1>
+        <h5 class="sub-header">I want to be professional in software industries </h5>
+        <br>
+        <p class="lead cover-copy">
+            Click the login to write certificate</p>
+            <p class="lead">
+<a href="/login"><button>Login<span class="glyphicon glyphicon-log-in"></span></button></a>
 
 
-
-
-
-
-
-
+</button></p>
+      </div>
+  </div>
+</div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  </body>
+</html>
 
 <style>
-body{
-    font-family:open sans;}
+/*
+ * Globals
+ */
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
 
+/* Custom default button */
+.btn-default {
+  color: #fff;
+  text-shadow: none;
+  /* Prevent inheritence from `body` */
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 0.5rem 2rem;
+}
 
-.one-column-text{
-    padding:80px 0;}
+.btn-default:hover,
+.btn-default:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+}
 
-.one-column-text h2{
-    font-size:42px;
-    font-weight:300;
-    color:#057d9f;
-    line-height:48px;
-    text-align: center;}
+/*
+ * Base structure
+ */
+html,
+body {
+  height: 100%;
+}
 
-.one-column-text h3{
-    font-size:24px;
-    font-weight:300;
-    color:#057d9f;
-    text-align: center;
-    line-height:40px;}
+body {
+  background: url(https://ltcmedia.com/wp-content/uploads/2017/05/steps.jpg) no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size:18px !important;
+}
 
-/*------------------------------------------*/
+.cover-copy{
+    color:#fff !important ;
+}
 
-.container{
-    width:100%;
-    padding:0;}
-
-.slider{
-  font-family: 'Open Sans', sans-serif;  
-  padding:50px 120px;
-  display:block;}
-
-
-
-.blogShort{ 
-    border-bottom:1px solid #ddd;}
-
-.add{
-    background: #333; 
-    padding: 10%; 
-    height: 300px;}
-
-.nav-sidebar { 
-    width: 100%; 
-    border-right: 8px solid #95adc2;}
-    
-.nav-sidebar a {
-    min-height:80px;
-    color: #333;
-    backgroud-color: #EFF0F2;
-    -webkit-transition: all 0.08s linear;
-    -moz-transition: all 0.08s linear;
-    -o-transition: all 0.08s linear;
-    transition: all 0.08s linear;}
-    
-.nav-sidebar .active a { 
-    cursor: default;
-    background-color: #95adc2; 
-    color: #fff;}
-    
-.nav-sidebar .active a:hover {
-    background-color: #ECEDEE;}
-    
-.nav-sidebar .text-overflow a,
-.nav-sidebar .text-overflow .media-body {
-    white-space: nowrap;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;}
-
-.btn-blog {
-    color: #ffffff;
-    background-color: #E50000;
-    border-color: #E50000;
-    border-radius:0;
-    margin-bottom:10px;}
-    
-.btn-blog:hover,
-.btn-blog:focus,
-.btn-blog:active,
-.btn-blog.active,
-.open .dropdown-toggle.btn-blog {
-    color: white;
-    background-color:#0b56a8;
-    border-color: #0b56a8;}
-    
-article h2{
-    color:#333333; 
-    font-family: 'Open Sans', sans-serif;}
-
-.margin10{
-    margin-bottom:10px; 
-    margin-right:10px;}
-  
-.tabs p{
-    letter-spacing: 1px;
-    font-weight: 600;
-    margin-bottom:0;}
-    
-.tabs li a{
-    padding:22px 25px;}
-    
-.tabs span{
-    font-size: .9em;}
-    
-.text-style h2{
-    font-size: 42px;
-    font-weight:300;
-    color: #025167;
-    line-height:48px;
-    margin-bottom:25px;
-    margin-top:0;
-    width:70%;}
-    
-.text-style p{
-    font-size:18px;
-    font-weight:300;
-    color: #025167;
-    width:40%;}
-    
-.panel-default{
-    width:350px;}
+.btn-notify{
+    border:2px solid #fff !important;
+}
 
 
 
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  /* For at least Firefox */
+  min-height: 100%;
+  background: rgba(48, 53, 70, 0.5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
 
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
 
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
 
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
 
-.press-quotes{
-    padding:50px 150px;}
-    
-.press-quotes p{
-    font-size: 16px;
-    font-style: italic;
-    color: #057d9f;
-    line-height: 24px;}
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color:#fff !important;
+}
 
-.press-logos{
-    margin-bottom:20px;}
+.nav-masthead {
+  text-align: center;
+  display: block;
+  color:#fff !important;
+}
 
-.line{
-    padding:0 150px;}
+.nav-masthead .nav-link {
+  display: inline-block;
+  color:#fff !important;
 
-.line hr{
-    margin:20px 0;
-    border:solid 1px #eee;}
+}
 
-.steps{
-    padding:0 150px;
-    margin-bottom:30px;}
-    
-.steps h3{
-    font-size: 36px;
-    font-weight: 300;
-    color: #057d9f;
-    text-align: center;
-    margin-bottom:30px;}
-    
-.steps h4{
-    font-size: 20px;
-    font-weight: 300;
-    color: #444;
-    line-height: 24px;
-    text-align: center;}
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
 
-#opinion-left h3{
-    font-size: 40px;
-    font-style: italic;
-    color: #525252;
-    font-weight:300;
-    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
-    margin-bottom:20px;}
-    
-#opinion-left{
-    padding:70px 150px;}
-    
-#opinion-left p{
-    text-align:right;
-    margin:0;
-    font-size: 16px;
-    font-style: italic;
-    color: #7d7d7d;
-    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
-    font-weight:300;}
-    
-#opinion-right h3{
-    font-size: 40px;
-    font-style: italic;
-    color: #525252;
-    font-weight:300;
-    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
-    margin-bottom:20px;}
-    
-#opinion-right{
-    padding:70px 150px;
-    margin-top:100px;}
-    
-#opinion-right p{
-    text-align:right;
-    margin:0;
-    font-size: 16px;
-    font-style: italic;
-    color: #7d7d7d;
-    text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
-    font-weight:300;}
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 20px;
+}
 
-.features-home-left{
-    margin:40px 150px;}
-    
-.features-home-left h3{
-    font-weight:700;
-    font-size:32px;}
-    
-.features-home-left h4{
-    font-weight:300;
-    font-size:22px;
-    margin-bottom:30px;}
-    
-.features-home-left p{
-    font-weight:300;}
+.cover .btn-notify {
+  padding: 10px 60px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 40px;
+}
 
-.features-home-right{
-    margin:40px 150px;}
+.cover-heading {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 2rem;
+  margin-bottom: 15px !important;
+}
 
-.features-home-right h3{
-    font-weight:700;
-    font-size:32px;
-    text-align:right;}
+.sub-header{
+    font-size: 23px;
+    letter-spacing:6px;
+    color:#fff !important;
+}
 
-.features-home-right h4{
-    font-weight:300;
-    font-size:22px;
-    margin-bottom:30px;
-    text-align:right;}
-    
-.features-home-right p{
-    font-weight:300;
-    text-align:right;}
+   .cover-heading
+   {
+        color:#fff !important;
+   }
 
-.features-home-right img{
-    float:right;}
+@media (min-width: 768px) {
+  .cover-heading {
+    font-size: 3.4rem;
+    letter-spacing: 15px;
+  }
+}
 
+.cover-copy {
+  max-width: 500px;
+  margin: 0 auto 3rem;
+}
 
-.panel-heading h3{
-    font-weight:300;}
-    
-.form-group img{
-    min-width:50px;
-    max-width:50px;}
-    
-.text-style a{
-    color: #2e82bc;}
-    
-.slider{
-    height:600px;}
+/*
+ * Footer
+ */
+.mastfoot {
+  color: #999;
+  /* IE8 proofing */
+  color: rgba(255, 255, 255, 0.5);
+}
 
+/*
+ * Subscribe modal box
+ */
+#subscribeModal .modal-content {
+  background-color: #303546;
+  color: #fff;
+  text-align: left;
+}
+
+#subscribeModal .modal-header, #subscribeModal .modal-footer {
+  border: 0;
+}
+
+#subscribeModal .close {
+  color: #fff;
+}
+
+#subscribeModal .form-control {
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+#subscribeModal .form-control:focus {
+  border-color: #49506a;
+}
+
+/*
+ * Affix and center
+ */
+@media (min-width: 768px) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%;
+    /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 992px) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 1060px;
+  }
+}
 
 </style>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<br>
 
+<style>
+.list-group {border-radius: 0;}
+.list-group .list-group-item {background-color: transparent;overflow: hidden;border: 0;border-radius: 0;padding: 0 16px;}
+.list-group .list-group-item .row-picture,
+.list-group .list-group-item .row-action-primary {float: left;display: inline-block;padding-right: 16px;padding-top: 8px;}
+.list-group .list-group-item .row-picture img,
+.list-group .list-group-item .row-action-primary img,
+.list-group .list-group-item .row-picture i,
+.list-group .list-group-item .row-action-primary i,
+.list-group .list-group-item .row-picture label,
+.list-group .list-group-item .row-action-primary label {display: block;width: 56px;height: 56px;}
+.list-group .list-group-item .row-picture img,
+.list-group .list-group-item .row-action-primary img {background: rgba(0, 0, 0, 0.1);padding: 1px;}
+.list-group .list-group-item .row-picture img.circle,
+.list-group .list-group-item .row-action-primary img.circle {border-radius: 100%;}
+.list-group .list-group-item .row-picture i,
+.list-group .list-group-item .row-action-primary i {background: rgba(0, 0, 0, 0.25);border-radius: 100%;text-align: center;line-height: 56px;font-size: 20px;color: white;}
+.list-group .list-group-item .row-picture label,
+.list-group .list-group-item .row-action-primary label {margin-left: 7px;margin-right: -7px;margin-top: 5px;margin-bottom: -5px;}
+.list-group .list-group-item .row-content {display: inline-block;width: calc(100% - 92px);min-height: 66px;}
+.list-group .list-group-item .row-content .action-secondary {position: absolute;right: 16px;top: 16px;}
+.list-group .list-group-item .row-content .action-secondary i {font-size: 20px;color: rgba(0, 0, 0, 0.25);cursor: pointer;}
+.list-group .list-group-item .row-content .action-secondary ~ * {max-width: calc(100% - 30px);}
+.list-group .list-group-item .row-content .least-content {position: absolute;right: 16px;top: 0px;color: rgba(0, 0, 0, 0.54);font-size: 14px;}
+.list-group .list-group-item .list-group-item-heading {color: rgba(0, 0, 0, 0.77);font-size: 20px;line-height: 29px;}
+.list-group .list-group-separator {clear: both;overflow: hidden;margin-top: 10px;margin-bottom: 10px;}
+.list-group .list-group-separator:before {content: "";width: calc(100% - 90px);border-bottom: 1px solid rgba(0, 0, 0, 0.1);float: right;}
 
-<script>
- var stop = false;
-$(document).ready(function() {
-   
- 
-   
- 
-     var tabCarousel = setInterval(function() {
-        var tabs = $('#tabs-home .nav.tabs > li'),
-            active = tabs.filter('.active'),
-            next = active.next('li'),
-            toClick = next.length ? next.find('a') : tabs.eq(0).find('a');
+.bg-profile{background-color: #3498DB !important;height: 150px;z-index: 1;}
+.bg-bottom{height: 100px;margin-left: 30px;}
+.img-profile{display: inline-block !important;background-color: #fff;border-radius: 6px;margin-top: -50%;padding: 1px;vertical-align: bottom;border: 2px solid #fff;-moz-box-sizing: border-box;box-sizing: border-box;color: #fff;z-index: 2;}
+.row-float{margin-top: -40px;}
+.explore a {color: green; font-size: 13px;font-weight: 600}
+.twitter a {color:#4099FF}
+.img-box{box-shadow: 0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);border-radius: 2px;border: 0;}
 
-        toClick.trigger('click');
-    }, 5000);
-
-    
-});
-</script>
+</style>
 {% endblock %}
