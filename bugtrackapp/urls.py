@@ -10,6 +10,6 @@ urlpatterns =[
     url(r'^ourteam/$', views.ourteam, name="ourteam"),
     url(r'^contactus/$', views.contactus, name="contactus"),
 
-    #url(r'^contact_us/$', views.contactus, name="contactus"),
+    url(r'^home/$', views.rschome, name="rschome"),
 
  ]

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from subjectsapp.forms import PaperstypeForm,QuestionsForm
 # Create your views here.
 
-from subjectsapp.models import TechType,Paperstype,Questions
+from subjectsapp.models import TechType,Paperstype,Questions,StudentResults
 
 
 class Subjectform(forms.ModelForm):
@@ -136,6 +136,8 @@ def edit_questions(request, pk):
     return render(request,template,context)
 
 def results(request):
-
+    result_list = StudentResults.objects.all()
+    context = {'subjects': result_list}
     template = 'subjectsapp/results.html'
-    return render(request,template)
+    return render(request,template,context)
+
