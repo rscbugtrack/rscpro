@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from subjectsapp.forms import PaperstypeForm,QuestionsForm
 # Create your views here.
 
-from subjectsapp.models import TechType,Paperstype,Questions,StudentResults
+from subjectsapp.models import TechType,Paperstype,Questions#,StudentResults
 
 
 class Subjectform(forms.ModelForm):
