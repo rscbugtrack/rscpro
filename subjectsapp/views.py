@@ -136,8 +136,8 @@ def edit_questions(request, pk):
     return render(request,template,context)
 
 def results(request):
-    result_list = StudentResults.objects.all()
-    context = {'subjects': result_list}
+    # result_list = StudentResults.objects.all()
+    # context = {'subjects': result_list}
     template = 'subjectsapp/results.html'
-    return render(request,template,context)
+    return render(request,template)
 

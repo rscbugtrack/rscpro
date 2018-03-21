@@ -17,7 +17,7 @@ class Bugtrack(models.Model):
     created_on = models.DateTimeField(auto_now_add=True, blank=True)
     priority = models.CharField(max_length=2,choices=priority_choices)
     current_status = models.CharField(max_length=2,default='N',choices=current_status_choice)
-    upload_image = models.ImageField(upload_to='butrackimg/',default='null')
+    upload_image = models.ImageField(upload_to='butrackimg/')
     reference = models.CharField(max_length=40,default="Not Available")
     final_status = models.BooleanField(default=False)
     points = models.PositiveIntegerField(default=0)

@@ -7,7 +7,7 @@ class Blog(models.Model):
     summary = models.CharField(max_length=300)
     author = models.ForeignKey(User)
     post_on = models.DateTimeField(auto_now_add=True, blank=True)
-    content_image = models.ImageField(upload_to='blogimg/',default='null')
+    content_image = models.ImageField(upload_to='blogimg/')
 
 from django.db import models
  

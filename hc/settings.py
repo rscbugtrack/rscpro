@@ -78,14 +78,25 @@ WSGI_APPLICATION = 'hc.wsgi.application'
 TEST_RUNNER = 'hc.api.tests.CustomRunner'
 
 
-# Default database engine is SQLite. So one can just check out code,
-# install requirements.txt and do manage.py runserver and it works
+# Uncomment to use MySQL:
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'rscnewdb',
+        'USER': 'root',
+        'PASSWORD': 'yskroot',
+        'TEST': {'CHARSET': 'UTF8'}
     }
 }
+
+# Default database engine is SQLite. So one can just check out code,
+# install requirements.txt and do manage.py runserver and it works
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # You can switch database engine to postgres or mysql using environment
 # variable 'DB'. Travis CI does this.
