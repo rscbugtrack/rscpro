@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rscnewdb',
-        'USER': 'root',
-        'PASSWORD': 'yskroot',
+        'USER': 'rscbugtrack',
+        'PASSWORD': 'rscroot123',
         'TEST': {'CHARSET': 'UTF8'}
     }
 }
