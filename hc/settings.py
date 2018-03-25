@@ -82,10 +82,11 @@ TEST_RUNNER = 'hc.api.tests.CustomRunner'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rscnewdb',
+        'NAME': 'rscbugtrack$rscnewdb',
         'USER': 'rscbugtrack',
         'PASSWORD': 'rscroot123',
-        'TEST': {'CHARSET': 'UTF8'}
+        'HOST': 'rscbugtrack.mysql.pythonanywhere-services.com'
+
     }
 }
 
