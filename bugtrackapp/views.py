@@ -11,6 +11,12 @@ def blog(request):
     context = {'blog':blog_obj}
     return render(request,'blog.html',context)
 
+def blog_id(request,post_id):
+    print ("hiiiii")
+    blog_obj = Post.objects.get(id=post_id)
+    context = {'blog':blog_obj}
+    return render(request,'blog_id.html',context)
+
 def rschome(request):
     blog_obj = Post.objects.all().order_by('-id')[:3]
     context = {'blog':blog_obj}
