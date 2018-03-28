@@ -113,10 +113,10 @@ $(document).ready(function() {
         <div class="container">
 
         <div align="right"><a href="/login"><button>Login<span class="glyphicon glyphicon-log-in"></span></button></a>
-        {% if user.is_superuser %}<div align="left">Visitor Count:<img src="http://www.reliablecounter.com/count.php?page=redsuncube.com12787000&digit=style/plain/10/&reloads=0" alt="" title="" border="0"></div> {% endif %}
-        </div>
+        {% if user.is_superuser %}<div align="left">Visitor Count(only admin view):<img src="http://www.reliablecounter.com/count.php?page=redsuncube.com12787000&digit=style/plain/10/&reloads=0" alt="" title="" border="0"></div> {% endif %}
+
         {% if user.is_superuser %}
-            <div class="alert alert-success"><a href="{% url 'certifiedapp:userdashbord' %}">AdminHome</a></div>
+        <a href="{% url 'certifiedapp:userdashbord' %}"><span class="glyphicon glyphicon-home"></span>AdminHome</a></div>
         {% endif %}
 
         </div>

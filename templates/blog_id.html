@@ -52,7 +52,19 @@
       <h2>{{blog.title}}</h2>
       <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
       <h5><span class="label label-success">Lorem</span></h5><br>
-      <p>{{blog.body}}</p>
+      <p>
+      {{ blog.body}}
+<hr>
+      {{blog.author}}
+<hr>        {{blog.description}}
+    <hr>    {{blog.summary}}<hr>
+    {% load static %}
+
+{%if blog.post_image != 'Null' %}
+
+       <img width=500 height=500 src="{{ MEDIA_URL }}/{{blog.post_image }}">
+{%endif%}
+      </p>
       <hr>
 
       <h4>Leave a Comment:</h4>
