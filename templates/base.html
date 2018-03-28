@@ -111,7 +111,7 @@ $(document).ready(function() {
 
     </nav>
         <div class="container">
-
+        <div align="right"><a href="/login"><button>Login<span class="glyphicon glyphicon-log-in"></span></button></a></div>
         {% if user.is_superuser %}
             <div class="alert alert-success"><a href="{% url 'certifiedapp:userdashbord' %}">AdminHome</a></div>
         {% endif %}

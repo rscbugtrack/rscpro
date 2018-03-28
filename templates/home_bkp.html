@@ -1,0 +1,406 @@
+{% extends "base.html" %}
+
+{% block containers %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!DOCTYPE html><html class=''>
+<head><script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/znak/pen/ntsdy?limit=all&page=5&q=mac" />
+
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+<style class="cp-pen-styles">*, *:before {
+  box-sizing: border-box;
+  position: relative;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("http://upload.wikimedia.org/wikipedia/commons/d/d6/Half_Dome_from_Glacier_Point%2C_Yosemite_NP_-_Diliff.jpg") 50% no-repeat fixed;
+  background-size: cover;
+  font: 14px/1.4 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+
+h2 {
+  font-size: 1.4em;
+  font-weight: 300;
+  color: #222;
+}
+
+p:not(:last-child) {
+  margin-bottom: 0.6em;
+}
+
+p.small {
+  font-size: 0.8em;
+  color: #222;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid #888;
+}
+
+article {
+  width: 300px;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  background: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+article:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  -webkit-filter: blur(10px) saturate(2);
+          filter: blur(10px) saturate(2);
+}
+article .title {
+  padding: 8px;
+  background: rgba(235, 235, 235, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+article .title:hover {
+  cursor: move;
+}
+article .content {
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.attr {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-size: 0.8em;
+  font-weight: normal;
+  color: white;
+}
+</style></head><body>
+<article>
+  <div class="title">
+    <h2>Latest Post</h2>
+    <h6 align="right"><i>Drag Me</i></h6>
+  </div><ul>{%for i in blog%}
+  <div class="content" align=left><li><a href="/blog_id/{{i.id}}/">{{i.title}}</a></li>
+  </div>{%endfor%}</ul>
+</article>
+
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script src='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script >$('article').draggable({ handle: ".title" });
+//# sourceURL=pen.js
+</script>
+</body></html>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+      <br><br><br><br><br><br><br><br>
+      <div class="inner cover">
+        <h1 class="cover-heading">CERTIFICATION</h1>
+        <h5 class="sub-header">I want to be professional in software industries </h5>
+        <br>
+        <p class="lead cover-copy">
+            Click the login to continue</p>
+            <p class="lead">
+<a href="/login"><button>Login<span class="glyphicon glyphicon-log-in"></span></button></a>
+
+
+</button></p>
+      </div>
+  </div>
+</div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+<style>
+/*
+ * Globals
+ */
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+/* Custom default button */
+.btn-default {
+  color: #fff;
+  text-shadow: none;
+  /* Prevent inheritence from `body` */
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 0.5rem 2rem;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/*
+ * Base structure
+ */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: url(https://ltcmedia.com/wp-content/uploads/2017/05/steps.jpg) no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size:18px !important;
+}
+
+.cover-copy{
+    color:#fff !important ;
+}
+
+.btn-notify{
+    border:2px solid #fff !important;
+}
+
+
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  /* For at least Firefox */
+  min-height: 100%;
+  background: rgba(48, 53, 70, 0.5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color:#fff !important;
+}
+
+.nav-masthead {
+  text-align: center;
+  display: block;
+  color:#fff !important;
+}
+
+.nav-masthead .nav-link {
+  display: inline-block;
+  color:#fff !important;
+
+}
+
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 20px;
+}
+
+.cover .btn-notify {
+  padding: 10px 60px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 40px;
+}
+
+.cover-heading {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 2rem;
+  margin-bottom: 15px !important;
+}
+
+.sub-header{
+    font-size: 23px;
+    letter-spacing:6px;
+    color:#fff !important;
+}
+
+   .cover-heading
+   {
+        color:#fff !important;
+   }
+
+@media (min-width: 768px) {
+  .cover-heading {
+    font-size: 3.4rem;
+    letter-spacing: 15px;
+  }
+}
+
+.cover-copy {
+  max-width: 500px;
+  margin: 0 auto 3rem;
+}
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: #999;
+  /* IE8 proofing */
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/*
+ * Subscribe modal box
+ */
+#subscribeModal .modal-content {
+  background-color: #303546;
+  color: #fff;
+  text-align: left;
+}
+
+#subscribeModal .modal-header, #subscribeModal .modal-footer {
+  border: 0;
+}
+
+#subscribeModal .close {
+  color: #fff;
+}
+
+#subscribeModal .form-control {
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+#subscribeModal .form-control:focus {
+  border-color: #49506a;
+}
+
+/*
+ * Affix and center
+ */
+@media (min-width: 768px) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%;
+    /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 992px) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 1060px;
+  }
+}
+
+</style>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<br>
+
+<style>
+.list-group {border-radius: 0;}
+.list-group .list-group-item {background-color: transparent;overflow: hidden;border: 0;border-radius: 0;padding: 0 16px;}
+.list-group .list-group-item .row-picture,
+.list-group .list-group-item .row-action-primary {float: left;display: inline-block;padding-right: 16px;padding-top: 8px;}
+.list-group .list-group-item .row-picture img,
+.list-group .list-group-item .row-action-primary img,
+.list-group .list-group-item .row-picture i,
+.list-group .list-group-item .row-action-primary i,
+.list-group .list-group-item .row-picture label,
+.list-group .list-group-item .row-action-primary label {display: block;width: 56px;height: 56px;}
+.list-group .list-group-item .row-picture img,
+.list-group .list-group-item .row-action-primary img {background: rgba(0, 0, 0, 0.1);padding: 1px;}
+.list-group .list-group-item .row-picture img.circle,
+.list-group .list-group-item .row-action-primary img.circle {border-radius: 100%;}
+.list-group .list-group-item .row-picture i,
+.list-group .list-group-item .row-action-primary i {background: rgba(0, 0, 0, 0.25);border-radius: 100%;text-align: center;line-height: 56px;font-size: 20px;color: white;}
+.list-group .list-group-item .row-picture label,
+.list-group .list-group-item .row-action-primary label {margin-left: 7px;margin-right: -7px;margin-top: 5px;margin-bottom: -5px;}
+.list-group .list-group-item .row-content {display: inline-block;width: calc(100% - 92px);min-height: 66px;}
+.list-group .list-group-item .row-content .action-secondary {position: absolute;right: 16px;top: 16px;}
+.list-group .list-group-item .row-content .action-secondary i {font-size: 20px;color: rgba(0, 0, 0, 0.25);cursor: pointer;}
+.list-group .list-group-item .row-content .action-secondary ~ * {max-width: calc(100% - 30px);}
+.list-group .list-group-item .row-content .least-content {position: absolute;right: 16px;top: 0px;color: rgba(0, 0, 0, 0.54);font-size: 14px;}
+.list-group .list-group-item .list-group-item-heading {color: rgba(0, 0, 0, 0.77);font-size: 20px;line-height: 29px;}
+.list-group .list-group-separator {clear: both;overflow: hidden;margin-top: 10px;margin-bottom: 10px;}
+.list-group .list-group-separator:before {content: "";width: calc(100% - 90px);border-bottom: 1px solid rgba(0, 0, 0, 0.1);float: right;}
+
+.bg-profile{background-color: #3498DB !important;height: 150px;z-index: 1;}
+.bg-bottom{height: 100px;margin-left: 30px;}
+.img-profile{display: inline-block !important;background-color: #fff;border-radius: 6px;margin-top: -50%;padding: 1px;vertical-align: bottom;border: 2px solid #fff;-moz-box-sizing: border-box;box-sizing: border-box;color: #fff;z-index: 2;}
+.row-float{margin-top: -40px;}
+.explore a {color: green; font-size: 13px;font-weight: 600}
+.twitter a {color:#4099FF}
+.img-box{box-shadow: 0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);border-radius: 2px;border: 0;}
+
+</style>
+{% endblock %}
+
