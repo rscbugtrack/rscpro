@@ -33,15 +33,18 @@
       <h4>Post List</h4>
       <ul class="nav nav-pills nav-stacked">
         {%for i in blog%}
-        <li><a href="#section2">{{i.title}}</a></li>
+        <li><a href="/blog_id/{{i.id}}/">{{i.title}}</a></li>
         {%endfor%}
       </ul><br>
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search Blog..">
         <span class="input-group-btn">
+
           <button class="btn btn-default" type="button">
             <span class="glyphicon glyphicon-search"></span>
           </button>
+          <br><br><br><br><br><br><br><br><br>
+
         </span>
       </div>
     </div>
@@ -53,7 +56,7 @@
       <h2>{{i.title}}</h2>
       <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
       <h5><span class="label label-success">Lorem</span></h5><br>
-      <p>{{i.body}}</p>
+      <p>{{i.description}}</p>
       <hr>
 
       <!--<h4>Leave a Comment:</h4>
@@ -100,7 +103,7 @@
     </div>
 
   </div>
-</div>
 
+</div>
 
 {%endblock%}

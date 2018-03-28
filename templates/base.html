@@ -111,7 +111,10 @@ $(document).ready(function() {
 
     </nav>
         <div class="container">
-        <div align="right"><a href="/login"><button>Login<span class="glyphicon glyphicon-log-in"></span></button></a></div>
+
+        <div align="right"><a href="/login"><button>Login<span class="glyphicon glyphicon-log-in"></span></button></a>
+        {% if user.is_superuser %}<div align="left">Visitor Count:<img src="http://www.reliablecounter.com/count.php?page=redsuncube.com12787000&digit=style/plain/10/&reloads=0" alt="" title="" border="0"></div> {% endif %}
+        </div>
         {% if user.is_superuser %}
             <div class="alert alert-success"><a href="{% url 'certifiedapp:userdashbord' %}">AdminHome</a></div>
         {% endif %}
@@ -123,11 +126,17 @@ $(document).ready(function() {
     <div class="container">
         {% block content %}{% endblock %}
     </div>
+
     {% endblock %}
 
     <footer class="footer">
            <center>
-              RedSunCube Technologies Pvt Ltd. &copy; 2017-2018 </center>
+              RedSunCube Technologies Pvt Ltd. &copy; 2017-2018
+
+               <!-- visitor count code -->
+
+
+              </center>
     </footer>
 
 
