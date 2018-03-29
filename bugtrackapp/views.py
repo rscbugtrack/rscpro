@@ -1,25 +1,32 @@
 from django.shortcuts import render
-
-from django.http import HttpResponse
-
 from .models import Bugtrack
-# Create your views here.
+from blog.models import Post
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from blog.models import Blog,Post
 def blog(request):
     blog_obj = Post.objects.all().order_by('-id')[:3]
     context = {'blog':blog_obj}
     return render(request,'blog.html',context)
 
 def blog_id(request,post_id):
-    print ("hiiiii")
     blog_obj = Post.objects.get(id=post_id)
-    context = {'blog':blog_obj}
+    body_contain = blog_obj.body.split("^")
+    context = {'blog':blog_obj,'body_contain':body_contain}
     return render(request,'blog_id.html',context)
 
 def rschome(request):
-    blog_obj = Post.objects.all().order_by('-id')[:3]
-    context = {'blog':blog_obj}
+    blog_obj = Post.objects.all().order_by('-id')#[:3]
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(blog_obj, 5)
+    try:
+        blog_page = paginator.page(page)
+    except PageNotAnInteger:
+        blog_page = paginator.page(1)
+    except EmptyPage:
+        blog_page = paginator.page(paginator.num_pages)
+
+    context = {'blog_obj':blog_obj,'blog_page':blog_page}
     return render(request,'home.html',context)
 
 def contactus(request):
@@ -27,19 +34,14 @@ def contactus(request):
     return render(request,'contact_us.html',context)
 
 def rscbugtrack(request):
-
     rscbugs = Bugtrack.objects.all()
-
     context = { 'rscbugs' : rscbugs}
     return render(request,'rscbugtrack.html',context)
+
 def aboutus(request):
-
-
     context = {}
     return render(request,'aboutus.html',context)
 
 def ourteam(request):
-
-
     context = {}
     return render(request,'ourteam.html',context)
