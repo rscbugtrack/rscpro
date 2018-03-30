@@ -13,7 +13,7 @@ def rschome(request):
     blog_obj = Post.objects.all().order_by('-id')#[:3]
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(blog_obj, 5)
+    paginator = Paginator(blog_obj, 3)
     try:
         blog_page = paginator.page(page)
     except PageNotAnInteger:
