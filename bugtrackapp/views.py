@@ -3,11 +3,6 @@ from .models import Bugtrack
 from blog.models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def blog(request):
-    blog_obj = Post.objects.all().order_by('-id')[:3]
-    context = {'blog':blog_obj}
-    return render(request,'blog.html',context)
-
 def blog_id(request,post_id):
     blog_obj = Post.objects.get(id=post_id)
     body_contain = blog_obj.body.split("^")
