@@ -47,6 +47,10 @@
 
                <img width=500 height=500 src="{{ MEDIA_URL }}/{{blog.post_image }}">
         {%endif%}
+         {%if blog.document != 'Null' %}
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <a href="{{ blog.document.url }}"><i class="fa fa-file-pdf-o fa_custom fa-4x"></i></a>
+          {%endif%}
               </p>
       <hr>
  </div>
