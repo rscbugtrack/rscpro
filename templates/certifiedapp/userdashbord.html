@@ -1,6 +1,8 @@
 {% block content %}
 {%include 'header.html'%}
-   <h2>Hi, Welcome {{request.user}}</h2> 
+{% load static %}
+<h1>this page is under constructions </h1>
+   <h2>Hi, Welcome {{request.user}}</h2>
         <div class="list-group">
             <div class="media col-md-3">
                 <figure class="pull-left">
@@ -46,6 +48,7 @@
 
     </div>
 
+
 <form action="" method="POST" enctype="multipart/form-data">
 
     {% csrf_token %}
@@ -54,6 +57,6 @@
 </form>
 
 
-{%include 'footer.html'%}   
+{%include 'footer.html'%}
 {%include 'script_style.html'%}ss
 {% endblock %}

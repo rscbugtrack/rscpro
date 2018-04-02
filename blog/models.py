@@ -17,6 +17,7 @@ class Post(models.Model):
     description = models.CharField(max_length=50, default="None")
     summary = models.CharField(max_length=300 , default="None")
     post_image = models.ImageField(upload_to='blogimg/', default="Null")
+    document = models.FileField(upload_to='blogimg/', default="Null")
 
     def __str__(self):
         return "%s (%s)" % (self.title, self.author.name)
