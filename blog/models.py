@@ -8,7 +8,7 @@ class Author(models.Model):
     def __str__(self):
         return "%s (%s)" % (self.name, self.email)
 
-category_choices = (('PY','Python'),('ML','Machine Learning'),('MLWPY','Machine Learning with Python'),)
+category_choices = (('PY','Python'),('ML','Machine Learning'),('MLWPY','Machine Learning with Python'),('FAQ','FAQ'),)
 
 class Post(models.Model):
     title = models.CharField(max_length=64)
@@ -19,7 +19,7 @@ class Post(models.Model):
     summary = models.CharField(max_length=300 , default="None")
     post_image = models.ImageField(upload_to='blogimg/', default="Null")
     document = models.FileField(upload_to='blogimg/', default="Null")
-    category = models.CharField(max_length=2,default='ML',choices=category_choices)
+    category = models.CharField(max_length=255,default='ML',choices=category_choices)
 
     def __str__(self):
         return "%s (%s)" % (self.title, self.author.name)

@@ -1,0 +1,111 @@
+        .services-section {
+    background: rgba(0, 0, 0, 0) url("") no-repeat scroll left top / cover;
+    padding: 104px 0 113px;
+    position: relative;
+}
+.services-section::before {
+    opacity: 0.8;
+}
+.black-trans-bg::before {
+    background: #4d0000 none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+.services-section-banner {
+    background-image: url("");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    bottom: 0;
+    height: 100%;
+    left: 1%;
+    position: absolute;
+    width: 34%;
+}
+.services-head {
+    margin: 0 0 76px;
+}
+.services-head .services-title {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 32px;
+    position: relative;
+    text-transform: uppercase;
+    margin: 0 0 5px;
+}
+.services-title-border {
+    background: #dadada none repeat scroll 0 0;
+    display: inline-block;
+    height: 1px;
+    margin-left: 25px;
+    position: relative;
+    width: 120px;
+}
+.services-title-border::before {
+    background: #fdb801 none repeat scroll 0 0;
+    content: "";
+    height: 1px;
+    left: -25px;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}
+.services-head .services-text {
+    color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+    margin: 7px 0 0;
+}
+.service-2 .service-box {
+    margin: 0 0 72px;
+}
+.service-2 .service-box .iconset {
+    float: left;
+    width: 24%;
+}
+.service-2 .service-box .iconset i {
+    color: #fff;
+    font-size: 30px;
+    height: 70px;
+    line-height: 70px;
+    position: relative;
+    text-align: center;
+    width: 82px;
+}
+.service-2 .service-box .servicesB-content {
+    float: left;
+    padding-left: 8px;
+    width: 76%;
+}
+.service-2 .service-box .servicesB-content h4 {
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 22px;
+    margin: 0 0 14px;
+}
+.service-2 .service-box .servicesB-content p {
+    color: #fff;
+    line-height: 24px;
+}
+.icon {
+    color : #f4b841;
+    padding:0px;
+    font-size:40px;
+    border: 1px solid #fdb801;
+    border-radius: 100px;
+    color: #fdb801;
+    font-size: 28px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    width: 70px;
+}

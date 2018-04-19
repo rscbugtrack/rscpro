@@ -10,7 +10,7 @@ def blog_id(request,post_id):
     return render(request,'blog_id.html',context)
 
 def rschome(request):
-    blog_obj = Post.objects.all().order_by('-id')[:9]
+    blog_obj = Post.objects.all().order_by('-id')[:15]
     page = request.GET.get('page', 1)
 
     paginator = Paginator(blog_obj, 5)
