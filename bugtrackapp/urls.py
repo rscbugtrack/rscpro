@@ -6,6 +6,7 @@ from bugtrackapp import views
 urlpatterns =[
     url(r'^blog_id/(\d+)/', views.blog_id, name="blogid"),
     url(r'^rscbugtrack/$', views.rscbugtrack, name="rscbugtrack"),
+    url(r'^feedback/$', views.comments, name="comments"),
     url(r'^aboutus/$', views.aboutus, name="aboutus"),
     url(r'^ourteam/$', views.ourteam, name="ourteam"),
     url(r'^contactus/$', views.contactus, name="contactus"),

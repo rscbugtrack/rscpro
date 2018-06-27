@@ -24,3 +24,12 @@ class Bugtrack(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comments(models.Model):
+    customer_name = models.CharField(max_length=120)
+    comment = models.CharField(max_length=120)
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.customer_name

@@ -1,62 +1,16 @@
 {% block content %}
 {%include 'header.html'%}
 {% load static %}
-<h1>this page is under constructions </h1>
-   <h2>Hi, Welcome {{request.user}}</h2>
+
         <div class="list-group">
-            <div class="media col-md-3">
-                <figure class="pull-left">
-                    <img class="media-object img-rounded img-responsive" height="42" width="122"  src="/static/img/python.png" alt="placehold.it/140x100" >
-                </figure>
-            </div>
-            <div class="col-md-5">
-                <h4 class="list-group-item-heading pb-3">Python </h4>
-                <p class="list-group-item-text">Python certification</p>
-            </div>
-            <div class="col-md-3 pull-left">
-                <div class = "container col-md-12">
-                    <div class = "row">
-                        <div class="col-md-12 pull-left">
-                            <i class="fa fa-check-square"></i>
-                            <a href="{% url 'certifiedapp:student_freetest' %}" >Free</a>
-                        </div>
-                    </div>
-                    <div class = "row">
-                        <div class="col-md-12 pull-left">
-                            <i class="fa fa-check-square"></i>
-                            <a href="#" >Sample</a>
-                        </div>
-                    </div>
-                    <div class = "row">
-                        <div class="col-md-12 pull-left">
-                            <i class="fa fa-check-square"></i>
-                            <a href="#" >Certification</a>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
-            <div class="col-md-1 text-center">
-                <p> 2 <small> approvals </small></p>
-                <button type="button" class="btn btn-primary btn-sm btn-block">Open</button>
-            </div>
+         <h1>tetsst</h1> test
+
+        </div>
 
 
-            <div class="well">Profile form</div>
-
-
-
-    </div>
-
-
-<form action="" method="POST" enctype="multipart/form-data">
-
-    {% csrf_token %}
-    {{ profilepic_form.as_p }}
-        <button type="submit">Upload</button>
-</form>
 
 
 {%include 'footer.html'%}
-{%include 'script_style.html'%}ss
+{%include 'script_style.html'%}
 {% endblock %}

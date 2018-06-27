@@ -41,9 +41,8 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'registration/certapp_signup.html', {'form': form})
 
-
 @login_required
-def userdashbord(request):
+def studentprofilepic(request):
     # only for superuser..
 
     if request.method == 'POST':
@@ -53,19 +52,12 @@ def userdashbord(request):
             picform.stu_user = request.user
             picform.save()
 
-    if request.user.is_superuser:
-        return render(request, 'certifiedapp/admindashbord.html')
-    # only for nonsuper users / general users...
-    else:
-        form = StudentProfileform()
-        # stu = StudentProfile.objects.get(stu_user=request.user)
-        try:
 
-            stupic = StudentProfile.objects.get(stu_user=request.user)
-        except:
-            stupic = 'None'
+@login_required
+def userdashbord(request):
 
-        return render(request,'certifiedapp/userdashbord.html',{'profilepic_form':form,'stupic':stupic})
+    context = {}
+    return render(request,'certifiedapp/userdashbord.html',context)
 
 
 
@@ -81,7 +73,7 @@ def change_password(request):
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Your password was successfully updated!')
-            
+
             return redirect('login')
         else:
             messages.error(request, 'Please correct the error below.')
@@ -177,7 +169,7 @@ def test_list(request):
 @login_required
 def takepredict(request):
     import numpy as np
-    A = np.array([[1, 2, 3], [4, 5, 6]]) #iprint A # [[1 2 3] # [4 5 6]] 
+    A = np.array([[1, 2, 3], [4, 5, 6]]) #iprint A # [[1 2 3] # [4 5 6]]
     context = {'example1':A}
     return render(request,'certifiedapp/Take_Test.html', context)
 

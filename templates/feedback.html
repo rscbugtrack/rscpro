@@ -42,6 +42,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+
 <div class="container">
     <div class="row">
         <div class="panel panel-default widget">
@@ -71,7 +72,13 @@
                     {% endfor %}
 
                 </ul>
-                <a href="/feedback" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span>Write comment/feedback</a>
+                <h3>Comments/Feedback</h3>
+               <form action="" method="post">
+    {% csrf_token %}
+
+   {{form.as_p}}<br>
+   <input type="submit" value="Submit" />
+</form>
             </div>
         </div>
     </div>
@@ -105,7 +112,7 @@
                 <button>Login<span class="glyphicon glyphicon-log-in"></span></button>
             </a>
             <hr>
-            <h4><font color=grey><u><i>Latest Post iii</i></u></font></h4>
+            <h4><font color=grey><u><i>Latest Post</i></u></font></h4>
             <ul class="nav nav-pills nav-stacked">
                 {%for i in blog_obj%}
                 <li><a href="/blog_id/{{i.id}}/">{{i.title}}</a></li>
@@ -123,5 +130,4 @@
     </div>
 
 </div>
-
 {%endblock%}

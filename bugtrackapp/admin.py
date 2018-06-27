@@ -1,11 +1,14 @@
 from django.contrib import admin
 
 # Register your models here.
-from bugtrackapp.models import Bugtrack
+from bugtrackapp.models import Bugtrack, Comments
 from django.utils.html import format_html
 from django.contrib.auth.models import User
 
 
+@admin.register(Comments)
+class CommentsAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Bugtrack)
