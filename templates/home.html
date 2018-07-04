@@ -1,127 +1,121 @@
-{%extends "base.html"%}
-{%block content%}
-{% load compress staticfiles %}
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link rel="stylesheet" href="{% static 'css/home_need1.css' %}" type="text/css">
+{% block content %}
+{%include 'home_header.html'%}
+{% load static %}
 
-<div class="container-fluid">
-    <div class="row content">
-        <div class="col-sm-9">
-            {%for i in blog_page%}
-            <hr>
-            <h3>{{i.title}}</h3>
-            <h5><span class="glyphicon glyphicon-time"></span> {{i.date}}.</h5>
-            <h5><span class="label label-success">RSC</span></h5>
-            <br>
-            <p>{{i.summary}}</p><a href="/blog_id/{{i.id}}/">Read More</a>
-            <hr> {%endfor%} {% if blog_page.has_other_pages %}
-            <ul class="pagination">
-                {% if blog_page.has_previous %}
-                <li><a href="?page={{ blog_page.previous_page_number }}">&laquo;</a></li>
-                {% else %}
-                <li class="disabled"><span>&laquo;</span></li>
-                {% endif %} {% for i in blog_page.paginator.page_range %} {% if blog_page.number == i %}
-                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
-                </li>
-                {% else %}
-                <li><a href="?page={{ i }}">{{ i }}</a></li>
-                {% endif %} {% endfor %} {% if blog_page.has_next %}
-                <li><a href="?page={{ blog_page.next_page_number }}">&raquo;</a></li>
-                {% else %}
-                <li class="disabled"><span>&raquo;</span></li>
-                {% endif %}
-            </ul>
-            {% endif %}
-
-
-            <!-- feedback-->
-            <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- the code add for slider-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+
 <div class="container">
+
     <div class="row">
-        <div class="panel panel-default widget">
-            <div class="panel-heading">
-                <span class="glyphicon glyphicon-comment"></span>
-                <h3 class="panel-title">
-                    Recent Comments</h3>
+	    	<aside class="col-sm-4">
+               <!-- <p>Card banner overlay </p>
+-->
+<div class="card-banner  overlay-grad" style="height:250px; background-image: url('https://codyparker.com/wp-content/uploads/2016/10/dj-react.png');">
+  <div class="card-body text-white">
+   <!-- <h5 class="card-title">Primary text as title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  --></div>
+</div> <!-- card.// -->
 
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    {% for i in comments%}
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10 col-md-11">
-                                <div>
-                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                        {{i.comment}}</a>
-                                    <div class="mic-info">
-                                        By: <a href="#">{{i.customer_name}}</a> on {{i.date}}
-                                    </div>
-                                </div>
+            </aside>
+            <aside class="col-sm-4">
+         <!--<p>Card banner overlay dark </p>
+--><div class="card-banner" style="height:250px; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_imCdazkJyK6ZF_OaYu7IULJw-B7vasx4T6gpV4xdw0h1hMU');">
+  <article class="overlay overlay-cover d-flex align-items-center justify-content-center">
+    <div class="text-center">
 
-                            </div>
-                        </div>
-                    </li>
-                    {% endfor %}
+    	<a href="#" class="btn btn-warning btn-sm"> View more </a>
+   </div>
+  </article>
+</div> <!-- card.// -->
 
-                </ul>
-                <a href="/feedback" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span>Write comment/feedback</a>
-            </div>
-        </div>
-    </div>
+            </aside>
+            <aside class="col-sm-4">
+
+<div class="card-banner align-items-end" style="height:250px; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdbmAtYs-2iBZBmaqfveF5s2vlPdCussqyqvgs4O6ozIjq-uOw');">
+	<article class="overlay m-4 w-100">
+
+    	<a href="#" class="btn btn-warning btn-sm"> View more </a>
+    </article>
+</div> <!-- card.// -->
+
+            </aside>
+	</div>
 </div>
+
+
+<br><br>
+<article class="bg-secondary mb-3">
+<div class="card-body text-center">
+    <h4 class="text-white">Redsuncube – Webapp and API development with Python, Django and moreHTML UI KIT  </h4>
+<p class="h5 text-white"> We build scalabale and maintainable webapps and APIs. We develop custom, bespoke webapps and mobile backends using Django, Python, Postgres, Angular and other modern tools.
+</p><p class="h5 text-white">We love building amazing apps. We have been doing it since 2012. We are doing it right now, and we can do it for you. Interested? Contact us today.</p>   <br>
+<p><a class="btn btn-warning" target="_blank" href=""> Bussiness Deal
+ <i class="fa fa-window-restore "></i></a></p>
+</div>
+<br><br>
+</article>
 <style>
-.widget .panel-body { padding:0px; }
-.widget .list-group { margin-bottom: 0; }
-.widget .panel-title { display:inline }
-.widget .label-info { float: right; }
-.widget li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
-.widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
-.widget .mic-info { color: #666666;font-size: 11px; }
-.widget .action { margin-top:5px; }
-.widget .comment-text { font-size: 12px; }
-.widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+    .card-banner {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    background-size: cover;
+    border-radius: 5px;
+}
+.card-banner .card-body {
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+}
+
+
+/* overlay effects */
+.overlay-cover {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+.overlay {
+    background-color: rgba(0,0,0,0.65);
+    z-index: 10;
+    padding: 1.25rem;
+    color: #fff;
+}
+.overlay-grad {
+    position: relative;
+}
+
+.overlay-grad::before {
+    position: absolute;
+    content: "";
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #e83e8c;
+    background: -webkit-gradient(linear, left top, right bottom, from(#007bff), to(#e83e8c));
+    background: linear-gradient(to bottom right, #007bff, #e83e8c);
+    opacity: .6;
+    transition: .5s;
+}
+.overlay-grad:hover:before{
+     opacity: .9;
+}
 </style>
-            <!-- end of feedback -->
+<!-- the code end of rslider-->
 
 
-
-
-
-                {{i}}<br>
-
-        </div>
-
-        <div class="col-sm-3 sidenav">
-            <i>To do certification practice click on login</i>
-            <br>
-            <a href="/login">
-                <button>Login<span class="glyphicon glyphicon-log-in"></span></button>
-            </a>
-            <hr>
-            <h4><font color=grey><u><i>Latest Post iii</i></u></font></h4>
-            <ul class="nav nav-pills nav-stacked">
-                {%for i in blog_obj%}
-                <li><a href="/blog_id/{{i.id}}/">{{i.title}}</a></li>
-                {%endfor%}
-            </ul>
-            <br>
-            <hr>
-            <a href="http://www.reliablecounter.com" target="_blank">
-                <img src="http://www.reliablecounter.com/count.php?page=redsuncube.com10930430&digit=style/plain/1/&reloads=0" alt="" title="" border="0"></a>
-            <br />
-            <a href="https://info.flagcounter.com/w6S1">
-                <img src="https://s11.flagcounter.com/count2/w6S1/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0">
-            </a>
-        </div>
-    </div>
-
-</div>
-
-{%endblock%}
+{%include 'script_style.html'%}
+{%include 'footer_home.html'%}
+{% endblock %}

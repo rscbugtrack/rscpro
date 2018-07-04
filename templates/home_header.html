@@ -1,0 +1,63 @@
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Redsuncube:Home</title>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+    <style class="cp-pen-styles">@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&subset=latin-ext");
+</style></head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body class="sidebar-is-reduced">
+  <header class="l-header">
+    <div class="l-header__inner clearfix">
+      <div class="c-header-icon js-hamburger">
+        <div class="hamburger-toggle"><span class="bar-top"></span><span class="bar-mid"></span><span class="bar-bot"></span></div>
+      </div>
+
+      <div class="header-icons-group">
+
+        <div class="c-header-icon logout"><a title="login" href="/logout"><i class="glyphicon glyphicon-log-in"></i> Login</a></div>
+      </div>
+    </div>
+  </header>
+  <div class="l-sidebar">
+    <div class="logo">
+      <div class="logo__txt" title="Redsuncube"><a href="/home">RSC</a></div>
+
+    </div>
+    <div class="l-sidebar__content">
+      <nav class="c-menu js-menu">
+        <ul class="u-list">
+          <!--<li class="c-menu__item is-active" data-toggle="tooltip" title="Predict Dataset">
+          <div class="c-menu__item__inner"><i class="glyphicon glyphicon-book"><a href="{% url 'bugtrackapp:aboutus' %}"></a></i>
+          <div class="c-menu-item__title"><span><a href=''>Portofolio</a></span></div>
+          </div>
+          </li>
+-->
+         <li class="c-menu__item has-submenu" data-toggle="tooltip" title="History">
+            <div class="c-menu__item__inner"><i class="fa fa-info"></i>
+              <div class="c-menu-item__title"><span><a href='{% url 'bugtrackapp:aboutus' %}'>About Us</a></span></div>
+            </div>
+          </li>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Accounts">
+            <div class="c-menu__item__inner"><i class="fa fa-address-book-o"></i>
+              <div class="c-menu-item__title"><span><a href='{% url 'bugtrackapp:contactus' %}'>Contact Us</a></span></div>
+            </div>
+          </li>
+          <!--<li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+            <div class="c-menu__item__inner"><i class="fa fa-cogs"></i>
+              <div class="c-menu-item__title"><span>Settings</span></div>
+            </div>
+          </li>-->
+        </ul>
+
+
+		      </nav>
+    </div>
+  </div>
+</body>
+<main class="l-main">
+  <div class="content-wrapper content-wrapper--with-bg">
+
+
