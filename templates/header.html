@@ -21,20 +21,20 @@
         </div>
       </div>
       <div class="c-search">
-        <input class="c-search__input u-input" placeholder="Search..." type="text"/>
+        <input class="c-search__input u-input" placeholder="Search..." type="text"/><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-search"></span> Search
+        </button>
       </div>
       <div class="header-icons-group">
-        <div class="c-header-icon reset"> <a href="/userdashbord"><i class="fa fa-Home"></i></a></div>
 
-        <div class="c-header-icon reset"> <a href="#" title="Hi, {{ request.user }}"><i class="fa fa-user"></i></a></div>
         <div class="c-header-icon reset"> <a title="change password" href="/change_password"><i class="fa fa-lock"></i></a></div>
-        <div class="c-header-icon logout"><a title="logout" href="/logout"><i class="fa fa-power-off"></i></a></div>
+        <div class="c-header-icon logout"><a title="SignOut" href="/logout"><i class="fa fa-power-off"></i></a></div>
       </div>
     </div>
   </header>
   <div class="l-sidebar">
     <div class="logo">
-      <div class="logo__txt" title="Redsuncube">RSC</div>
+      <div class="logo__txt" title="Redsuncube"><a href="/userdashbord/">RSC</a></div>
     </div>
     <div class="l-sidebar__content">
       <nav class="c-menu js-menu">

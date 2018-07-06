@@ -17,6 +17,6 @@ urlpatterns =[
     url(r'^student_freetest/$', core_views.student_freetest, name='student_freetest'),
     url(r'^student_test_submit/$', core_views.student_test_submit, name='student_test_submit'),
     url(r'^student_testresult/$', core_views.student_testresult, name='student_testresult'),
-
+    url(r'forget_password_reset/',core_views.forget_password_reset , name='forget_password_reset'),
 ]
 

@@ -11,6 +11,7 @@ from django.contrib.messages import *
 from django.contrib.auth.models import User
 from subjectsapp.models import Questions,Paperstype
 from certifiedapp.models import StudentResults
+from bugtrackapp.views import *
 
 def certifiedapphome(request):
     return HttpResponse('cerifiedapphome')
@@ -226,3 +227,37 @@ def student_testresult(request):
     return render(request, 'certifiedapp/student_results.html', context={'sturesults':StudentResults.objects.get(pk=student_resultid)})
 
 
+def forgot_password(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        import random
+
+        otp = "{}".format(random.randint(1000,9000))
+        try:
+            user = User.objects.get(username=name)
+            if user:
+                send_mail('Password reset verification code ', otp,
+                [user.email], False)
+            return render(request, 'forgot_password_success.html', {'otp':otp,'user_id':user.id})
+        except Exception as e:
+
+            user = User.objects.get(username=name)
+            if user:
+                send_mail('Password reset verification code ', otp,
+                [user.email], False)
+            return render(request, 'forgot_password_success.html', {'otp':otp,'user_id':user.id})
+
+
+            return render(request, 'forgot_password.html', {'error':e})
+
+    return render(request, 'forgot_password.html', {})
+
+
+def forget_password_reset(request):
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        password = request.POST.get('pass')
+        users=User.objects.get(id=user_id)
+        users.set_password(password)
+        users.save()
+        return render(request, 'forget_password_done.html', {})

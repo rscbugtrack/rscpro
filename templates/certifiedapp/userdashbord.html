@@ -1,12 +1,109 @@
 {% block content %}
 {%include 'header.html'%}
 {% load static %}
+<!-- the code add for slider-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    .card-banner {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    background-size: cover;
+    border-radius: 5px;
+}
+.card-banner .card-body {
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+}
 
-        <div class="list-group">
 
-         <h1>tetsst</h1> testdeepak
+/* overlay effects */
+.overlay-cover {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+.overlay {
+    background-color: rgba(0,0,0,0.65);
+    z-index: 10;
+    padding: 1.25rem;
+    color: #fff;
+}
+.overlay-grad {
+    position: relative;
+}
 
-        </div>
+.overlay-grad::before {
+    position: absolute;
+    content: "";
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #e83e8c;
+    background: -webkit-gradient(linear, left top, right bottom, from(#007bff), to(#e83e8c));
+    background: linear-gradient(to bottom right, #007bff, #e83e8c);
+    opacity: .6;
+    transition: .5s;
+}
+.overlay-grad:hover:before{
+     opacity: .9;
+}
+</style>
+<!-- the code end of rslider-->
+
+<div class="container">
+   <h3 align="left"> Hi, {{ request.user }}
+</h3><br><br><br><hr>
+    <div class="row">
+	    	<aside class="col-sm-4">
+               <!-- <p>Card banner overlay </p>
+-->
+<div class="card-banner  overlay-grad" style="height:250px; background-image: url('https://codyparker.com/wp-content/uploads/2016/10/dj-react.png');">
+  <div class="card-body text-white">
+   <!-- <h5 class="card-title">Primary text as title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  --></div>
+</div> <!-- card.// -->
+
+            </aside>
+            <aside class="col-sm-4">
+         <!--<p>Card banner overlay dark </p>
+--><div class="card-banner" style="height:250px; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_imCdazkJyK6ZF_OaYu7IULJw-B7vasx4T6gpV4xdw0h1hMU');">
+  <article class="overlay overlay-cover d-flex align-items-center justify-content-center">
+    <div class="text-center">
+
+    	<a href="#" class="btn btn-warning btn-sm"> View more </a>
+   </div>
+  </article>
+</div> <!-- card.// -->
+
+            </aside>
+            <aside class="col-sm-4">
+
+<div class="card-banner align-items-end" style="height:250px; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdbmAtYs-2iBZBmaqfveF5s2vlPdCussqyqvgs4O6ozIjq-uOw');">
+	<article class="overlay m-4 w-100">
+
+    	<a href="#" class="btn btn-warning btn-sm"> View more </a>
+    </article>
+</div> <!-- card.// -->
+
+            </aside>
+	</div>
+</div>
+
+
+<br><br>
+
 
 
 
